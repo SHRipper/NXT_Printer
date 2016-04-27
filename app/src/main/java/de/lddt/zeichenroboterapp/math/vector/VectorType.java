@@ -1,4 +1,4 @@
-package de.lddt.zeichenroboterapp;
+package de.lddt.zeichenroboterapp.math.vector;
 
 /**
  * Created by Tim on 27.04.2016.

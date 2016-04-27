@@ -13,9 +13,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        inputListener = new Inputlistener();
     }
 
     @Override
@@ -33,6 +30,7 @@ public class MainActivity extends Activity {
         drawView.getLayoutParams().height = (int) Math.round(drawViewWidth / Math.sqrt(2));
         drawView.setLayoutParams(drawView.getLayoutParams());
 
+        inputListener = new Inputlistener(drawView.getMeasuredWidth(), drawView.getMeasuredHeight());
         drawView.registerListener(inputListener);
     }
 }

@@ -8,6 +8,8 @@ import android.view.SurfaceView;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.lddt.zeichenroboterapp.math.vector.Vector2D;
+
 /**
  * Created by Tim on 27.04.2016.
  */
@@ -18,7 +20,6 @@ public class DrawView extends SurfaceView {
     public DrawView(Context context) {
         super(context);
         this.positionVectorList = new ArrayList<>();
-
     }
 
     public DrawView(Context context, AttributeSet attrs) {
@@ -46,12 +47,12 @@ public class DrawView extends SurfaceView {
 
             case MotionEvent.ACTION_MOVE:
                 System.out.println("touch move: " + event.getX() + "; " + event.getY());
-                positionVectorList.add(inputListener.onTouchDown(event.getX(), event.getY()));
+                positionVectorList.add(inputListener.onTouchDrag(event.getX(), event.getY()));
                 return true;
 
             case MotionEvent.ACTION_UP:
                 System.out.println("touch up: " + event.getX() + "; " + event.getY());
-                positionVectorList.add(inputListener.onTouchDown(event.getX(), event.getY()));
+                positionVectorList.add(inputListener.onTouchUp(event.getX(), event.getY()));
                 return true;
 
             case MotionEvent.ACTION_CANCEL:
