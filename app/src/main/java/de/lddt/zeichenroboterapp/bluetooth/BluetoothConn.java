@@ -45,7 +45,7 @@ public class BluetoothConn{
             return false;
         }
 
-        if(brickConn.getNXTInfos() != null) {
+        if(brickConn.getOutputStream() != null) {
             return true;
         }
         return false;
