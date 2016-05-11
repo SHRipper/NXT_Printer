@@ -7,7 +7,7 @@
     <string name="send_button_name">Senden</string>
 
     <!-- Bluetooth Transfer -->
-    <string name="bluetooth_disabled">Bluetooth ist deaktiviert! Bitte aktiviere Bluetooth</string>
+    <string name="bluetooth_disabled">Bluetooth ist deaktiviert!\nBitte aktiviere zuerst Bluetooth</string>
     <string name="nothing_drawn">Bitte fertige zuerst eine Zeichnung an!</string>
     <string name="connection_failed">Fehler beim Herstellen der Verbindung!</string>
     <string name="data_transfer_failed">Fehler beim Senden der Daten!</string>
