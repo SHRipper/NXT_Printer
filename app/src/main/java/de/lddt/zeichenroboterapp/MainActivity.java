@@ -3,6 +3,7 @@ package de.lddt.zeichenroboterapp;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -57,13 +58,20 @@ public class MainActivity extends Activity {
         }
 
         if (!BluetoothConn.isBluetoothEnabled()) {
-            Toast.makeText(MainActivity.this, getString(R.string.bluetooth_disabled), Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, getString(R.string.bluetooth_disabled), Toast.LENGTH_LONG).show();
+            openSystemBluetoothSettings();
             return;
         }
 
         new TransferVectorsToBrick().execute(directionVectorList);
 
         BluetoothConn.close();
+    }
+
+    private void openSystemBluetoothSettings() {
+        Intent intent = new Intent();
+        intent.setAction(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS);
+        startActivity(intent);
     }
 
     private class TransferVectorsToBrick extends AsyncTask<List<Vector2D>, Integer, String> {
