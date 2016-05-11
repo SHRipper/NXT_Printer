@@ -137,10 +137,8 @@ public class DrawView extends SurfaceView {
         vector2D.applyWidthBound(this.getMeasuredWidth());
         vector2D.applyHeightBound(this.getMeasuredHeight());
 
-        int gridWidth = 500;
-        int gridHeight = 500;
-        vector2D.applyGridWidth(gridWidth, this.getMeasuredWidth());
-        vector2D.applyGridHeight(gridHeight, this.getMeasuredHeight());
+        vector2D.applyGridWidth(getResources().getInteger(R.integer.grid_width), this.getMeasuredWidth());
+        vector2D.applyGridHeight(getResources().getInteger(R.integer.grid_height), this.getMeasuredHeight());
 
         return vector2D;
     }
