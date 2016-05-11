@@ -59,7 +59,6 @@ public class MainActivity extends Activity {
         }
 
         new TransferVectorsToBrick().execute(directionVectorList);
-
     }
 
     private void openSystemBluetoothSettings() {
