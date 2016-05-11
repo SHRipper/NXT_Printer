@@ -2,6 +2,7 @@ package de.lddt.zeichenroboterapp;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -65,13 +66,8 @@ public class MainActivity extends Activity {
         BluetoothConn.close();
     }
 
-    private class TransferVectorsToBrick extends AsyncTask<List<Vector2D>, String, String> {
-        private final AlertDialog dialog;
-
-        public TransferVectorsToBrick() {
-            this.dialog = createDialog(getString(R.string.connect_dialog_title), getString(R.string.connect_dialog_message));
-            this.dialog.setCancelable(false);
-        }
+    private class TransferVectorsToBrick extends AsyncTask<List<Vector2D>, Integer, String> {
+        private ProgressDialog dialog;
 
         @Override
         protected String doInBackground(List<Vector2D>... params) {
@@ -82,10 +78,13 @@ public class MainActivity extends Activity {
                 return getString(R.string.connection_failed);
             }
 
-            publishProgress(getString(R.string.send_dialog_title), getString(R.string.send_dialog_message));
-            boolean succesfullySend = sendData(params[0]);
-
-            if (succesfullySend) {
+            publishProgress(R.string.send_dialog_title, R.string.send_dialog_message, 1);
+            boolean successfullySend = sendData(params[0]);
+            if (successfullySend) {
+                publishProgress(R.string.send_dialog_title, R.string.send_dialog_message, 2);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {}
                 return getString(R.string.data_transfer_success);
             }
             return getString(R.string.data_transfer_failed);
@@ -94,18 +93,20 @@ public class MainActivity extends Activity {
         @Override
         protected void onPostExecute(String result) {
             Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
-            dialog.cancel();
+            dialog.dismiss();
         }
 
         @Override
         protected void onPreExecute() {
+            dialog = createDialog(R.string.connect_dialog_title, R.string.connect_dialog_message);
             dialog.show();
         }
 
         @Override
-        protected void onProgressUpdate(String... values) {
+        protected void onProgressUpdate(Integer... values) {
             dialog.setTitle(values[0]);
-            dialog.setMessage(values[1]);
+            dialog.setMessage(getString(values[1]));
+            dialog.setProgress(values[2]);
         }
 
         private boolean sendData(List<Vector2D> vectorList) {
@@ -113,11 +114,14 @@ public class MainActivity extends Activity {
             return BluetoothConn.send(data);
         }
 
-        private AlertDialog createDialog(String title, String message) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-            builder .setTitle(title)
-                    .setMessage(message);
-            return builder.create();
+        private ProgressDialog createDialog(int title, int message) {
+            ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+            dialog.setTitle(title);
+            dialog.setMessage(getString(message));
+            dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            dialog.setProgress(0);
+            dialog.setMax(2);
+            return dialog;
         }
     }
 }
