@@ -91,7 +91,7 @@ public class MainActivity extends Activity {
             if (successfullySend) {
                 publishProgress(R.string.send_dialog_title, R.string.send_dialog_message, 2);
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(2500);
                 } catch (InterruptedException e) {}
                 return getString(R.string.data_transfer_success);
             }
