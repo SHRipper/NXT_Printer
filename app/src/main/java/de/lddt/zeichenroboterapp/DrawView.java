@@ -18,7 +18,7 @@ import de.lddt.zeichenroboterapp.math.vector.Vector2D;
  * Created by Tim on 27.04.2016.
  */
 public class DrawView extends SurfaceView {
-    private List<Vector2D> positionVectorList;
+    private List<List<Vector2D>> positionVectorPaths;
     private List<Path> paths;
     private Paint paint;
     private boolean drawing;
@@ -39,7 +39,7 @@ public class DrawView extends SurfaceView {
     }
 
     private void init() {
-        this.positionVectorList = new ArrayList<>();
+        this.positionVectorPaths = new ArrayList<>();
         drawing = false;
         paths = new ArrayList<>();
         paint = new Paint();
@@ -48,14 +48,14 @@ public class DrawView extends SurfaceView {
     }
 
     public void reset() {
-        positionVectorList.clear();
+        positionVectorPaths.clear();
         paths.clear();
         invalidate();
     }
 
     public void revert(){
-        if (positionVectorList.size() > 0 && paths.size() > 0) {
-            positionVectorList.remove(positionVectorList.size() - 1);
+        if (positionVectorPaths.size() > 0 && paths.size() > 0) {
+            positionVectorPaths.remove(positionVectorPaths.size() - 1);
             paths.remove(paths.size() - 1);
         }
         invalidate();
@@ -83,12 +83,10 @@ public class DrawView extends SurfaceView {
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 drawing = true;
-                System.out.println("touch down: " + event.getX() + "; " + event.getY());
-
                 newVector = createVector((short) event.getX(),(short) event.getY());
-                if(positionVectorList.size() > 0 && !positionVectorList.get(positionVectorList.size() -1).equals(newVector)) {
-                    positionVectorList.add(newVector);
-                }
+
+                positionVectorPaths.add(new ArrayList<Vector2D>());
+                positionVectorPaths.get(positionVectorPaths.size() -1).add(newVector);
 
                 paths.add(new Path());
                 paths.get(paths.size()-1).moveTo(event.getX(), event.getY());
@@ -97,33 +95,32 @@ public class DrawView extends SurfaceView {
                 return true;
 
             case MotionEvent.ACTION_MOVE:
-                System.out.println("touch move: " + event.getX() + "; " + event.getY());
+                if(drawing) {
+                    newVector = createVector((short) event.getX(), (short) event.getY());
 
-                newVector = createVector((short) event.getX(),(short) event.getY());
-                if(positionVectorList.size() > 0 && !positionVectorList.get(positionVectorList.size() -1).equals(newVector)) {
-                    positionVectorList.add(newVector);
+                    List<Vector2D> currentList = positionVectorPaths.get(positionVectorPaths.size() -1);
+                    if (positionVectorPaths.size() > 0 && !currentList.get(currentList.size() - 1).equals(newVector)) {
+                        currentList.add(newVector);
+                    }
+                    paths.get(paths.size() - 1).lineTo(event.getX(), event.getY());
+
+                    invalidate();
                 }
-                paths.get(paths.size()-1).lineTo(event.getX(), event.getY());
-
-                invalidate();
                 return true;
 
             case MotionEvent.ACTION_UP:
-                drawing = false;
-                System.out.println("touch up: " + event.getX() + "; " + event.getY());
+                if(drawing) {
+                    drawing = false;
+                    newVector = createVector((short) event.getX(), (short) event.getY());
 
-                newVector = createVector((short) event.getX(),(short) event.getY());
-                if(positionVectorList.size() > 0 && !positionVectorList.get(positionVectorList.size() -1).equals(newVector)) {
-                    positionVectorList.add(newVector);
+                    List<Vector2D> currentList = positionVectorPaths.get(positionVectorPaths.size() -1);
+                    if (positionVectorPaths.size() > 0 && !currentList.get(currentList.size() - 1).equals(newVector)) {
+                        currentList.add(newVector);
+                    }
+                    paths.get(paths.size() - 1).lineTo(event.getX(), event.getY());
+
+                    invalidate();
                 }
-                newVector = createVector(Short.MAX_VALUE, Short.MAX_VALUE);
-                if(positionVectorList.size() > 0 && !positionVectorList.get(positionVectorList.size() -1).equals(newVector)) {
-                    positionVectorList.add(newVector);
-                }
-
-                paths.get(paths.size()-1).lineTo(event.getX(), event.getY());
-
-                invalidate();
                 return true;
 
             case MotionEvent.ACTION_CANCEL:
@@ -140,14 +137,22 @@ public class DrawView extends SurfaceView {
         vector2D.applyWidthBound(this.getMeasuredWidth());
         vector2D.applyHeightBound(this.getMeasuredHeight());
 
-        int gridWidth = 200;
+        int gridWidth = 500;
+        int gridHeight = 500;
         vector2D.applyGridWidth(gridWidth, this.getMeasuredWidth());
-        vector2D.applyGridHeight((short) (gridWidth * Math.sqrt(2)), this.getMeasuredWidth());
+        vector2D.applyGridHeight(gridHeight, this.getMeasuredHeight());
 
         return vector2D;
     }
 
     public List<Vector2D> getPositionVectorList() {
-        return positionVectorList;
+        List<Vector2D> completeList = new ArrayList<>();
+        for(List<Vector2D> vectorList : positionVectorPaths) {
+            if(completeList.size() > 0) {
+                completeList.add(new Vector2D(Short.MAX_VALUE, Short.MAX_VALUE));
+            }
+            completeList.addAll(vectorList);
+        }
+        return completeList;
     }
 }

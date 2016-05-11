@@ -29,7 +29,6 @@ public class Vector2D {
         if (getClass().isInstance(o)) {
             return x == ((Vector2D) o).getX() && y == ((Vector2D) o).getY();
         }
-
         return false;
     }
 }

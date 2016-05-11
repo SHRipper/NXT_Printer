@@ -1,59 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    android:baselineAligned="false">
+    android:baselineAligned="false"
+    android:orientation="horizontal">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:padding="10dp">
 
         <Button
+            android:id="@+id/button"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="@string/reset_button_name"
-            android:id="@+id/button"
             android:layout_marginTop="30dp"
-            android:onClick="resetCanvasClick" />
+            android:onClick="resetCanvasClick"
+            android:text="@string/reset_button_name" />
 
         <Button
+            android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/revert_button_name"
             android:layout_marginTop="30dp"
             android:onClick="revertPathClick"
-            android:id="@+id/button3" />
+            android:text="@string/revert_button_name" />
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/main_layout"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1">
 
         <de.lddt.zeichenroboterapp.DrawView
+            android:id="@+id/main_draw_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/main_draw_view"
             android:layout_gravity="center_horizontal"
-            android:background="@color/canvas_background_color"
+            android:layout_margin="5dp"
+            android:background="@drawable/draw_view_background"
             android:layout_centerInParent="true" />
     </RelativeLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:padding="10dp">
 
         <Button
+            android:id="@+id/button2"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button2"
-            android:onClick="sendClick"/>
+            android:onClick="sendClick"
+            android:text="New Button" />
     </LinearLayout>
 
 </LinearLayout>

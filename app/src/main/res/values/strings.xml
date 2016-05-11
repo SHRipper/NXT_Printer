@@ -1,5 +1,15 @@
 <resources>
+    <!-- Buttons -->
     <string name="app_name">Zeichenroboter App</string>
     <string name="reset_button_name">Reset</string>
     <string name="revert_button_name">Revert</string>
+    <string name="send_button_name">Senden</string>
+
+    <!-- Error Messages -->
+    <string name="connection_failed">Fehler beim Verbinden! Ist der Brick an?</string>
+    <string name="data_transfer_failed">Fehler beim Senden der Daten!</string>
+
+    <!-- Brick -->
+    <string name="brick_name">NummerS04</string>
+    <string name="brick_mac_address">00:16:53:1C:46:C7</string>
 </resources>

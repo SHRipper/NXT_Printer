@@ -60,10 +60,19 @@ public class BluetoothConn{
         try {
             outputStream.write(sendBytes);
             outputStream.flush();
-        } catch (IOException e) {
+            outputStream.close();
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
             return false;
         }
         return true;
+    }
+
+    public static void close() {
+        try {
+            brickConn.getNXTComm().close();
+        } catch (IOException | NullPointerException e) {
+            e.printStackTrace();
+        }
     }
 }
