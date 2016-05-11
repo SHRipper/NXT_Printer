@@ -4,24 +4,32 @@ package de.lddt.zeichenroboterapp.math.vector;
  * Created by Tim on 27.04.2016.
  */
 public class Vector2D {
-    protected float x,y;
-    protected VectorType type;
+    protected short x,y;
 
-    public Vector2D(float x, float y, VectorType type) {
+    public Vector2D(short x, short y) {
         this.x = x;
         this.y = y;
-        this.type = type;
     }
 
-    public float getX() {
+    public short getX() {
         return x;
     }
 
-    public float getY() {
+    public short getY() {
         return y;
     }
 
-    public VectorType getType() {
-        return type;
+    public void sub(Vector2D vector2D) {
+        this.x -= vector2D.getX();
+        this.y -= vector2D.getY();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (getClass().isInstance(o)) {
+            return x == ((Vector2D) o).getX() && y == ((Vector2D) o).getY();
+        }
+
+        return false;
     }
 }

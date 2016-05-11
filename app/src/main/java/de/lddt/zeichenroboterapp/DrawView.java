@@ -11,13 +11,13 @@ import android.view.SurfaceView;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.lddt.zeichenroboterapp.math.vector.PositionVector2D;
 import de.lddt.zeichenroboterapp.math.vector.Vector2D;
 
 /**
  * Created by Tim on 27.04.2016.
  */
 public class DrawView extends SurfaceView {
-    private InputListenerInterface inputListener;
     private List<Vector2D> positionVectorList;
     private List<Path> paths;
     private Paint paint;
@@ -45,10 +45,6 @@ public class DrawView extends SurfaceView {
         paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(6);
-    }
-
-    public void registerListener(InputListenerInterface listener) {
-        inputListener = listener;
     }
 
     public void reset() {
@@ -83,28 +79,50 @@ public class DrawView extends SurfaceView {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         int action = event.getAction();
+        Vector2D newVector;
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 drawing = true;
                 System.out.println("touch down: " + event.getX() + "; " + event.getY());
-                positionVectorList.add(inputListener.onTouchDown(event.getX(), event.getY()));
+
+                newVector = createVector((short) event.getX(),(short) event.getY());
+                if(positionVectorList.size() > 0 && !positionVectorList.get(positionVectorList.size() -1).equals(newVector)) {
+                    positionVectorList.add(newVector);
+                }
+
                 paths.add(new Path());
                 paths.get(paths.size()-1).moveTo(event.getX(), event.getY());
+
                 invalidate();
                 return true;
 
             case MotionEvent.ACTION_MOVE:
                 System.out.println("touch move: " + event.getX() + "; " + event.getY());
-                positionVectorList.add(inputListener.onTouchDrag(event.getX(), event.getY()));
+
+                newVector = createVector((short) event.getX(),(short) event.getY());
+                if(positionVectorList.size() > 0 && !positionVectorList.get(positionVectorList.size() -1).equals(newVector)) {
+                    positionVectorList.add(newVector);
+                }
                 paths.get(paths.size()-1).lineTo(event.getX(), event.getY());
+
                 invalidate();
                 return true;
 
             case MotionEvent.ACTION_UP:
                 drawing = false;
                 System.out.println("touch up: " + event.getX() + "; " + event.getY());
-                positionVectorList.add(inputListener.onTouchUp(event.getX(), event.getY()));
+
+                newVector = createVector((short) event.getX(),(short) event.getY());
+                if(positionVectorList.size() > 0 && !positionVectorList.get(positionVectorList.size() -1).equals(newVector)) {
+                    positionVectorList.add(newVector);
+                }
+                newVector = createVector(Short.MAX_VALUE, Short.MAX_VALUE);
+                if(positionVectorList.size() > 0 && !positionVectorList.get(positionVectorList.size() -1).equals(newVector)) {
+                    positionVectorList.add(newVector);
+                }
+
                 paths.get(paths.size()-1).lineTo(event.getX(), event.getY());
+
                 invalidate();
                 return true;
 
@@ -115,5 +133,21 @@ public class DrawView extends SurfaceView {
                 break;
         }
         return false;
+    }
+
+    private Vector2D createVector(short x, short y) {
+        PositionVector2D vector2D = new PositionVector2D(x,y);
+        vector2D.applyWidthBound(this.getMeasuredWidth());
+        vector2D.applyHeightBound(this.getMeasuredHeight());
+
+        int gridWidth = 200;
+        vector2D.applyGridWidth(gridWidth, this.getMeasuredWidth());
+        vector2D.applyGridHeight((short) (gridWidth * Math.sqrt(2)), this.getMeasuredWidth());
+
+        return vector2D;
+    }
+
+    public List<Vector2D> getPositionVectorList() {
+        return positionVectorList;
     }
 }

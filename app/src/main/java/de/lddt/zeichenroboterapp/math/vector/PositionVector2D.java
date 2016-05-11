@@ -5,17 +5,25 @@ package de.lddt.zeichenroboterapp.math.vector;
  */
 public class PositionVector2D extends Vector2D {
 
-    public PositionVector2D(float x, float y, VectorType type) {
-        super(x, y, type);
+    public PositionVector2D(short x, short y) {
+        super(x, y);
     }
 
     public void applyWidthBound(float maxWidth) {
-        this.x = Math.max(this.x, 0);
-        this.x = Math.min(this.x, maxWidth);
+        this.x = (short) Math.max(this.x, 0);
+        this.x = (short) Math.min(this.x, maxWidth);
     }
 
     public void applyHeightBound(float maxHeight) {
-        this.y = Math.max(this.y, 0);
-        this.y = Math.min(this.y, maxHeight);
+        this.y = (short) Math.max(this.y, 0);
+        this.y = (short) Math.min(this.y, maxHeight);
+    }
+
+    public void applyGridHeight(float gridHeight, float canvasHeight) {
+
+    }
+
+    public void applyGridWidth(float gridWidth, float canvasWidth) {
+
     }
 }
