@@ -6,6 +6,7 @@
     <string name="send_button_name">Senden</string>
 
     <!-- Error Messages -->
+    <string name="bluetooth_disabled">Bluetooth ist deaktiviert! Bitte aktiviere Bluetooth</string>
     <string name="connection_failed">Fehler beim Verbinden! Ist der Brick an?</string>
     <string name="data_transfer_failed">Fehler beim Senden der Daten!</string>
 

@@ -1,5 +1,6 @@
 package de.lddt.zeichenroboterapp.bluetooth;
 
+import android.bluetooth.BluetoothAdapter;
 import android.util.Log;
 
 import java.io.IOException;
@@ -18,6 +19,11 @@ import lejos.pc.comm.NXTConnector;
 public class BluetoothConn{
     private static final String TAG = "BluetoothConn";
     private static NXTConnector brickConn;
+
+    public static boolean isBluetoothEnabled() {
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        return mBluetoothAdapter.isEnabled();
+    }
 
     public static boolean connectTo(MyBrick myBrick) {
         try {
