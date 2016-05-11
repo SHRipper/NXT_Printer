@@ -12,7 +12,7 @@ public class VectorConverter {
         int i = 0;
         Vector2D temp = null;
         for(Vector2D vector : vectorList) {
-            if(vector.getX() != Short.MAX_VALUE && vector.getY() != Short.MAX_VALUE) {
+            if(vector.getX() == Short.MAX_VALUE && vector.getY() == Short.MAX_VALUE) {
                 temp = null;
                 continue;
             }
