@@ -27,11 +27,6 @@ public class MainActivity extends Activity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
 
@@ -65,7 +60,6 @@ public class MainActivity extends Activity {
 
         new TransferVectorsToBrick().execute(directionVectorList);
 
-        BluetoothConn.close();
     }
 
     private void openSystemBluetoothSettings() {
@@ -102,6 +96,7 @@ public class MainActivity extends Activity {
         protected void onPostExecute(String result) {
             Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
             dialog.dismiss();
+            BluetoothConn.close();
         }
 
         @Override
