@@ -53,7 +53,7 @@ public class MainActivity extends Activity {
         List<Vector2D> directionVectorList = positionVToDirectionV(drawView.getPositionVectorList());
 
         if(!(directionVectorList.size() > 0)) {
-            Toast.makeText(MainActivity.this, getString(R.string.nothing_drawn), Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, getString(R.string.nothing_drawn), Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -100,7 +100,7 @@ public class MainActivity extends Activity {
 
         @Override
         protected void onPostExecute(String result) {
-            Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
             dialog.dismiss();
         }
 
