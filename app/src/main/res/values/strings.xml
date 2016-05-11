@@ -1,15 +1,25 @@
 <resources>
-    <!-- Buttons -->
     <string name="app_name">Zeichenroboter App</string>
+
+    <!-- Buttons -->
     <string name="reset_button_name">Reset</string>
     <string name="revert_button_name">Revert</string>
     <string name="send_button_name">Senden</string>
 
-    <!-- Error Messages -->
+    <!-- Bluetooth Transfer -->
     <string name="bluetooth_disabled">Bluetooth ist deaktiviert! Bitte aktiviere Bluetooth</string>
     <string name="nothing_drawn">Bitte fertige zuerst eine Zeichnung an!</string>
     <string name="connection_failed">Fehler beim Verbinden! Ist der Brick an?</string>
     <string name="data_transfer_failed">Fehler beim Senden der Daten!</string>
+    <string name="data_transfer_success">Daten erfolgreich gesendet!</string>
+    <string name="connect_dialog_title">Verbinden...</string>
+    <string name="connect_dialog_message">Verbindung wird hergestellt</string>
+    <string name="send_dialog_title">Sende...</string>
+    <string name="send_dialog_message">Sende Daten</string>
+
+    <!-- Dialog -->
+    <string name="dialog_title">Senden...</string>
+    <string name="dialog_message">Sende Daten an den Brick</string>
 
     <!-- Brick -->
     <string name="brick_name">NummerS04</string>
