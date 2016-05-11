@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="background_color">#2196f3</color>
+    <color name="canvas_background_color">#eeeeee</color>
+    <color name="hint_draw_color">#bdbdbd</color>
+    <color name="final_draw_color">#212121</color>
 </resources>

@@ -12,4 +12,16 @@ public class Vector2D {
         this.y = y;
         this.type = type;
     }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public VectorType getType() {
+        return type;
+    }
 }

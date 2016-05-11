@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffeeeeee"
+    android:background="@color/background_color"
     android:baselineAligned="false">
 
     <LinearLayout
@@ -14,8 +14,18 @@
         <Button
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button" />
+            android:text="@string/reset_button_name"
+            android:id="@+id/button"
+            android:layout_marginTop="30dp"
+            android:onClick="resetCanvasClick" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/revert_button_name"
+            android:layout_marginTop="30dp"
+            android:onClick="revertPathClick"
+            android:id="@+id/button3" />
     </LinearLayout>
 
     <RelativeLayout
@@ -28,7 +38,7 @@
             android:layout_height="match_parent"
             android:id="@+id/main_draw_view"
             android:layout_gravity="center_horizontal"
-            android:background="#ff000000"
+            android:background="@color/canvas_background_color"
             android:layout_centerInParent="true" />
     </RelativeLayout>
 
@@ -42,7 +52,8 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="New Button"
-            android:id="@+id/button2" />
+            android:id="@+id/button2"
+            android:onClick="sendClick"/>
     </LinearLayout>
 
 </LinearLayout>

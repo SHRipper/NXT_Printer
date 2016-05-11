@@ -1,9 +1,9 @@
 package de.lddt.zeichenroboterapp;
 
-
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.SurfaceView;
+import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
     private InputListenerInterface inputListener;
@@ -18,7 +18,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-
     }
 
     @Override
@@ -32,5 +31,17 @@ public class MainActivity extends Activity {
 
         inputListener = new Inputlistener(drawView.getMeasuredWidth(), drawView.getMeasuredHeight());
         drawView.registerListener(inputListener);
+    }
+
+    public void resetCanvasClick(View v) {
+        drawView.reset();
+    }
+
+    public void revertPathClick(View v) {
+        drawView.revert();
+    }
+
+    public void sendClick(View v) {
+        Toast.makeText(MainActivity.this, "Gesendet", Toast.LENGTH_SHORT).show();
     }
 }

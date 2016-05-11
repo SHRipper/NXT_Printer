@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Zeichenroboter App</string>
+    <string name="reset_button_name">Reset</string>
+    <string name="revert_button_name">Revert</string>
 </resources>
