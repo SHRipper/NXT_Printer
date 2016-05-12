@@ -22,6 +22,8 @@ public class DrawView extends SurfaceView {
     private List<Path> paths;
     private Paint paint;
     private boolean drawing;
+    private boolean lineMode;
+    private float startX, startY;
 
     public DrawView(Context context) {
         super(context);
@@ -41,6 +43,7 @@ public class DrawView extends SurfaceView {
     private void init() {
         this.positionVectorPaths = new ArrayList<>();
         drawing = false;
+        lineMode = false;
         paths = new ArrayList<>();
         paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);
@@ -91,16 +94,25 @@ public class DrawView extends SurfaceView {
                 paths.add(new Path());
                 paths.get(paths.size()-1).moveTo(event.getX(), event.getY());
 
+                startX = event.getX();
+                startY = event.getY();
+
                 invalidate();
                 return true;
 
             case MotionEvent.ACTION_MOVE:
                 if(drawing) {
-                    newVector = createVector((short) event.getX(), (short) event.getY());
+                    if(lineMode ) {
+                        paths.get(paths.size() - 1).rewind();
+                        paths.get(paths.size() - 1).moveTo(startX, startY);
+                    }
 
-                    List<Vector2D> currentList = positionVectorPaths.get(positionVectorPaths.size() -1);
-                    if (positionVectorPaths.size() > 0 && !currentList.get(currentList.size() - 1).equals(newVector)) {
-                        currentList.add(newVector);
+                    if(!lineMode) {
+                        newVector = createVector((short) event.getX(), (short) event.getY());
+                        List<Vector2D> currentList = positionVectorPaths.get(positionVectorPaths.size() - 1);
+                        if (positionVectorPaths.size() > 0 && !currentList.get(currentList.size() - 1).equals(newVector)) {
+                            currentList.add(newVector);
+                        }
                     }
                     paths.get(paths.size() - 1).lineTo(event.getX(), event.getY());
 
@@ -111,15 +123,11 @@ public class DrawView extends SurfaceView {
             case MotionEvent.ACTION_UP:
                 if(drawing) {
                     drawing = false;
-                    newVector = createVector((short) event.getX(), (short) event.getY());
 
-                    List<Vector2D> currentList = positionVectorPaths.get(positionVectorPaths.size() -1);
-                    if (positionVectorPaths.size() > 0 && !currentList.get(currentList.size() - 1).equals(newVector)) {
-                        currentList.add(newVector);
+                    if(lineMode) {
+                        newVector = createVector((short) event.getX(), (short) event.getY());
+                        positionVectorPaths.get(positionVectorPaths.size() - 1).add(newVector);
                     }
-                    paths.get(paths.size() - 1).lineTo(event.getX(), event.getY());
-
-                    invalidate();
                 }
                 return true;
 
@@ -134,12 +142,12 @@ public class DrawView extends SurfaceView {
 
     private Vector2D createVector(short x, short y) {
         PositionVector2D vector2D = new PositionVector2D(x,y);
-        vector2D.applyWidthBound(this.getMeasuredWidth());
-        vector2D.applyHeightBound(this.getMeasuredHeight());
 
         vector2D.applyGridWidth(getResources().getInteger(R.integer.grid_width), this.getMeasuredWidth());
         vector2D.applyGridHeight(getResources().getInteger(R.integer.grid_height), this.getMeasuredHeight());
 
+        vector2D.applyWidthBound(getResources().getInteger(R.integer.grid_width));
+        vector2D.applyHeightBound(getResources().getInteger(R.integer.grid_width));
         return vector2D;
     }
 
@@ -152,5 +160,9 @@ public class DrawView extends SurfaceView {
             completeList.addAll(vectorList);
         }
         return completeList;
+    }
+
+    public void setLineMode(boolean lineMode) {
+        this.lineMode = lineMode;
     }
 }

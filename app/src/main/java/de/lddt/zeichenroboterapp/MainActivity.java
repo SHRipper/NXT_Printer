@@ -1,24 +1,27 @@
 package de.lddt.zeichenroboterapp;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.List;
 
 import de.lddt.zeichenroboterapp.bluetooth.BluetoothConn;
 import de.lddt.zeichenroboterapp.math.vector.Vector2D;
-import de.lddt.zeichenroboterapp.util.ToByteConverter;
 
 import static de.lddt.zeichenroboterapp.util.VectorConverter.positionVToDirectionV;
 
 public class MainActivity extends Activity {
     private DrawView drawView;
+    private Button buttonFreeMode, buttonLineMode;
+    private Drawable defaultButtonDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,11 @@ public class MainActivity extends Activity {
 
         drawView.getLayoutParams().width = drawView.getMeasuredHeight();
         drawView.setLayoutParams(drawView.getLayoutParams());
+
+        buttonFreeMode = (Button) findViewById(R.id.button_free_mode);
+        buttonLineMode = (Button) findViewById(R.id.button_line_mode);
+
+        defaultButtonDrawable = buttonLineMode.getBackground();
     }
 
     public void resetCanvasClick(View v) {
@@ -42,6 +50,18 @@ public class MainActivity extends Activity {
 
     public void revertPathClick(View v) {
         drawView.revert();
+    }
+
+    public void freeDrawingModeClick(View v) {
+        buttonFreeMode.setBackgroundColor(Color.argb(255,0,255,0));
+        buttonLineMode.setBackground(defaultButtonDrawable);
+        drawView.setLineMode(false);
+    }
+
+    public void lineDrawingModeClick(View v) {
+        buttonFreeMode.setBackground(defaultButtonDrawable);
+        buttonLineMode.setBackgroundColor(Color.argb(255,0,255,0));
+        drawView.setLineMode(true);
     }
 
     public void sendClick(View v) {
@@ -112,8 +132,7 @@ public class MainActivity extends Activity {
         }
 
         private boolean sendData(List<Vector2D> vectorList) {
-            byte[] data = ToByteConverter.vectorListToByte(vectorList);
-            return BluetoothConn.send(data);
+            return BluetoothConn.send(vectorList);
         }
 
         private ProgressDialog createDialog(int title, int message) {

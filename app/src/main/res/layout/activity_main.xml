@@ -17,7 +17,8 @@
             android:minWidth="100dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:onClick="resetCanvasClick"
             android:text="@string/reset_button_name" />
 
@@ -26,9 +27,34 @@
             android:minWidth="100dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:onClick="revertPathClick"
             android:text="@string/revert_button_name" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="F"
+                android:id="@+id/button_free_mode"
+                android:layout_weight="1"
+                android:background="#ff00ff00"
+                android:onClick="freeDrawingModeClick" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="L"
+                android:id="@+id/button_line_mode"
+                android:layout_weight="1"
+                android:onClick="lineDrawingModeClick" />
+        </LinearLayout>
     </LinearLayout>
 
     <RelativeLayout
@@ -56,7 +82,8 @@
         <Button
             android:id="@+id/button2"
             android:minWidth="100dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:onClick="sendClick"

@@ -19,9 +19,9 @@ public class Vector2D {
         return y;
     }
 
-    public void sub(Vector2D vector2D) {
-        this.x -= vector2D.getX();
-        this.y -= vector2D.getY();
+    public void sub(short x, short y) {
+        this.x -= x;
+        this.y -= y;
     }
 
     @Override
