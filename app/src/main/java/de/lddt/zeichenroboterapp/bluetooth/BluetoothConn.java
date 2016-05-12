@@ -45,10 +45,8 @@ public class BluetoothConn{
             return false;
         }
 
-        if(brickConn.getOutputStream() != null) {
-            return true;
-        }
-        return false;
+        //return true if connection is established
+        return brickConn.getOutputStream() != null;
     }
 
     public static boolean send(List<Vector2D> vectorList) {

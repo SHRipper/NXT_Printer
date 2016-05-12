@@ -21,7 +21,7 @@ import static de.lddt.zeichenroboterapp.util.VectorConverter.positionVToDirectio
 public class MainActivity extends Activity {
     private DrawView drawView;
     private Button buttonFreeMode, buttonLineMode;
-    private Drawable defaultButtonDrawable;
+    private Drawable defaultButtonBackground;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
         buttonFreeMode = (Button) findViewById(R.id.button_free_mode);
         buttonLineMode = (Button) findViewById(R.id.button_line_mode);
 
-        defaultButtonDrawable = buttonLineMode.getBackground();
+        defaultButtonBackground = buttonLineMode.getBackground();
     }
 
     public void resetCanvasClick(View v) {
@@ -54,12 +54,12 @@ public class MainActivity extends Activity {
 
     public void freeDrawingModeClick(View v) {
         buttonFreeMode.setBackgroundColor(Color.argb(255,0,255,0));
-        buttonLineMode.setBackground(defaultButtonDrawable);
+        buttonLineMode.setBackground(defaultButtonBackground);
         drawView.setLineMode(false);
     }
 
     public void lineDrawingModeClick(View v) {
-        buttonFreeMode.setBackground(defaultButtonDrawable);
+        buttonFreeMode.setBackground(defaultButtonBackground);
         buttonLineMode.setBackgroundColor(Color.argb(255,0,255,0));
         drawView.setLineMode(true);
     }

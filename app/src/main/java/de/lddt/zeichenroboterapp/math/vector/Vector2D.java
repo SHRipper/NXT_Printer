@@ -19,16 +19,8 @@ public class Vector2D {
         return y;
     }
 
-    public void sub(short x, short y) {
-        this.x -= x;
-        this.y -= y;
-    }
-
     @Override
     public boolean equals(Object o) {
-        if (getClass().isInstance(o)) {
-            return x == ((Vector2D) o).getX() && y == ((Vector2D) o).getY();
-        }
-        return false;
+        return getClass().isInstance(o) && x == ((Vector2D) o).getX() && y == ((Vector2D) o).getY();
     }
 }

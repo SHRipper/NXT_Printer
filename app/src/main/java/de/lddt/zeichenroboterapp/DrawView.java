@@ -19,11 +19,10 @@ import de.lddt.zeichenroboterapp.math.vector.Vector2D;
  */
 public class DrawView extends SurfaceView {
     private List<List<Vector2D>> positionVectorPaths;
-    private List<Path> paths;
-    private Paint paint;
-    private boolean drawing;
-    private boolean lineMode;
+    private List<Path> liveDrawPaths;
     private float startX, startY;
+    private Paint paint;
+    private boolean drawing, lineMode;
 
     public DrawView(Context context) {
         super(context);
@@ -44,7 +43,7 @@ public class DrawView extends SurfaceView {
         this.positionVectorPaths = new ArrayList<>();
         drawing = false;
         lineMode = false;
-        paths = new ArrayList<>();
+        liveDrawPaths = new ArrayList<>();
         paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(6);
@@ -52,14 +51,14 @@ public class DrawView extends SurfaceView {
 
     public void reset() {
         positionVectorPaths.clear();
-        paths.clear();
+        liveDrawPaths.clear();
         invalidate();
     }
 
     public void revert(){
-        if (positionVectorPaths.size() > 0 && paths.size() > 0) {
+        if (positionVectorPaths.size() > 0 && liveDrawPaths.size() > 0) {
             positionVectorPaths.remove(positionVectorPaths.size() - 1);
-            paths.remove(paths.size() - 1);
+            liveDrawPaths.remove(liveDrawPaths.size() - 1);
         }
         invalidate();
     }
@@ -68,14 +67,13 @@ public class DrawView extends SurfaceView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        for(int i = 0; i < paths.size(); i++) {
-            if(drawing && i == paths.size()-1) {
+        for(int i = 0; i < liveDrawPaths.size(); i++) {
+            if(drawing && i == liveDrawPaths.size()-1) {
                 paint.setColor(getResources().getColor(R.color.hint_draw_color));
             } else {
                 paint.setColor(getResources().getColor(R.color.final_draw_color));
             }
-
-            canvas.drawPath(paths.get(i), paint);
+            canvas.drawPath(liveDrawPaths.get(i), paint);
         }
     }
 
@@ -86,35 +84,34 @@ public class DrawView extends SurfaceView {
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 drawing = true;
-                newVector = createVector((short) event.getX(),(short) event.getY());
-
-                positionVectorPaths.add(new ArrayList<Vector2D>());
-                positionVectorPaths.get(positionVectorPaths.size() -1).add(newVector);
-
-                paths.add(new Path());
-                paths.get(paths.size()-1).moveTo(event.getX(), event.getY());
-
                 startX = event.getX();
                 startY = event.getY();
+
+                liveDrawPaths.add(new Path());
+                liveDrawPaths.get(liveDrawPaths.size()-1).moveTo(event.getX(), event.getY());
+
+                newVector = createVector((short) event.getX(),(short) event.getY());
+                positionVectorPaths.add(new ArrayList<Vector2D>());
+                positionVectorPaths.get(positionVectorPaths.size() -1).add(newVector);
 
                 invalidate();
                 return true;
 
             case MotionEvent.ACTION_MOVE:
                 if(drawing) {
-                    if(lineMode ) {
-                        paths.get(paths.size() - 1).rewind();
-                        paths.get(paths.size() - 1).moveTo(startX, startY);
+                    if(lineMode) {
+                        liveDrawPaths.get(liveDrawPaths.size() - 1).rewind();
+                        liveDrawPaths.get(liveDrawPaths.size() - 1).moveTo(startX, startY);
                     }
+                    liveDrawPaths.get(liveDrawPaths.size() - 1).lineTo(event.getX(), event.getY());
 
                     if(!lineMode) {
                         newVector = createVector((short) event.getX(), (short) event.getY());
                         List<Vector2D> currentList = positionVectorPaths.get(positionVectorPaths.size() - 1);
-                        if (positionVectorPaths.size() > 0 && !currentList.get(currentList.size() - 1).equals(newVector)) {
+                        if (!currentList.get(currentList.size() - 1).equals(newVector)) {
                             currentList.add(newVector);
                         }
                     }
-                    paths.get(paths.size() - 1).lineTo(event.getX(), event.getY());
 
                     invalidate();
                 }
@@ -130,12 +127,6 @@ public class DrawView extends SurfaceView {
                     }
                 }
                 return true;
-
-            case MotionEvent.ACTION_CANCEL:
-                break;
-
-            case MotionEvent.ACTION_OUTSIDE:
-                break;
         }
         return false;
     }
