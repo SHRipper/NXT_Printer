@@ -9,18 +9,15 @@ import de.lddt.zeichenroboterapp.math.vector.Vector2D;
  */
 public class VectorConverter {
     public static List<Vector2D> positionVToDirectionV(List<Vector2D> vectorList) {
-        int i = 0;
         Vector2D temp = null;
         for(Vector2D vector : vectorList) {
             if(vector.getX() == Short.MAX_VALUE && vector.getY() == Short.MAX_VALUE) {
-                temp = null;
                 continue;
             }
-            if(i >= 1 && temp != null) {
+            if(temp != null) {
                 vector.sub(temp);
             }
             temp = vector;
-            i++;
         }
         return vectorList;
     }
