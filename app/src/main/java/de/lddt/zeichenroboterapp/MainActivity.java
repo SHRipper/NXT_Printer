@@ -123,6 +123,7 @@ public class MainActivity extends Activity {
             dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
             dialog.setProgress(0);
             dialog.setMax(2);
+            dialog.setCancelable(false);
             return dialog;
         }
     }
