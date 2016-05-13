@@ -156,4 +156,8 @@ public class DrawView extends SurfaceView {
     public void setLineMode(boolean lineMode) {
         this.lineMode = lineMode;
     }
+
+    public boolean isDrawing() {
+        return drawing;
+    }
 }

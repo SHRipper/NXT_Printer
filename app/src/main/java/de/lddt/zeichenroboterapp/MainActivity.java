@@ -53,15 +53,19 @@ public class MainActivity extends Activity {
     }
 
     public void freeDrawingModeClick(View v) {
-        buttonFreeMode.setBackgroundColor(Color.argb(255,0,255,0));
-        buttonLineMode.setBackground(defaultButtonBackground);
-        drawView.setLineMode(false);
+        if(!drawView.isDrawing()) {
+            buttonFreeMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
+            buttonLineMode.setBackground(defaultButtonBackground);
+            drawView.setLineMode(false);
+        }
     }
 
     public void lineDrawingModeClick(View v) {
-        buttonFreeMode.setBackground(defaultButtonBackground);
-        buttonLineMode.setBackgroundColor(Color.argb(255,0,255,0));
-        drawView.setLineMode(true);
+        if(!drawView.isDrawing()) {
+            buttonFreeMode.setBackground(defaultButtonBackground);
+            buttonLineMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
+            drawView.setLineMode(true);
+        }
     }
 
     public void sendClick(View v) {
