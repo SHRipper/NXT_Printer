@@ -99,10 +99,10 @@ public class MainActivity extends Activity {
                 return getString(R.string.connection_failed);
             }
 
-            publishProgress(R.string.send_dialog_title, R.string.send_dialog_message, 1);
+            publishProgress(0, 1,R.string.send_dialog_title, R.string.send_dialog_message);
             boolean successfullySend = sendData(params[0]);
             if (successfullySend) {
-                publishProgress(R.string.send_dialog_title, R.string.send_dialog_message, 2);
+                publishProgress(1);
                 try {
                     Thread.sleep(2500);
                 } catch (InterruptedException e) {}
@@ -114,21 +114,27 @@ public class MainActivity extends Activity {
         @Override
         protected void onPostExecute(String result) {
             Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
-            dialog.dismiss();
+            dialog.cancel();
             BluetoothConn.close();
         }
 
         @Override
         protected void onPreExecute() {
             dialog = createDialog(R.string.connect_dialog_title, R.string.connect_dialog_message);
+            dialog.setCancelable(false);
             dialog.show();
         }
 
         @Override
         protected void onProgressUpdate(Integer... values) {
-            dialog.setTitle(values[0]);
-            dialog.setMessage(getString(values[1]));
-            dialog.setProgress(values[2]);
+            if(values.length > 1) {
+                dialog.cancel();
+                dialog = createDialog(values[2], values[3]);
+                dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                dialog.setMax(values[1]);
+                dialog.show();
+            }
+            dialog.setProgress(values[0]);
         }
 
         private boolean sendData(List<Vector2D> vectorList) {
@@ -139,9 +145,6 @@ public class MainActivity extends Activity {
             ProgressDialog dialog = new ProgressDialog(MainActivity.this);
             dialog.setTitle(title);
             dialog.setMessage(getString(message));
-            dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-            dialog.setProgress(0);
-            dialog.setMax(2);
             dialog.setCancelable(false);
             return dialog;
         }
