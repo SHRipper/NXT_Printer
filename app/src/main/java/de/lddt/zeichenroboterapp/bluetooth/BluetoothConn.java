@@ -52,12 +52,11 @@ public class BluetoothConn{
     public static boolean send(List<Vector2D> vectorList) {
         DataOutputStream outputStream = brickConn.getDataOut();
         try {
-            for(int i = 1; i <= vectorList.size() && i <= 63; i++) {
-                outputStream.writeShort(vectorList.get(i-1).getX());
-                outputStream.writeShort(vectorList.get(i-1).getY());
+            for(int i = 1; i <= vectorList.size(); i++) {
+                outputStream.writeShort((short)vectorList.get(i-1).getX());
+                outputStream.writeShort((short)vectorList.get(i-1).getY());
             }
             outputStream.flush();
-            outputStream.close();
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
             return false;
@@ -67,6 +66,7 @@ public class BluetoothConn{
 
     public static void close() {
         try {
+            brickConn.getDataOut().close();
             brickConn.getNXTComm().close();
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();

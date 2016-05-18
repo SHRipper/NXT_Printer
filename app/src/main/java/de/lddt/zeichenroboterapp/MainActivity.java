@@ -69,7 +69,9 @@ public class MainActivity extends Activity {
     }
 
     public void sendClick(View v) {
-        List<Vector2D> directionVectorList = positionVToDirectionV(drawView.getPositionVectorList());
+        List<Vector2D> directionVectorList = positionVToDirectionV(drawView.getPositionVectorList(), getResources().getInteger(R.integer.optimization_accuracy));
+
+        Toast.makeText(MainActivity.this, "Vector optimization kicked out " + (drawView.getPositionVectorList().size() - directionVectorList.size()) + "/" + drawView.getPositionVectorList().size()+ " vectors.", Toast.LENGTH_LONG).show();
 
         if(!(directionVectorList.size() > 0)) {
             Toast.makeText(MainActivity.this, getString(R.string.nothing_drawn), Toast.LENGTH_LONG).show();
@@ -104,7 +106,11 @@ public class MainActivity extends Activity {
             }
 
             publishProgress(0, 1,R.string.send_dialog_title, R.string.send_dialog_message);
+
+            
             boolean successfullySend = sendData(params[0]);
+
+
             if (successfullySend) {
                 publishProgress(1);
                 try {
