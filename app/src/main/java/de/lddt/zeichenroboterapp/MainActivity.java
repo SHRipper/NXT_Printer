@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.Vector;
 
 import de.lddt.zeichenroboterapp.bluetooth.BluetoothConn;
 import de.lddt.zeichenroboterapp.math.vector.Vector2D;
@@ -105,21 +106,30 @@ public class MainActivity extends Activity {
                 return getString(R.string.connection_failed);
             }
 
-            publishProgress(0, 1,R.string.send_dialog_title, R.string.send_dialog_message);
+            int maxVectors = 63;
+            List<Vector2D> vectorList = params[0];
+            int packages = (int) Math.ceil((float) vectorList.size() / maxVectors);
 
-            
-            boolean successfullySend = sendData(params[0]);
+            publishProgress(0, packages, R.string.send_dialog_title, R.string.send_dialog_message);
 
+            boolean successfullySend = true;
+            for(int i = 0; i < packages; i++) {
+                List<Vector2D> vPackage = vectorList.subList(i*maxVectors, Math.min(vectorList.size(), (i+1) * maxVectors));
+                successfullySend = sendData(vPackage, (short) (packages - i));
+                publishProgress(i + 1);
+                successfullySend = waitForBrick();
+            }
+
+            try {
+                Thread.sleep(2500);
+            } catch (InterruptedException e) {}
 
             if (successfullySend) {
-                publishProgress(1);
-                try {
-                    Thread.sleep(2500);
-                } catch (InterruptedException e) {}
                 return getString(R.string.data_transfer_success);
             }
             return getString(R.string.data_transfer_failed);
         }
+
 
         @Override
         protected void onPostExecute(String result) {
@@ -147,8 +157,12 @@ public class MainActivity extends Activity {
             dialog.setProgress(values[0]);
         }
 
-        private boolean sendData(List<Vector2D> vectorList) {
-            return BluetoothConn.send(vectorList);
+        private boolean sendData(List<Vector2D> vectorList, short packageId) {
+            return BluetoothConn.send(vectorList, packageId);
+        }
+
+        private boolean waitForBrick() {
+            return BluetoothConn.waitForResponse();
         }
 
         private ProgressDialog createDialog(int title, int message) {

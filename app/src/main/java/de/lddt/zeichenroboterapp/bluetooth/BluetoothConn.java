@@ -3,6 +3,7 @@ package de.lddt.zeichenroboterapp.bluetooth;
 import android.bluetooth.BluetoothAdapter;
 import android.util.Log;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.List;
@@ -49,17 +50,43 @@ public class BluetoothConn{
         return brickConn.getOutputStream() != null;
     }
 
-    public static boolean send(List<Vector2D> vectorList) {
+    public static boolean send(List<Vector2D> vectorList, short packageId) {
         DataOutputStream outputStream = brickConn.getDataOut();
         try {
+            outputStream.writeShort(packageId);
             for(int i = 1; i <= vectorList.size(); i++) {
                 outputStream.writeShort((short)vectorList.get(i-1).getX());
                 outputStream.writeShort((short)vectorList.get(i-1).getY());
             }
             outputStream.flush();
+            //outputStream.close();
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
             return false;
+        }
+        return true;
+    }
+
+    public static boolean waitForResponse() {
+        DataInputStream inputStream = brickConn.getDataIn();
+        if(inputStream == null) {
+            return false;
+        }
+
+        boolean success = false;
+        while (!success) {
+            try {
+                success = inputStream.readBoolean();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         return true;
     }
