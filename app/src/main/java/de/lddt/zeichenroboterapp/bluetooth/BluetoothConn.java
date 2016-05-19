@@ -55,11 +55,10 @@ public class BluetoothConn{
         try {
             outputStream.writeShort(packageId);
             for(int i = 1; i <= vectorList.size(); i++) {
-                outputStream.writeShort((short)vectorList.get(i-1).x);
-                outputStream.writeShort((short)vectorList.get(i-1).y);
+                outputStream.writeShort((short)Math.round(vectorList.get(i-1).x));
+                outputStream.writeShort((short)Math.round(vectorList.get(i-1).y));
             }
             outputStream.flush();
-            //outputStream.close();
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
             return false;

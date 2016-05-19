@@ -71,11 +71,11 @@ public class VectorConverter {
      * @param maxHeight the maximum allowed y value
      */
     public static void applyBounds(Vector2D v, float maxWidth, float maxHeight) {
-        v.x = (short) Math.max(v.x, 0);
-        v.x = (short) Math.min(v.x, maxWidth);
+        v.x = Math.max(v.x, 0);
+        v.x = Math.min(v.x, maxWidth);
 
-        v.y = (short) Math.max(v.y, 0);
-        v.y = (short) Math.min(v.y, maxHeight);
+        v.y = Math.max(v.y, 0);
+        v.y = Math.min(v.y, maxHeight);
     }
 
     /**
