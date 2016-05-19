@@ -2,5 +2,5 @@
 <resources>
     <integer name="grid_width">500</integer>
     <integer name="grid_height">500</integer>
-    <integer name = "optimization_accuracy">4</integer>
+    <integer name="optimization_accuracy">4</integer>
 </resources>
