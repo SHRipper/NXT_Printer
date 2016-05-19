@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.List;
-import java.util.Vector;
 
 import de.lddt.zeichenroboterapp.bluetooth.BluetoothConn;
 import de.lddt.zeichenroboterapp.math.vector.Vector2D;

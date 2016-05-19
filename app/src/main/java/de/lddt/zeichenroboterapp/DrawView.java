@@ -11,8 +11,10 @@ import android.view.SurfaceView;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.lddt.zeichenroboterapp.math.vector.PositionVector2D;
 import de.lddt.zeichenroboterapp.math.vector.Vector2D;
+
+import static de.lddt.zeichenroboterapp.util.VectorConverter.applyBounds;
+import static de.lddt.zeichenroboterapp.util.VectorConverter.applyGrid;
 
 /**
  * Created by Tim on 27.04.2016.
@@ -132,14 +134,11 @@ public class DrawView extends SurfaceView {
     }
 
     private Vector2D createVector(short x, short y) {
-        PositionVector2D vector2D = new PositionVector2D(x,y);
-
-        vector2D.applyGridWidth(getResources().getInteger(R.integer.grid_width), this.getMeasuredWidth());
-        vector2D.applyGridHeight(getResources().getInteger(R.integer.grid_height), this.getMeasuredHeight());
-
-        vector2D.applyWidthBound(getResources().getInteger(R.integer.grid_width));
-        vector2D.applyHeightBound(getResources().getInteger(R.integer.grid_width));
-        return vector2D;
+        Vector2D v = new Vector2D(x,y);
+        applyGrid(v, getResources().getInteger(R.integer.grid_width), this.getMeasuredWidth(),
+                getResources().getInteger(R.integer.grid_height), this.getMeasuredHeight());
+        applyBounds(v, getResources().getInteger(R.integer.grid_width), getResources().getInteger(R.integer.grid_width));
+        return v;
     }
 
     public List<Vector2D> getPositionVectorList() {

@@ -55,8 +55,8 @@ public class BluetoothConn{
         try {
             outputStream.writeShort(packageId);
             for(int i = 1; i <= vectorList.size(); i++) {
-                outputStream.writeShort((short)vectorList.get(i-1).getX());
-                outputStream.writeShort((short)vectorList.get(i-1).getY());
+                outputStream.writeShort((short)vectorList.get(i-1).x);
+                outputStream.writeShort((short)vectorList.get(i-1).y);
             }
             outputStream.flush();
             //outputStream.close();
