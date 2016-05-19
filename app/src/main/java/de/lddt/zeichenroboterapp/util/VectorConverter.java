@@ -26,6 +26,7 @@ public class VectorConverter {
             if (vector.x == Short.MAX_VALUE && vector.y == Short.MAX_VALUE) {
                 directionVectorList.add(new Vector2D(Short.MAX_VALUE, Short.MAX_VALUE));
             } else {
+                vector.round();
                 directionVectorList.add(posVToDirV(vector, temp));
                 temp = vector;
             }

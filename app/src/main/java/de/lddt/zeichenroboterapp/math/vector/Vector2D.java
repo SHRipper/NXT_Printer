@@ -55,6 +55,11 @@ public class Vector2D {
         return new Vector2D(v.x / len, v.y / len);
     }
 
+    public void round() {
+        this.x = Math.round(x);
+        this.y = Math.round(y);
+    }
+
     @Override
     public boolean equals(Object o) {
         return getClass().isInstance(o) && x == ((Vector2D) o).x && y == ((Vector2D) o).y;
