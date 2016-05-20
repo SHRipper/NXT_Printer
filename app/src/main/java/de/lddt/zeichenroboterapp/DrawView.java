@@ -50,20 +50,6 @@ public class DrawView extends SurfaceView {
         paint.setStyle(Paint.Style.STROKE);
     }
 
-    public void reset() {
-        positionVPaths.clear();
-        liveDrawPaths.clear();
-        invalidate();
-    }
-
-    public void revert(){
-        if (positionVPaths.size() > 0 && liveDrawPaths.size() > 0) {
-            positionVPaths.remove(positionVPaths.size() - 1);
-            liveDrawPaths.remove(liveDrawPaths.size() - 1);
-        }
-        invalidate();
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -76,6 +62,20 @@ public class DrawView extends SurfaceView {
             }
             canvas.drawPath(liveDrawPaths.get(i), paint);
         }
+    }
+
+    public void reset() {
+        positionVPaths.clear();
+        liveDrawPaths.clear();
+        invalidate();
+    }
+
+    public void revert(){
+        if (positionVPaths.size() > 0 && liveDrawPaths.size() > 0) {
+            positionVPaths.remove(positionVPaths.size() - 1);
+            liveDrawPaths.remove(liveDrawPaths.size() - 1);
+        }
+        invalidate();
     }
 
     @Override
@@ -141,7 +141,7 @@ public class DrawView extends SurfaceView {
         return v;
     }
 
-    public List<Vector2D> getPositionVectorList() {
+    public List<Vector2D> getPosVList() {
         List<Vector2D> completeList = new ArrayList<>();
         for(List<Vector2D> vectorList : positionVPaths) {
             if(completeList.size() > 0) {

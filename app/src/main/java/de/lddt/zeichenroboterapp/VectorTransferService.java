@@ -9,77 +9,67 @@ import java.util.List;
 
 import de.lddt.zeichenroboterapp.bluetooth.BluetoothConn;
 import de.lddt.zeichenroboterapp.entity.MyBrick;
+import de.lddt.zeichenroboterapp.listener.TransferListener;
 import de.lddt.zeichenroboterapp.math.vector.Vector2D;
 
 /**
  * Created by Tim on 20.05.2016.
  */
-public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, String> {
-    private ProgressDialog dialog;
+public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, Boolean> {
+    private TransferListener listener;
     private Context context;
+    private final int maxVectors;
 
     public VectorTransferService(Context context) {
         this.context = context;
+        this.maxVectors = 63;
     }
 
     @Override
-    protected String doInBackground(List<Vector2D>... params) {
-        boolean succesfullyConnected = BluetoothConn.connectTo(
-                new MyBrick(context.getString(R.string.brick_name), context.getString(R.string.brick_mac_address)));
+    protected Boolean doInBackground(List<Vector2D>... params) {
+        boolean success = BluetoothConn.connectTo(getDefaultBrick());
+        if (!success) {return false;}
 
-        if (!succesfullyConnected) {
-            return context.getString(R.string.connection_failed);
-        }
-
-        int maxVectors = 63;
         List<Vector2D> vectorList = params[0];
         int packages = (int) Math.ceil((float) vectorList.size() / maxVectors);
 
-        publishProgress(0, packages, R.string.send_dialog_title, R.string.send_dialog_message);
+        publishProgress(0, packages);
 
-        boolean successfullySend = true;
         for(int i = 0; i < packages; i++) {
             List<Vector2D> vPackage = vectorList.subList(i*maxVectors, Math.min(vectorList.size(), (i+1) * maxVectors));
-            successfullySend = sendData(vPackage, (short) (packages - i));
-            publishProgress(i + 1);
-            successfullySend = waitForBrick();
+
+            success = sendData(vPackage, (short) (packages - i));
+            if(!success){return false;}
+            publishProgress(i + 1, packages);
+
+            success = waitForBrick();
+            if(!success) {return false;}
         }
 
         try {
             Thread.sleep(2500);
         } catch (InterruptedException e) {}
-
-        if (successfullySend) {
-            return context.getString(R.string.data_transfer_success);
-        }
-        return context.getString(R.string.data_transfer_failed);
-    }
-
-
-    @Override
-    protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-        dialog.cancel();
-        BluetoothConn.close();
+        return true;
     }
 
     @Override
     protected void onPreExecute() {
-        dialog = createDialog(R.string.connect_dialog_title, R.string.connect_dialog_message);
-        dialog.setCancelable(false);
-        dialog.show();
+        listener.onConnect();
     }
 
     @Override
     protected void onProgressUpdate(Integer... values) {
-        if(values.length > 1) {
-            dialog.cancel();
-            dialog = createDialog(values[2], values[3]);
-            dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-            dialog.setMax(values[1]);
-            dialog.show();
+        listener.onProgressUpdate(values[0], values[1]);
+    }
+
+    @Override
+    protected void onPostExecute(Boolean success) {
+        BluetoothConn.close();
+        if(success) {
+            listener.onFinished();
+        } else {
+            listener.error();
         }
-        dialog.setProgress(values[0]);
     }
 
     private boolean sendData(List<Vector2D> vectorList, short packageId) {
@@ -90,11 +80,12 @@ public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, St
         return BluetoothConn.waitForResponse();
     }
 
-    private ProgressDialog createDialog(int title, int message) {
-        ProgressDialog dialog = new ProgressDialog(context);
-        dialog.setTitle(title);
-        dialog.setMessage(context.getString(message));
-        dialog.setCancelable(false);
-        return dialog;
+    private MyBrick getDefaultBrick() {
+        return new MyBrick(context.getString(R.string.brick_name),
+                context.getString(R.string.brick_mac_address));
+    }
+
+    public void registerListener(TransferListener listener) {
+        this.listener = listener;
     }
 }

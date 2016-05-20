@@ -1,6 +1,7 @@
 package de.lddt.zeichenroboterapp;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import de.lddt.zeichenroboterapp.bluetooth.BluetoothConn;
+import de.lddt.zeichenroboterapp.listener.TransferListener;
 import de.lddt.zeichenroboterapp.math.vector.Vector2D;
 
 import static de.lddt.zeichenroboterapp.util.VectorConverter.positionVToDirectionV;
@@ -22,29 +24,37 @@ public class MainActivity extends Activity {
     private Button buttonFreeMode, buttonLineMode;
     private Drawable defaultButtonBackground;
 
+    private ProgressDialog dialog;
+    private Toast toast;
+
+    private VectorTransferService service;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        service = new VectorTransferService(this);
+        service.registerListener(new Listener());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        drawView = (DrawView) findViewById(R.id.main_draw_view);
+        buttonFreeMode = (Button) findViewById(R.id.button_free_mode);
+        buttonLineMode = (Button) findViewById(R.id.button_line_mode);
+        defaultButtonBackground = buttonLineMode.getBackground();
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-
-        drawView = (DrawView) findViewById(R.id.main_draw_view);
-
         //the drawView is a square. Set the width and height to the Minimum of width and height
         int length = Math.min(drawView.getMeasuredHeight(), drawView.getMeasuredWidth());
         ViewGroup.LayoutParams drawViewParams = drawView.getLayoutParams();
         drawViewParams.width = length;
         drawViewParams.height = length;
         drawView.setLayoutParams(drawViewParams);
-
-        buttonFreeMode = (Button) findViewById(R.id.button_free_mode);
-        buttonLineMode = (Button) findViewById(R.id.button_line_mode);
-
-        defaultButtonBackground = buttonLineMode.getBackground();
     }
 
     public void resetCanvasClick(View v) {
@@ -71,30 +81,121 @@ public class MainActivity extends Activity {
         }
     }
 
+    /**
+     * Gets called when the "SEND" button is clicked.
+     * Check if something is drawn and bluetooth is enabled.
+     * Try to transfer the vectors to the brick.
+     * @param v the button, not used.
+     */
     public void sendClick(View v) {
-        List<Vector2D> directionVectorList = positionVToDirectionV(drawView.getPositionVectorList(), getResources().getInteger(R.integer.optimization_accuracy));
+        float accuracyDeg = getResources().getInteger(R.integer.optimization_accuracy);
+        List<Vector2D> directionVectorList =
+                positionVToDirectionV(drawView.getPosVList(), accuracyDeg);
 
-        Toast.makeText(MainActivity.this, "Vector optimization kicked out " + ((drawView.getPositionVectorList().size() -1) - directionVectorList.size()) + "/" + drawView.getPositionVectorList().size()+ " vectors.", Toast.LENGTH_LONG).show();
-
-        if(!(directionVectorList.size() > 0)) {
-            Toast.makeText(MainActivity.this, getString(R.string.nothing_drawn), Toast.LENGTH_LONG).show();
+        //Check if nothing is drawn, show error Toast and cancel operation.
+        if(directionVectorList.size() == 0) {
+            showToast(getString(R.string.nothing_drawn));
             return;
         }
 
+        //Check if bluetooth is enabled. If not open bluetooth system settings and show toast.
         if (!BluetoothConn.isBluetoothEnabled()) {
-            Toast.makeText(MainActivity.this, getString(R.string.bluetooth_disabled), Toast.LENGTH_LONG).show();
+            showToast(getString(R.string.bluetooth_disabled));
             openSystemBluetoothSettings();
             return;
         }
 
-        new VectorTransferService(this).execute(directionVectorList);
+        //For Debug display how many vectors are excluded because of the optimization algorithm.
+        showToast("Vector optimization kicked out " + ((drawView.getPosVList().size() -1) - directionVectorList.size()) + "/" + drawView.getPosVList().size()+ " vectors.");
+
+        //start to transfer the vectors to the brick in a secont thread.
+        service.execute(directionVectorList);
     }
 
+    /**
+     * Listener class to perform updates on the ui and show the progress
+     * during the transfer of vectors to the nxt brick.
+     */
+    private class Listener implements TransferListener {
+        /**
+         * Show loading dialog while connection is established
+         */
+        @Override
+        public void onConnect() {
+            dialog = createDialog(getString(R.string.connect_dialog_title),
+                    getString(R.string.connect_dialog_message));
+            dialog.show();
+        }
+
+        /**
+         * Show progress dialog.
+         * @param progress the number of packages successfully sent.
+         * @param packageCount the total number of packages.
+         */
+        @Override
+        public void onProgressUpdate(int progress, int packageCount) {
+            if(dialog.getMax() != packageCount) {
+                dialog.cancel();
+                dialog = createDialog(getString(R.string.send_dialog_title),
+                        getString(R.string.send_dialog_message));
+                dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                dialog.setMax(packageCount);
+                dialog.show();
+            }
+            dialog.setProgress(progress);
+        }
+
+        /**
+         * Show roast if all vectors have been successfully sent.
+         */
+        @Override
+        public void onFinished() {
+            dialog.cancel();
+            showToast(getString(R.string.data_transfer_success));
+        }
+
+        /**
+         * Show error message if any error occurred.
+         */
+        @Override
+        public void error() {
+            dialog.cancel();
+            showToast(getString(R.string.data_transfer_failed));
+        }
+    }
+
+    /**
+     * Show toast on the screen. Cancel currently displayed toasts.
+     * @param message the message to be displayed.
+     */
+    private void showToast(String message) {
+        if(toast != null) {
+            toast.cancel();
+        }
+        toast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    /**
+     * Create a ProgressDialog instance. The Dialog is not cancelable.
+     * @param title the title of tje dialog.
+     * @param message the message of the dialog.
+     * @return the created dialog.
+     */
+    private ProgressDialog createDialog(String title, String message) {
+        ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+        dialog.setTitle(title);
+        dialog.setMessage(message);
+        dialog.setCancelable(false);
+        return dialog;
+    }
+
+    /**
+     * Open the system bluetooth settings.
+     */
     private void openSystemBluetoothSettings() {
         Intent intent = new Intent();
         intent.setAction(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS);
         startActivity(intent);
     }
-
-
 }
