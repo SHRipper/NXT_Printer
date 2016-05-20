@@ -16,17 +16,27 @@ import lejos.pc.comm.NXTCommLogListener;
 import lejos.pc.comm.NXTConnector;
 
 /**
- * Created by Tim on 11.05.2016.
+ * This Class handles everything related to Bluetooth.
+ * It establishes bluetooth connections, transfers Vectors and closes bluetooth connections.
  */
 public class BluetoothConn{
     private static final String TAG = "BluetoothConn";
+    //The via bluetooth connected nxt brick
     private static NXTConnector brickConn;
 
+    /**
+     * Check if Bluetooth is enabled
+     * @return true if bluetooth in the device system settings is enabled
+     */
     public static boolean isBluetoothEnabled() {
-        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        return mBluetoothAdapter.isEnabled();
+        return BluetoothAdapter.getDefaultAdapter().isEnabled();
     }
 
+    /**
+     * Connect to a NXT brick via bluetooth
+     * @param myBrick the desired brick
+     * @return true if connection is established
+     */
     public static boolean connectTo(MyBrick myBrick) {
         try {
             brickConn = new NXTConnector();
@@ -43,22 +53,33 @@ public class BluetoothConn{
             brickConn.connectTo(myBrick.getName(), myBrick.getMacAddress(), NXTCommFactory.BLUETOOTH, NXTComm.PACKET);
         } catch (Exception e) {
             e.printStackTrace();
+            brickConn = null;
             return false;
         }
 
         //return true if connection is established
-        return brickConn.getOutputStream() != null;
+        return brickConn != null && brickConn.getOutputStream() != null;
     }
 
-    public static boolean send(List<Vector2D> vectorList, short packageId) {
-        DataOutputStream outputStream = brickConn.getDataOut();
+    /**
+     * Transfer vectors to the connected NXT brick
+     * @param vectorList List of vectors;
+     * @param pId the id of the package. Last package has id 1, first package has id n.
+     * @return true if sending was successful.
+     */
+    public static boolean send(List<Vector2D> vectorList, short pId) {
+        DataOutputStream dataOutStream = brickConn.getDataOut();
         try {
-            outputStream.writeShort(packageId);
-            for(int i = 1; i <= vectorList.size(); i++) {
-                outputStream.writeShort((short)vectorList.get(i-1).x);
-                outputStream.writeShort((short)vectorList.get(i-1).y);
+            dataOutStream.writeShort(pId);
+            for(int i = 0; i < vectorList.size(); i++) {
+                Vector2D v = vectorList.get(i);
+                dataOutStream.writeShort((short)v.x);
+                dataOutStream.writeShort((short)v.y);
             }
-            outputStream.flush();
+            dataOutStream.flush();
+            Log.d(TAG, "Transferred" + vectorList.size() + " vectors." +
+                    "\nPackage: (" + pId + ")" +
+                    "\nReceiver: " + brickConn.getNXTInfo().name);
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
             return false;
@@ -66,17 +87,17 @@ public class BluetoothConn{
         return true;
     }
 
+    /**
+     * Wait for a response from the NXT brick.
+     * @return true if the Break sends a boolean with value true
+     */
     public static boolean waitForResponse() {
-        DataInputStream inputStream = brickConn.getDataIn();
-        if(inputStream == null) {
-            return false;
-        }
-
+        DataInputStream dataInStream = brickConn.getDataIn();
         boolean success = false;
         while (!success) {
             try {
-                success = inputStream.readBoolean();
-            } catch (IOException e) {
+                success = dataInStream.readBoolean();
+            } catch (IOException | NullPointerException e) {
                 e.printStackTrace();
                 return false;
             }
@@ -90,6 +111,9 @@ public class BluetoothConn{
         return true;
     }
 
+    /**
+     * Close the outputStream and the bluetooth connection.
+     */
     public static void close() {
         try {
             brickConn.getDataOut().close();
