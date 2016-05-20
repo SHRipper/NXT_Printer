@@ -1,18 +1,13 @@
 package de.lddt.zeichenroboterapp;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.List;
@@ -92,7 +87,7 @@ public class MainActivity extends Activity {
             return;
         }
 
-        new TransferVectorsToBrick().execute(directionVectorList);
+        new VectorTransferService(this).execute(directionVectorList);
     }
 
     private void openSystemBluetoothSettings() {
@@ -101,83 +96,5 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
-    private class TransferVectorsToBrick extends AsyncTask<List<Vector2D>, Integer, String> {
-        private ProgressDialog dialog;
 
-        @Override
-        protected String doInBackground(List<Vector2D>... params) {
-            boolean succesfullyConnected = BluetoothConn.connectTo(
-                    new MyBrick(getString(R.string.brick_name), getString(R.string.brick_mac_address)));
-
-            if (!succesfullyConnected) {
-                return getString(R.string.connection_failed);
-            }
-
-            int maxVectors = 63;
-            List<Vector2D> vectorList = params[0];
-            int packages = (int) Math.ceil((float) vectorList.size() / maxVectors);
-
-            publishProgress(0, packages, R.string.send_dialog_title, R.string.send_dialog_message);
-
-            boolean successfullySend = true;
-            for(int i = 0; i < packages; i++) {
-                List<Vector2D> vPackage = vectorList.subList(i*maxVectors, Math.min(vectorList.size(), (i+1) * maxVectors));
-                successfullySend = sendData(vPackage, (short) (packages - i));
-                publishProgress(i + 1);
-                successfullySend = waitForBrick();
-            }
-
-            try {
-                Thread.sleep(2500);
-            } catch (InterruptedException e) {}
-
-            if (successfullySend) {
-                return getString(R.string.data_transfer_success);
-            }
-            return getString(R.string.data_transfer_failed);
-        }
-
-
-        @Override
-        protected void onPostExecute(String result) {
-            Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
-            dialog.cancel();
-            BluetoothConn.close();
-        }
-
-        @Override
-        protected void onPreExecute() {
-            dialog = createDialog(R.string.connect_dialog_title, R.string.connect_dialog_message);
-            dialog.setCancelable(false);
-            dialog.show();
-        }
-
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            if(values.length > 1) {
-                dialog.cancel();
-                dialog = createDialog(values[2], values[3]);
-                dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                dialog.setMax(values[1]);
-                dialog.show();
-            }
-            dialog.setProgress(values[0]);
-        }
-
-        private boolean sendData(List<Vector2D> vectorList, short packageId) {
-            return BluetoothConn.send(vectorList, packageId);
-        }
-
-        private boolean waitForBrick() {
-            return BluetoothConn.waitForResponse();
-        }
-
-        private ProgressDialog createDialog(int title, int message) {
-            ProgressDialog dialog = new ProgressDialog(MainActivity.this);
-            dialog.setTitle(title);
-            dialog.setMessage(getString(message));
-            dialog.setCancelable(false);
-            return dialog;
-        }
-    }
 }
