@@ -1,5 +1,6 @@
 package de.lddt.zeichenroboterapp;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -8,7 +9,10 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.List;
@@ -35,8 +39,12 @@ public class MainActivity extends Activity {
 
         drawView = (DrawView) findViewById(R.id.main_draw_view);
 
-        drawView.getLayoutParams().width = drawView.getMeasuredHeight();
-        drawView.setLayoutParams(drawView.getLayoutParams());
+        //the drawView is a square. Set the width and height to the Minimum of width and height
+        int length = Math.min(drawView.getMeasuredHeight(), drawView.getMeasuredWidth());
+        ViewGroup.LayoutParams drawViewParams = drawView.getLayoutParams();
+        drawViewParams.width = length;
+        drawViewParams.height = length;
+        drawView.setLayoutParams(drawViewParams);
 
         buttonFreeMode = (Button) findViewById(R.id.button_free_mode);
         buttonLineMode = (Button) findViewById(R.id.button_line_mode);
@@ -71,7 +79,7 @@ public class MainActivity extends Activity {
     public void sendClick(View v) {
         List<Vector2D> directionVectorList = positionVToDirectionV(drawView.getPositionVectorList(), getResources().getInteger(R.integer.optimization_accuracy));
 
-        Toast.makeText(MainActivity.this, "Vector optimization kicked out " + (drawView.getPositionVectorList().size() - directionVectorList.size()) + "/" + drawView.getPositionVectorList().size()+ " vectors.", Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity.this, "Vector optimization kicked out " + ((drawView.getPositionVectorList().size() -1) - directionVectorList.size()) + "/" + drawView.getPositionVectorList().size()+ " vectors.", Toast.LENGTH_LONG).show();
 
         if(!(directionVectorList.size() > 0)) {
             Toast.makeText(MainActivity.this, getString(R.string.nothing_drawn), Toast.LENGTH_LONG).show();
