@@ -22,7 +22,7 @@ import static de.lddt.zeichenroboterapp.util.VectorConverter.applyGrid;
 public class DrawView extends SurfaceView {
     private List<List<Vector2D>> positionVectorPaths;
     private List<Path> liveDrawPaths;
-    private float startX, startY;
+    private Vector2D startVector;
     private Paint paint;
     private boolean drawing, lineMode;
 
@@ -48,7 +48,6 @@ public class DrawView extends SurfaceView {
         liveDrawPaths = new ArrayList<>();
         paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(6);
     }
 
     public void reset() {
@@ -68,7 +67,7 @@ public class DrawView extends SurfaceView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
+        paint.setStrokeWidth(getStrokeWidth());
         for(int i = 0; i < liveDrawPaths.size(); i++) {
             if(drawing && i == liveDrawPaths.size()-1) {
                 paint.setColor(getResources().getColor(R.color.hint_draw_color));
@@ -86,8 +85,9 @@ public class DrawView extends SurfaceView {
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 drawing = true;
-                startX = event.getX();
-                startY = event.getY();
+                if(lineMode) {
+                    startVector = new Vector2D(event.getX(), event.getY());
+                }
 
                 liveDrawPaths.add(new Path());
                 liveDrawPaths.get(liveDrawPaths.size()-1).moveTo(event.getX(), event.getY());
@@ -103,7 +103,7 @@ public class DrawView extends SurfaceView {
                 if(drawing) {
                     if(lineMode) {
                         liveDrawPaths.get(liveDrawPaths.size() - 1).rewind();
-                        liveDrawPaths.get(liveDrawPaths.size() - 1).moveTo(startX, startY);
+                        liveDrawPaths.get(liveDrawPaths.size() - 1).moveTo(startVector.x, startVector.y);
                     }
                     liveDrawPaths.get(liveDrawPaths.size() - 1).lineTo(event.getX(), event.getY());
 
@@ -150,6 +150,14 @@ public class DrawView extends SurfaceView {
             completeList.addAll(vectorList);
         }
         return completeList;
+    }
+
+    /**
+     * Calculates the stroke width in pixels. The width depends on the size of the draw view canvas.
+     * @return stroke width
+     */
+    private float getStrokeWidth() {
+        return ((float)this.getMeasuredHeight()) / 150;
     }
 
     public void setLineMode(boolean lineMode) {
