@@ -17,21 +17,21 @@ public class VectorConverter {
      */
     public static List<Vector2D> positionVToDirectionV(List<Vector2D> posVList, float accuracyDeg) {
         //remove unnecessary position Vectors
-        posVList = optimizePositionVectors(posVList, accuracyDeg);
+        posVList = optimizePosVectors(posVList, accuracyDeg);
 
         //create a List of direction Vectors which will be drawn by the robot
-        List<Vector2D> directionVectorList = new ArrayList<>();
+        List<Vector2D> dirVList = new ArrayList<>();
         Vector2D temp = new Vector2D(0, 0);
         for(Vector2D vector : posVList) { //create directions
             if (vector.x == Short.MAX_VALUE && vector.y == Short.MAX_VALUE) {
-                directionVectorList.add(new Vector2D(Short.MAX_VALUE, Short.MAX_VALUE));
+                dirVList.add(new Vector2D(Short.MAX_VALUE, Short.MAX_VALUE));
             } else {
                 vector.round();
-                directionVectorList.add(posVToDirV(vector, temp));
+                dirVList.add(posVToDirV(vector, temp));
                 temp = vector;
             }
         }
-        return directionVectorList;
+        return dirVList;
     }
 
     /**
@@ -40,7 +40,7 @@ public class VectorConverter {
      * @param accuracyDeg tolerance value for optimization.
      * @return List of optimized position vectors.
      */
-    private static List<Vector2D> optimizePositionVectors(List<Vector2D> posVList, float accuracyDeg) {
+    private static List<Vector2D> optimizePosVectors(List<Vector2D> posVList, float accuracyDeg) {
         float accuracy = (float) Math.cos(accuracyDeg / 180 * Math.PI);
         for(int i = 2; i < posVList.size(); i++) { //optimize positions
             if(posVList.get(i-2).x != Short.MAX_VALUE && posVList.get(i-1).x != Short.MAX_VALUE && posVList.get(i).x != Short.MAX_VALUE){
