@@ -3,6 +3,7 @@ package de.lddt.zeichenroboterapp;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ArgbEvaluator;
+import android.animation.IntEvaluator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -36,7 +37,8 @@ public class MainActivity extends Activity {
     private DrawView drawView;
     private Button buttonFreeMode, buttonLineMode;
     private Drawable defaultButtonBackground;
-    Animation animFadeOut, animFadeIn;
+    private LineMode lineMode;
+
 
     private ProgressDialog dialog;
     private Toast toast;
@@ -62,6 +64,8 @@ public class MainActivity extends Activity {
         buttonFreeMode = (Button) findViewById(R.id.button_free_mode);
         buttonLineMode = (Button) findViewById(R.id.button_line_mode);
         defaultButtonBackground = buttonLineMode.getBackground();
+
+
     }
 
     /**
@@ -142,7 +146,22 @@ public class MainActivity extends Activity {
         if (!drawView.isDrawing()) {
             buttonFreeMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
             buttonLineMode.setBackground(defaultButtonBackground);
-            drawView.setLineMode(false);
+           // drawView.setLineMode(false);
+        }
+    }
+
+    public void changeDrawingModeClick(View v){
+        if (!drawView.isDrawing()) {
+            if (v.getId() == R.id.button_free_mode){
+                lineMode = LineMode.FREE;
+                buttonFreeMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
+                buttonLineMode.setBackground(defaultButtonBackground);
+            }else if (v.getId() == R.id.button_line_mode){
+                lineMode = lineMode.LINE;
+                buttonLineMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
+                buttonFreeMode.setBackground(defaultButtonBackground);
+            }
+            drawView.setLineMode(lineMode);
         }
     }
 
@@ -156,7 +175,7 @@ public class MainActivity extends Activity {
         if (!drawView.isDrawing()) {
             buttonFreeMode.setBackground(defaultButtonBackground);
             buttonLineMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
-            drawView.setLineMode(true);
+           // drawView.setLineMode(true);
         }
     }
 

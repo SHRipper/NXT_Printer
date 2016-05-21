@@ -24,7 +24,8 @@ public class DrawView extends SurfaceView {
     private List<Path> liveDrawPaths;
     private Vector2D startVector;
     private Paint paint;
-    private boolean drawing, lineMode;
+    private boolean drawing;
+    private LineMode lineMode;
 
     public DrawView(Context context) {
         super(context);
@@ -44,7 +45,7 @@ public class DrawView extends SurfaceView {
     private void init() {
         this.posVPaths = new ArrayList<>();
         drawing = false;
-        lineMode = false;
+        lineMode = LineMode.FREE;
         liveDrawPaths = new ArrayList<>();
         paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);
@@ -107,7 +108,7 @@ public class DrawView extends SurfaceView {
             case MotionEvent.ACTION_DOWN:
                 //started drawing on the canvas
                 drawing = true;
-                if (lineMode) {
+                if (lineMode == LineMode.LINE) {
                     startVector = new Vector2D(event.getX(), event.getY());
                 }
 
@@ -125,7 +126,7 @@ public class DrawView extends SurfaceView {
                 if (drawing) {
                     /*If drawing in line mode, reset the last path.
                     Set the previously stored start position as start position for the path.*/
-                    if (lineMode) {
+                    if (lineMode == LineMode.LINE) {
                         liveDrawPaths.get(liveDrawPaths.size() - 1).rewind();
                         liveDrawPaths.get(liveDrawPaths.size() - 1).moveTo(startVector.x, startVector.y);
                     }
@@ -134,7 +135,7 @@ public class DrawView extends SurfaceView {
 
                     /*If in free mode save this position.
                     (projected on the grid for future transfer to the nxt brick)*/
-                    if (!lineMode) {
+                    if (lineMode == LineMode.FREE) {
                         newVector = createVector(event.getX(), event.getY());
                         List<Vector2D> currentList = posVPaths.get(posVPaths.size() - 1);
                         if (!currentList.get(currentList.size() - 1).equals(newVector)) {
@@ -150,7 +151,7 @@ public class DrawView extends SurfaceView {
             case MotionEvent.ACTION_UP:
                 /* Save the position where the user lifts his finger .
                 This is the position to which a line will be drawn*/
-                if (drawing && lineMode) {
+                if (drawing && lineMode == LineMode.LINE) {
                     newVector = createVector(event.getX(), event.getY());
                     posVPaths.get(posVPaths.size() - 1).add(newVector);
                 }
@@ -206,7 +207,8 @@ public class DrawView extends SurfaceView {
         return ((float) this.getMeasuredHeight()) / 150;
     }
 
-    public void setLineMode(boolean lineMode) {
+    public void setLineMode(LineMode lineMode) {
+
         this.lineMode = lineMode;
     }
 

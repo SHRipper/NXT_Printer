@@ -11,7 +11,14 @@
                     "endOffset": 101
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\colors.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 79,
+                        "endColumn": 50,
+                        "endOffset": 125
+                    }
                 }
             },
             {
@@ -23,7 +30,14 @@
                     "endOffset": 159
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\colors.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 223,
+                        "endColumn": 57,
+                        "endOffset": 276
+                    }
                 }
             },
             {
@@ -35,7 +49,14 @@
                     "endOffset": 213
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\colors.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 339,
+                        "endColumn": 53,
+                        "endOffset": 388
+                    }
                 }
             },
             {
@@ -62,23 +83,37 @@
                     "startLine": 6,
                     "startColumn": 4,
                     "startOffset": 274,
-                    "endColumn": 50,
-                    "endOffset": 320
+                    "endColumn": 49,
+                    "endOffset": 319
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\colors.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 589,
+                        "endColumn": 49,
+                        "endOffset": 634
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 7,
                     "startColumn": 4,
-                    "startOffset": 325,
-                    "endColumn": 49,
+                    "startOffset": 324,
+                    "endColumn": 50,
                     "endOffset": 370
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\colors.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 537,
+                        "endColumn": 50,
+                        "endOffset": 583
+                    }
                 }
             },
             {
@@ -86,215 +121,379 @@
                     "startLine": 8,
                     "startColumn": 4,
                     "startOffset": 375,
-                    "endColumn": 64,
-                    "endOffset": 435
+                    "endColumn": 50,
+                    "endOffset": 421
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\colors.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 445,
+                        "endColumn": 50,
+                        "endOffset": 491
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 9,
                     "startColumn": 4,
-                    "startOffset": 440,
-                    "endColumn": 45,
-                    "endOffset": 481
+                    "startOffset": 426,
+                    "endColumn": 49,
+                    "endOffset": 471
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\config.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 394,
+                        "endColumn": 49,
+                        "endOffset": 439
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 486,
-                    "endColumn": 58,
-                    "endOffset": 540
+                    "startOffset": 476,
+                    "endColumn": 64,
+                    "endOffset": 536
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\config.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 131,
+                        "endColumn": 64,
+                        "endOffset": 191
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 545,
-                    "endColumn": 55,
-                    "endOffset": 596
+                    "startOffset": 541,
+                    "endColumn": 45,
+                    "endOffset": 582
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\config.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 131,
+                        "endColumn": 45,
+                        "endOffset": 172
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 12,
                     "startColumn": 4,
-                    "startOffset": 601,
-                    "endColumn": 107,
-                    "endOffset": 704
+                    "startOffset": 587,
+                    "endColumn": 58,
+                    "endOffset": 641
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\config.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 268,
+                        "endColumn": 58,
+                        "endOffset": 322
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 13,
                     "startColumn": 4,
-                    "startOffset": 709,
-                    "endColumn": 63,
-                    "endOffset": 768
+                    "startOffset": 646,
+                    "endColumn": 55,
+                    "endOffset": 697
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\config.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 39,
+                        "endColumn": 55,
+                        "endOffset": 90
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 14,
                     "startColumn": 4,
-                    "startOffset": 773,
-                    "endColumn": 48,
-                    "endOffset": 817
+                    "startOffset": 702,
+                    "endColumn": 107,
+                    "endOffset": 805
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\config.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 341,
+                        "endColumn": 107,
+                        "endOffset": 444
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 15,
                     "startColumn": 4,
-                    "startOffset": 822,
-                    "endColumn": 79,
-                    "endOffset": 897
+                    "startOffset": 810,
+                    "endColumn": 63,
+                    "endOffset": 869
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\config.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 408,
+                        "endColumn": 63,
+                        "endOffset": 467
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 16,
                     "startColumn": 4,
-                    "startOffset": 902,
-                    "endColumn": 59,
-                    "endOffset": 957
+                    "startOffset": 874,
+                    "endColumn": 48,
+                    "endOffset": 918
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\config.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 358,
+                        "endColumn": 48,
+                        "endOffset": 402
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 17,
                     "startColumn": 4,
-                    "startOffset": 962,
-                    "endColumn": 84,
-                    "endOffset": 1042
+                    "startOffset": 923,
+                    "endColumn": 79,
+                    "endOffset": 998
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 918,
+                        "endColumn": 79,
+                        "endOffset": 993
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 18,
                     "startColumn": 4,
-                    "startOffset": 1047,
-                    "endColumn": 78,
-                    "endOffset": 1121
+                    "startOffset": 1003,
+                    "endColumn": 59,
+                    "endOffset": 1058
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 851,
+                        "endColumn": 65,
+                        "endOffset": 912
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 19,
                     "startColumn": 4,
-                    "startOffset": 1126,
-                    "endColumn": 77,
-                    "endOffset": 1199
+                    "startOffset": 1063,
+                    "endColumn": 84,
+                    "endOffset": 1143
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 533,
+                        "endColumn": 84,
+                        "endOffset": 613
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 20,
                     "startColumn": 4,
-                    "startOffset": 1204,
-                    "endColumn": 81,
-                    "endOffset": 1281
+                    "startOffset": 1148,
+                    "endColumn": 78,
+                    "endOffset": 1222
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 619,
+                        "endColumn": 78,
+                        "endOffset": 693
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 21,
                     "startColumn": 4,
-                    "startOffset": 1286,
-                    "endColumn": 51,
-                    "endOffset": 1333
+                    "startOffset": 1227,
+                    "endColumn": 77,
+                    "endOffset": 1300
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 732,
+                        "endColumn": 77,
+                        "endOffset": 805
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 22,
                     "startColumn": 4,
-                    "startOffset": 1338,
-                    "endColumn": 51,
-                    "endOffset": 1385
+                    "startOffset": 1305,
+                    "endColumn": 81,
+                    "endOffset": 1382
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 450,
+                        "endColumn": 81,
+                        "endOffset": 527
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 23,
                     "startColumn": 4,
-                    "startOffset": 1390,
-                    "endColumn": 49,
-                    "endOffset": 1435
+                    "startOffset": 1387,
+                    "endColumn": 51,
+                    "endOffset": 1434
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 120,
+                        "endColumn": 51,
+                        "endOffset": 167
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 24,
                     "startColumn": 4,
-                    "startOffset": 1440,
-                    "endColumn": 72,
-                    "endOffset": 1508
+                    "startOffset": 1439,
+                    "endColumn": 51,
+                    "endOffset": 1486
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 173,
+                        "endColumn": 51,
+                        "endOffset": 220
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 25,
                     "startColumn": 4,
-                    "startOffset": 1513,
-                    "endColumn": 53,
-                    "endOffset": 1562
+                    "startOffset": 1491,
+                    "endColumn": 49,
+                    "endOffset": 1536
                 },
                 "from": {
-                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 226,
+                        "endColumn": 49,
+                        "endOffset": 271
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 1541,
+                    "endColumn": 72,
+                    "endOffset": 1609
+                },
+                "from": {
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1060,
+                        "endColumn": 72,
+                        "endOffset": 1128
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 1614,
+                    "endColumn": 53,
+                    "endOffset": 1663
+                },
+                "from": {
+                    "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 999,
+                        "endColumn": 59,
+                        "endOffset": 1054
+                    }
                 }
             }
         ]

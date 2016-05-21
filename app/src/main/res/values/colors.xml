@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- general -->
+    <!-- General -->
     <color name="background_color">#2196f3</color>
     <color name="transparent">@android:color/transparent</color>
 
-    <!-- draw View -->
+    <!-- Draw View -->
     <color name="canvas_background_color">#eeeeee</color>
     <color name="canvas_color_fade_out">#000000</color>
     <color name="canvas_border_color">#424242</color>
     <color name="hint_draw_color">#bdbdbd</color>
     <color name="final_draw_color">#212121</color>
+
+    <!-- Floating Action Buttons -->
+    <color name="color_parent_fab">#E04894</color>
+    <color name="color_child_fab">#3868CF</color>
+
 </resources>

@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\cube_send.png",
+        "source": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\cube_send.png"
+    },
+    {
+        "merged": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\vector_line.png",
+        "source": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\vector_line.png"
+    },
+    {
+        "merged": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\delete.png",
+        "source": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\delete.png"
+    },
+    {
+        "merged": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\undo_variant.png",
+        "source": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\undo_variant.png"
+    },
+    {
+        "merged": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\lead_pencil.png",
+        "source": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\lead_pencil.png"
+    },
+    {
+        "merged": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\vector_polyline.png",
+        "source": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\vector_polyline.png"
+    },
+    {
+        "merged": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\brush.png",
+        "source": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\brush.png"
+    }
+]
