@@ -63,7 +63,8 @@ public class BluetoothConn{
     }
 
     /**
-     * Transfer vectors to the connected NXT brick
+     * Transfer vectors to the connected NXT brick.
+     * In Packet mode only 254 Bytes can be transferred at once.
      * @param vectorList List of vectors;
      * @param pId the id of the package. Last package has id 1, first package has id n.
      * @return true if sending was successful.
@@ -71,7 +72,9 @@ public class BluetoothConn{
     public static boolean send(List<Vector2D> vectorList, short pId) {
         DataOutputStream dataOutStream = brickConn.getDataOut();
         try {
+            //write the number of packages to come including this one
             dataOutStream.writeShort(pId);
+            //write the vectors
             for(int i = 0; i < vectorList.size(); i++) {
                 Vector2D v = vectorList.get(i);
                 dataOutStream.writeShort((short)v.x);
@@ -118,6 +121,7 @@ public class BluetoothConn{
      */
     public static void close() {
         try {
+            brickConn.getDataIn().close();
             brickConn.getDataOut().close();
             brickConn.getNXTComm().close();
         } catch (IOException | NullPointerException e) {

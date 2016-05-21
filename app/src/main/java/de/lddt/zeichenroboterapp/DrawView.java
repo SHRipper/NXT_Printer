@@ -17,7 +17,7 @@ import static de.lddt.zeichenroboterapp.util.VectorConverter.applyBounds;
 import static de.lddt.zeichenroboterapp.util.VectorConverter.applyGrid;
 
 /**
- * Created by Tim on 27.04.2016.
+ * The Canvas for the drawing.
  */
 public class DrawView extends SurfaceView {
     private List<List<Vector2D>> posVPaths;
@@ -50,27 +50,43 @@ public class DrawView extends SurfaceView {
         paint.setStyle(Paint.Style.STROKE);
     }
 
+    /**
+     * Redraw the recorded paths.
+     *
+     * @param canvas
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        //set the strokeWidth relative to the canvas resolution
         paint.setStrokeWidth(getStrokeWidth());
+
         for (int i = 0; i < liveDrawPaths.size(); i++) {
             if (drawing && i == liveDrawPaths.size() - 1) {
+                //While the user is drawing, set another color for the current path.
                 paint.setColor(getResources().getColor(R.color.hint_draw_color));
             } else {
+                //Default color
                 paint.setColor(getResources().getColor(R.color.final_draw_color));
             }
+            //draw the path on the canvas
             canvas.drawPath(liveDrawPaths.get(i), paint);
         }
     }
 
-    public void reset() {
+    /**
+     * Clear all recorded paths and vectors.
+     */
+    public void clear() {
         posVPaths.clear();
         liveDrawPaths.clear();
         invalidate();
     }
 
-    public void revert() {
+    /**
+     * Remove only the last drawn path.
+     */
+    public void undo() {
         if (posVPaths.size() > 0 && liveDrawPaths.size() > 0) {
             posVPaths.remove(posVPaths.size() - 1);
             liveDrawPaths.remove(liveDrawPaths.size() - 1);
@@ -78,35 +94,46 @@ public class DrawView extends SurfaceView {
         invalidate();
     }
 
+    /**
+     * Handle touch events.
+     * @param event
+     * @return true if the event was handled
+     */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         int action = event.getAction();
         Vector2D newVector;
         switch (action) {
             case MotionEvent.ACTION_DOWN:
+                //started drawing on the canvas
                 drawing = true;
                 if (lineMode) {
                     startVector = new Vector2D(event.getX(), event.getY());
                 }
 
+                //add a new path to the liveDrawPathsList and set this position as the start position
                 liveDrawPaths.add(new Path());
                 liveDrawPaths.get(liveDrawPaths.size() - 1).moveTo(event.getX(), event.getY());
 
+                //also save this position (projected on the grid for future transfer to the nxt brick)
                 newVector = createVector(event.getX(), event.getY());
                 posVPaths.add(new ArrayList<Vector2D>());
                 posVPaths.get(posVPaths.size() - 1).add(newVector);
-
-                invalidate();
                 return true;
 
             case MotionEvent.ACTION_MOVE:
                 if (drawing) {
+                    /*If drawing in line mode, reset the last path.
+                    Set the previously stored start position as start position for the path.*/
                     if (lineMode) {
                         liveDrawPaths.get(liveDrawPaths.size() - 1).rewind();
                         liveDrawPaths.get(liveDrawPaths.size() - 1).moveTo(startVector.x, startVector.y);
                     }
+                    //Extend the path by the new position
                     liveDrawPaths.get(liveDrawPaths.size() - 1).lineTo(event.getX(), event.getY());
 
+                    /*If in free mode save this position.
+                    (projected on the grid for future transfer to the nxt brick)*/
                     if (!lineMode) {
                         newVector = createVector(event.getX(), event.getY());
                         List<Vector2D> currentList = posVPaths.get(posVPaths.size() - 1);
@@ -115,17 +142,22 @@ public class DrawView extends SurfaceView {
                         }
                     }
 
+                    //Redraw the canvas.
                     invalidate();
                 }
                 return true;
 
             case MotionEvent.ACTION_UP:
+                /* Save the position where the user lifts his finger .
+                This is the position to which a line will be drawn*/
                 if (drawing && lineMode) {
                     newVector = createVector(event.getX(), event.getY());
                     posVPaths.get(posVPaths.size() - 1).add(newVector);
                 }
+                //finished drawing
                 drawing = false;
 
+                //redraw the canvas
                 invalidate();
                 return true;
         }

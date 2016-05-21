@@ -29,9 +29,9 @@ public class Vector2D {
 
     public static Vector2D sum(Vector2D... v){
         Vector2D val = new Vector2D();
-        for(int i = 0; i < v.length; i++){
-            val.x += v[i].x;
-            val.y += v[i].y;
+        for (Vector2D aV : v) {
+            val.x += aV.x;
+            val.y += aV.y;
         }
         return val;
     }

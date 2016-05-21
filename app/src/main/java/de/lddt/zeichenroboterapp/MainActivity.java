@@ -20,6 +20,9 @@ import de.lddt.zeichenroboterapp.math.vector.Vector2D;
 
 import static de.lddt.zeichenroboterapp.util.VectorConverter.posVToDirVList;
 
+/**
+ * The main activity for the "Zeichenroboter" project. The Canvas is part of this activity.
+ */
 public class MainActivity extends Activity {
     private DrawView drawView;
     private Button buttonFreeMode, buttonLineMode;
@@ -27,26 +30,35 @@ public class MainActivity extends Activity {
 
     private ProgressDialog dialog;
     private Toast toast;
-
+    //Service to perform bluetooth operations in a second thread.
     private VectorTransferService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Create a Service instance which performs bluetooth operations in a second thread.
         service = new VectorTransferService(getDefaultBrick());
+        //Register a Listener to update the UI while sending data to the nxt brick.
         service.registerListener(new Listener());
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        //Get a reference to important views.
         drawView = (DrawView) findViewById(R.id.main_draw_view);
         buttonFreeMode = (Button) findViewById(R.id.button_free_mode);
         buttonLineMode = (Button) findViewById(R.id.button_line_mode);
         defaultButtonBackground = buttonLineMode.getBackground();
     }
 
+    /**
+     * Modify the width and height, so the draw view is a square.
+     *
+     * @param hasFocus not used
+     */
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
@@ -58,14 +70,31 @@ public class MainActivity extends Activity {
         drawView.setLayoutParams(drawViewParams);
     }
 
-    public void resetCanvasClick(View v) {
-        drawView.reset();
+    /**
+     * Called when the "CLEAR" button is clicked.
+     * Tells the drawView to remove all drawn paths.
+     *
+     * @param v not used.
+     */
+    public void clearCanvasClick(View v) {
+        drawView.clear();
     }
 
-    public void revertPathClick(View v) {
-        drawView.revert();
+    /**
+     * Called when the "UNDO" button is clicked.
+     * Tells the drawView to remove the last drawn path.
+     *
+     * @param v not used.
+     */
+    public void undoClick(View v) {
+        drawView.undo();
     }
 
+    /**
+     * Called when the button for free drawing is clicked.
+     * Change the drawing mode only if the user currently does not draw on the canvas.
+     * @param v not used.
+     */
     public void freeDrawingModeClick(View v) {
         if(!drawView.isDrawing()) {
             buttonFreeMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
@@ -74,6 +103,11 @@ public class MainActivity extends Activity {
         }
     }
 
+    /**
+     * Called when the button for line drawing is clicked.
+     * Change the drawing mode only if the user currently does not draw on the canvas.
+     * @param v not used.
+     */
     public void lineDrawingModeClick(View v) {
         if(!drawView.isDrawing()) {
             buttonFreeMode.setBackground(defaultButtonBackground);
@@ -83,10 +117,10 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Gets called when the "SEND" button is clicked.
+     * Called when the "SEND" button is clicked.
      * Check if something is drawn and bluetooth is enabled.
      * Try to transfer the vectors to the brick.
-     * @param v the button, not used.
+     * @param v not used.
      */
     public void sendClick(View v) {
         float accuracyDeg = getResources().getInteger(R.integer.optimization_accuracy_degs);
