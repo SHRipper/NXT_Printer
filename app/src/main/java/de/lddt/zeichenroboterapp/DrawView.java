@@ -92,7 +92,7 @@ public class DrawView extends SurfaceView {
                 liveDrawPaths.add(new Path());
                 liveDrawPaths.get(liveDrawPaths.size()-1).moveTo(event.getX(), event.getY());
 
-                newVector = createVector((short) event.getX(),(short) event.getY());
+                newVector = createVector(event.getX(), event.getY());
                 posVPaths.add(new ArrayList<Vector2D>());
                 posVPaths.get(posVPaths.size() - 1).add(newVector);
 
@@ -108,7 +108,7 @@ public class DrawView extends SurfaceView {
                     liveDrawPaths.get(liveDrawPaths.size() - 1).lineTo(event.getX(), event.getY());
 
                     if(!lineMode) {
-                        newVector = createVector((short) event.getX(), (short) event.getY());
+                        newVector = createVector(event.getX(), event.getY());
                         List<Vector2D> currentList = posVPaths.get(posVPaths.size() - 1);
                         if (!currentList.get(currentList.size() - 1).equals(newVector)) {
                             currentList.add(newVector);
@@ -124,7 +124,7 @@ public class DrawView extends SurfaceView {
                     drawing = false;
 
                     if(lineMode) {
-                        newVector = createVector((short) event.getX(), (short) event.getY());
+                        newVector = createVector(event.getX(), event.getY());
                         posVPaths.get(posVPaths.size() - 1).add(newVector);
                     }
                 }
@@ -139,7 +139,7 @@ public class DrawView extends SurfaceView {
      * @param y value of the new vector.
      * @return the new vector. The x and y value are projected on the grid the nxt robot can process.
      */
-    private Vector2D createVector(short x, short y) {
+    private Vector2D createVector(float x, float y) {
         Vector2D v = new Vector2D(x,y);
         int gridLength = getResources().getInteger(R.integer.grid_length);
         applyGrid(v, this.getMeasuredWidth(), this.getMeasuredHeight(), gridLength);
