@@ -1,6 +1,7 @@
 package de.lddt.zeichenroboterapp;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -133,14 +134,26 @@ public class DrawView extends SurfaceView {
         return false;
     }
 
+    /**
+     * Create a new Vector2D instance.
+     * @param x value of the new vector.
+     * @param y value of the new vector.
+     * @return the new vector. The x and y value are projected on the grid the nxt robot can process.
+     */
     private Vector2D createVector(short x, short y) {
         Vector2D v = new Vector2D(x,y);
-        applyGrid(v, getResources().getInteger(R.integer.grid_width), this.getMeasuredWidth(),
-                getResources().getInteger(R.integer.grid_height), this.getMeasuredHeight());
-        applyBounds(v, getResources().getInteger(R.integer.grid_width), getResources().getInteger(R.integer.grid_width));
+        int gridLength = getResources().getInteger(R.integer.grid_length);
+        applyGrid(v, this.getMeasuredWidth(), this.getMeasuredHeight(), gridLength);
+        applyBounds(v, gridLength);
         return v;
     }
 
+    /**
+     * Create a List with all vectors of the recorded lines.
+     * Different lines are separate with a special vector.
+     * The x and y value of this vector are set to Short.Max_Value.
+     * @return list with all vectors.
+     */
     public List<Vector2D> getPosVList() {
         List<Vector2D> completeList = new ArrayList<>();
         for(List<Vector2D> vectorList : positionVPaths) {

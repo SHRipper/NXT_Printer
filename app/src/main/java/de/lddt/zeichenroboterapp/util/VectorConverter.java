@@ -66,30 +66,26 @@ public class VectorConverter {
     }
 
     /**
-     * Vectors should never be outside of the grid area
-     * @param v the vector to precess
-     * @param maxWidth the maximum allowed x value
-     * @param maxHeight the maximum allowed y value
+     * projects a vector on the grid
+     * @param v the vector to be projected
+     * @param gridLength the width and height of the grid
+     * @param canvasWidth the width of the actual canvas on the screen
+     * @param canvasHeight the height of the actual canvas
      */
-    public static void applyBounds(Vector2D v, float maxWidth, float maxHeight) {
-        v.x = Math.max(v.x, 0);
-        v.x = Math.min(v.x, maxWidth);
-
-        v.y = Math.max(v.y, 0);
-        v.y = Math.min(v.y, maxHeight);
+    public static void applyGrid(Vector2D v, float canvasWidth, float canvasHeight, float gridLength) {
+        v.x *= gridLength/canvasWidth;
+        v.y *= gridLength/canvasHeight;
     }
 
     /**
-     * projects a vector on the grid
-     * @param v the vector to be projected
-     * @param gridWidth the width of the grid
-     * @param canvasWidth the width of the actual canvas on the screen
-     * @param gridHeight the height of the grid
-     * @param canvasHeight the height of the actual canvas
+     * Vectors should never be outside of the grid area
+     * @param v the vector to precess
+     * @param maxLength the maximum allowed x and y value
      */
-    public static void applyGrid(Vector2D v, float gridWidth, float canvasWidth,
-                                      float gridHeight, float canvasHeight) {
-        v.x *= gridWidth/canvasWidth;
-        v.y *= gridHeight/canvasHeight;
+    public static void applyBounds(Vector2D v, float maxLength) {
+        v.x = Math.max(v.x, 0);
+        v.x = Math.min(v.x, maxLength);
+        v.y = Math.max(v.y, 0);
+        v.y = Math.min(v.y, maxLength);
     }
 }

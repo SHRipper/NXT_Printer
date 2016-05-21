@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="grid_width">500</integer>
-    <integer name="grid_height">500</integer>
+    <integer name="grid_length">500</integer>
     <integer name="optimization_accuracy">4</integer>
 </resources>
