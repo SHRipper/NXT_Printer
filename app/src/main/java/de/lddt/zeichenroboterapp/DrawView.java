@@ -20,7 +20,7 @@ import static de.lddt.zeichenroboterapp.util.VectorConverter.applyGrid;
  * Created by Tim on 27.04.2016.
  */
 public class DrawView extends SurfaceView {
-    private List<List<Vector2D>> positionVPaths;
+    private List<List<Vector2D>> posVPaths;
     private List<Path> liveDrawPaths;
     private Vector2D startVector;
     private Paint paint;
@@ -42,7 +42,7 @@ public class DrawView extends SurfaceView {
     }
 
     private void init() {
-        this.positionVPaths = new ArrayList<>();
+        this.posVPaths = new ArrayList<>();
         drawing = false;
         lineMode = false;
         liveDrawPaths = new ArrayList<>();
@@ -65,14 +65,14 @@ public class DrawView extends SurfaceView {
     }
 
     public void reset() {
-        positionVPaths.clear();
+        posVPaths.clear();
         liveDrawPaths.clear();
         invalidate();
     }
 
     public void revert(){
-        if (positionVPaths.size() > 0 && liveDrawPaths.size() > 0) {
-            positionVPaths.remove(positionVPaths.size() - 1);
+        if (posVPaths.size() > 0 && liveDrawPaths.size() > 0) {
+            posVPaths.remove(posVPaths.size() - 1);
             liveDrawPaths.remove(liveDrawPaths.size() - 1);
         }
         invalidate();
@@ -93,8 +93,8 @@ public class DrawView extends SurfaceView {
                 liveDrawPaths.get(liveDrawPaths.size()-1).moveTo(event.getX(), event.getY());
 
                 newVector = createVector((short) event.getX(),(short) event.getY());
-                positionVPaths.add(new ArrayList<Vector2D>());
-                positionVPaths.get(positionVPaths.size() -1).add(newVector);
+                posVPaths.add(new ArrayList<Vector2D>());
+                posVPaths.get(posVPaths.size() - 1).add(newVector);
 
                 invalidate();
                 return true;
@@ -109,7 +109,7 @@ public class DrawView extends SurfaceView {
 
                     if(!lineMode) {
                         newVector = createVector((short) event.getX(), (short) event.getY());
-                        List<Vector2D> currentList = positionVPaths.get(positionVPaths.size() - 1);
+                        List<Vector2D> currentList = posVPaths.get(posVPaths.size() - 1);
                         if (!currentList.get(currentList.size() - 1).equals(newVector)) {
                             currentList.add(newVector);
                         }
@@ -125,7 +125,7 @@ public class DrawView extends SurfaceView {
 
                     if(lineMode) {
                         newVector = createVector((short) event.getX(), (short) event.getY());
-                        positionVPaths.get(positionVPaths.size() - 1).add(newVector);
+                        posVPaths.get(posVPaths.size() - 1).add(newVector);
                     }
                 }
                 return true;
@@ -155,7 +155,7 @@ public class DrawView extends SurfaceView {
      */
     public List<Vector2D> getPosVList() {
         List<Vector2D> completeList = new ArrayList<>();
-        for(List<Vector2D> vectorList : positionVPaths) {
+        for (List<Vector2D> vectorList : posVPaths) {
             if(completeList.size() > 0) {
                 completeList.add(new Vector2D(Short.MAX_VALUE, Short.MAX_VALUE));
             }

@@ -17,7 +17,7 @@ import de.lddt.zeichenroboterapp.bluetooth.BluetoothConn;
 import de.lddt.zeichenroboterapp.listener.TransferListener;
 import de.lddt.zeichenroboterapp.math.vector.Vector2D;
 
-import static de.lddt.zeichenroboterapp.util.VectorConverter.positionVToDirectionV;
+import static de.lddt.zeichenroboterapp.util.VectorConverter.posVToDirVList;
 
 public class MainActivity extends Activity {
     private DrawView drawView;
@@ -90,7 +90,7 @@ public class MainActivity extends Activity {
     public void sendClick(View v) {
         float accuracyDeg = getResources().getInteger(R.integer.optimization_accuracy);
         List<Vector2D> directionVectorList =
-                positionVToDirectionV(drawView.getPosVList(), accuracyDeg);
+                posVToDirVList(drawView.getPosVList(), accuracyDeg);
 
         //Check if nothing is drawn, show error Toast and cancel operation.
         if(directionVectorList.size() == 0) {
