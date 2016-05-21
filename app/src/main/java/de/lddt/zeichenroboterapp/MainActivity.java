@@ -146,7 +146,7 @@ public class MainActivity extends Activity {
         }
 
         /**
-         * Show roast if all vectors have been successfully sent.
+         * Show toast if all vectors have been successfully sent.
          */
         @Override
         public void onFinished() {
