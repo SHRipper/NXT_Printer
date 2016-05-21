@@ -1,10 +1,12 @@
 package de.lddt.zeichenroboterapp.entity;
 
 /**
- * Created by Tim on 11.05.2016.
+ * Entity of a nxt brick
  */
 public class MyBrick {
+    //name of the brick
     private String name;
+    //unique bluetooth mac address of the brick
     private String macAddress;
 
     public MyBrick(String brick, String macAddress) {
