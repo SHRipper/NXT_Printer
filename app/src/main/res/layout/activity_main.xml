@@ -13,7 +13,7 @@
         android:padding="10dp">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_clear"
             android:minWidth="100dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
@@ -23,7 +23,7 @@
             android:text="@string/reset_button_name" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/button_undo"
             android:minWidth="100dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
@@ -80,7 +80,7 @@
         android:padding="10dp">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/button_send"
             android:minWidth="100dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
