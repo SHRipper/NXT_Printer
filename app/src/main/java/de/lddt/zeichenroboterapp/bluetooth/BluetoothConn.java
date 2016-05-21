@@ -39,6 +39,7 @@ public class BluetoothConn{
      */
     public static boolean connectTo(MyBrick myBrick) {
         //see http://www.lejos.org/nxt/nxj/tutorial/Android/Android.htm
+        Log.v(TAG, "Trying to connecto to " + myBrick.getName() + "; " + myBrick.getMacAddress());
         try {
             brickConn = new NXTConnector();
             brickConn.setDebug(true);
@@ -51,7 +52,8 @@ public class BluetoothConn{
                     Log.e(TAG + " NXJ log:", arg0.getMessage(), arg0);
                 }
             });
-            brickConn.connectTo(myBrick.getName(), myBrick.getMacAddress(), NXTCommFactory.BLUETOOTH, NXTComm.PACKET);
+            brickConn.connectTo(myBrick.getName(), myBrick.getMacAddress(),
+                    NXTCommFactory.BLUETOOTH, NXTComm.PACKET);
         } catch (Exception e) {
             e.printStackTrace();
             brickConn = null;
