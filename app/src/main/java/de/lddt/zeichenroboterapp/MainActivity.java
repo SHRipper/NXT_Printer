@@ -64,8 +64,6 @@ public class MainActivity extends Activity {
         buttonFreeMode = (Button) findViewById(R.id.button_free_mode);
         buttonLineMode = (Button) findViewById(R.id.button_line_mode);
         defaultButtonBackground = buttonLineMode.getBackground();
-
-
     }
 
     /**
@@ -136,46 +134,53 @@ public class MainActivity extends Activity {
         drawView.undo();
     }
 
-    /**
-     * Called when the button for free drawing is clicked.
-     * Change the drawing mode only if the user currently does not draw on the canvas.
-     *
-     * @param v not used.
-     */
-    public void freeDrawingModeClick(View v) {
+
+    /*public void freeDrawingModeClick(View v) {
         if (!drawView.isDrawing()) {
             buttonFreeMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
             buttonLineMode.setBackground(defaultButtonBackground);
            // drawView.setLineMode(false);
         }
     }
-
-    public void changeDrawingModeClick(View v){
-        if (!drawView.isDrawing()) {
-            if (v.getId() == R.id.button_free_mode){
-                lineMode = LineMode.FREE;
-                buttonFreeMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
-                buttonLineMode.setBackground(defaultButtonBackground);
-            }else if (v.getId() == R.id.button_line_mode){
-                lineMode = lineMode.LINE;
-                buttonLineMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
-                buttonFreeMode.setBackground(defaultButtonBackground);
-            }
-            drawView.setLineMode(lineMode);
-        }
-    }
-
-    /**
+        /**
      * Called when the button for line drawing is clicked.
      * Change the drawing mode only if the user currently does not draw on the canvas.
      *
      * @param v not used.
-     */
+
     public void lineDrawingModeClick(View v) {
         if (!drawView.isDrawing()) {
             buttonFreeMode.setBackground(defaultButtonBackground);
             buttonLineMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
            // drawView.setLineMode(true);
+        }
+    }
+     */
+
+
+    /**
+     * Called when the one of the line mode buttons is clicked,
+     * e.g. the line mode should change.
+     *
+     * Change the drawing mode only if the user currently does not draw on the canvas.
+     * TODO: das hört sich scheiße an, stimmt das?
+     * @param v is the view of the clicked button.
+     */
+    public void changeDrawingModeClick(View v){
+
+        int buttonID = v.getId();
+
+        if (!drawView.isDrawing()) {
+            if (buttonID == R.id.button_free_mode){
+                lineMode = LineMode.FREE;
+                buttonFreeMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
+                buttonLineMode.setBackground(defaultButtonBackground);
+            }else if (buttonID == R.id.button_line_mode){
+                lineMode = lineMode.LINE;
+                buttonLineMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
+                buttonFreeMode.setBackground(defaultButtonBackground);
+            }
+            drawView.setLineMode(lineMode);
         }
     }
 
