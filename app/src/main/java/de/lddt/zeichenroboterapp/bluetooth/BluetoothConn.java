@@ -120,12 +120,14 @@ public class BluetoothConn{
      * Close the outputStream and the bluetooth connection.
      */
     public static void close() {
-        try {
-            brickConn.getDataIn().close();
-            brickConn.getDataOut().close();
-            brickConn.getNXTComm().close();
-        } catch (IOException | NullPointerException e) {
-            e.printStackTrace();
+        if (brickConn != null) {
+            try {
+                brickConn.getDataIn().close();
+                brickConn.getDataOut().close();
+                brickConn.getNXTComm().close();
+            } catch (IOException | NullPointerException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
