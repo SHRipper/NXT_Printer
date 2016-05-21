@@ -15,14 +15,16 @@ public class VectorConverter {
      * @param accuracyDeg tolerance value needed for optimization.
      * @return a List of direction vectors
      */
-    public static List<Vector2D> positionVToDirectionV(List<Vector2D> posVList, float accuracyDeg) {
+    public static List<Vector2D> posVToDirVList(List<Vector2D> posVList, float accuracyDeg) {
+        //leave recorded Vectors untouched
+        List<Vector2D> optimizedVList = new ArrayList<>(posVList);
         //remove unnecessary position Vectors
-        posVList = optimizePosVectors(posVList, accuracyDeg);
+        optimizedVList = optimizePosVectors(optimizedVList, accuracyDeg);
 
         //create a List of direction Vectors which will be drawn by the robot
         List<Vector2D> dirVList = new ArrayList<>();
         Vector2D temp = new Vector2D(0, 0);
-        for(Vector2D vector : posVList) { //create directions
+        for(Vector2D vector : optimizedVList) { //create directions
             if (vector.x == Short.MAX_VALUE && vector.y == Short.MAX_VALUE) {
                 dirVList.add(new Vector2D(Short.MAX_VALUE, Short.MAX_VALUE));
             } else {
