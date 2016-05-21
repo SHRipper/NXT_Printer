@@ -201,9 +201,8 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Returns a MyBrick instance with name and mac address specified in the resource file
-     *
-     * @return
+     * Creates a MyBrick instance with name and mac address specified in the resource file
+     * @return the created instance
      */
     private MyBrick getDefaultBrick() {
         return new MyBrick(getString(R.string.brick_name),
