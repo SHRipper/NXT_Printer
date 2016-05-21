@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\intermediates\\res\\merged\\debug\\anim\\anim_fade_out.xml",
+        "source": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\anim\\anim_fade_out.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\intermediates\\res\\merged\\debug\\anim\\anim_fade_in.xml",
+        "source": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\anim\\anim_fade_in.xml"
+    }
+]

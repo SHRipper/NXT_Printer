@@ -1,13 +1,22 @@
 package de.lddt.zeichenroboterapp;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -27,6 +36,7 @@ public class MainActivity extends Activity {
     private DrawView drawView;
     private Button buttonFreeMode, buttonLineMode;
     private Drawable defaultButtonBackground;
+    Animation animFadeOut, animFadeIn;
 
     private ProgressDialog dialog;
     private Toast toast;
@@ -72,12 +82,44 @@ public class MainActivity extends Activity {
 
     /**
      * Called when the "CLEAR" button is clicked.
-     * Tells the drawView to remove all drawn paths.
+     * The DrawView changes its color to the color of the brush
+     * and then to its default again.
+     *
+     * The animation takes 300 milliseconds
+     *
+     * After this process the border of the DrawView is reset.
      *
      * @param v not used.
      */
     public void clearCanvasClick(View v) {
-        drawView.clear();
+
+
+        final int colorWhite = getResources().getColor(R.color.canvas_background_color);
+        final int colorBlack = getResources().getColor(R.color.final_draw_color);
+        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorWhite, colorBlack);
+        colorAnimation.setDuration(300);
+        colorAnimation.setRepeatMode(ValueAnimator.REVERSE);
+        colorAnimation.setRepeatCount(1);
+        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animator) {
+                drawView.setBackgroundColor((int) animator.getAnimatedValue());
+                if(((ColorDrawable)drawView.getBackground()).getColor() == colorBlack){
+                    drawView.clear();
+                }
+
+            }
+        });
+        colorAnimation.start();
+
+        // set border of the DrawView as soon as the animation finished
+        colorAnimation.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                drawView.setBackgroundResource(R.drawable.draw_view_background);
+            }
+        });
     }
 
     /**
@@ -93,10 +135,11 @@ public class MainActivity extends Activity {
     /**
      * Called when the button for free drawing is clicked.
      * Change the drawing mode only if the user currently does not draw on the canvas.
+     *
      * @param v not used.
      */
     public void freeDrawingModeClick(View v) {
-        if(!drawView.isDrawing()) {
+        if (!drawView.isDrawing()) {
             buttonFreeMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
             buttonLineMode.setBackground(defaultButtonBackground);
             drawView.setLineMode(false);
@@ -106,10 +149,11 @@ public class MainActivity extends Activity {
     /**
      * Called when the button for line drawing is clicked.
      * Change the drawing mode only if the user currently does not draw on the canvas.
+     *
      * @param v not used.
      */
     public void lineDrawingModeClick(View v) {
-        if(!drawView.isDrawing()) {
+        if (!drawView.isDrawing()) {
             buttonFreeMode.setBackground(defaultButtonBackground);
             buttonLineMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
             drawView.setLineMode(true);
@@ -120,6 +164,7 @@ public class MainActivity extends Activity {
      * Called when the "SEND" button is clicked.
      * Check if something is drawn and bluetooth is enabled.
      * Try to transfer the vectors to the brick.
+     *
      * @param v not used.
      */
     public void sendClick(View v) {
@@ -128,7 +173,7 @@ public class MainActivity extends Activity {
                 posVToDirVList(drawView.getPosVList(), accuracyDeg);
 
         //Check if nothing is drawn, show error Toast and cancel operation.
-        if(directionVectorList.size() == 0) {
+        if (directionVectorList.size() == 0) {
             showToast(getString(R.string.nothing_drawn));
             return;
         }
@@ -141,7 +186,7 @@ public class MainActivity extends Activity {
         }
 
         //For Debug display how many vectors are excluded because of the optimization algorithm.
-        showToast("Vector optimization kicked out " + ((drawView.getPosVList().size() -1) - directionVectorList.size()) + "/" + drawView.getPosVList().size()+ " vectors.");
+        showToast("Vector optimization kicked out " + ((drawView.getPosVList().size() - 1) - directionVectorList.size()) + "/" + drawView.getPosVList().size() + " vectors.");
 
         //start to transfer the vectors to the brick in a secont thread.
         service.execute(directionVectorList);
@@ -164,12 +209,13 @@ public class MainActivity extends Activity {
 
         /**
          * Show progress dialog.
-         * @param progress the number of packages successfully sent.
+         *
+         * @param progress     the number of packages successfully sent.
          * @param packageCount the total number of packages.
          */
         @Override
         public void onProgressUpdate(int progress, int packageCount) {
-            if(dialog.getMax() != packageCount) {
+            if (dialog.getMax() != packageCount) {
                 dialog.cancel();
                 dialog = createDialog(getString(R.string.send_dialog_title),
                         getString(R.string.send_dialog_message));
@@ -201,10 +247,11 @@ public class MainActivity extends Activity {
 
     /**
      * Show toast on the screen. Cancel currently displayed toasts.
+     *
      * @param message the message to be displayed.
      */
     private void showToast(String message) {
-        if(toast != null) {
+        if (toast != null) {
             toast.cancel();
         }
         toast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG);
@@ -213,7 +260,8 @@ public class MainActivity extends Activity {
 
     /**
      * Create a ProgressDialog instance. The Dialog is not cancelable.
-     * @param title the title of tje dialog.
+     *
+     * @param title   the title of tje dialog.
      * @param message the message of the dialog.
      * @return the created dialog.
      */
@@ -236,6 +284,7 @@ public class MainActivity extends Activity {
 
     /**
      * Creates a MyBrick instance with name and mac address specified in the resource file
+     *
      * @return the created instance
      */
     private MyBrick getDefaultBrick() {

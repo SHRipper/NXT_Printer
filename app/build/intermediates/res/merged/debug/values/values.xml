@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_color">#2196f3</color>
+    <color name="canvas_background_color">#eeeeee</color>
+    <color name="canvas_border_color">#424242</color>
+    <color name="canvas_color_fade_out">#000000</color>
+    <color name="final_draw_color">#212121</color>
+    <color name="hint_draw_color">#bdbdbd</color>
+    <color name="transparent">@android:color/transparent</color>
+    <integer name="grid_length">500</integer>
+    <integer name="optimization_accuracy_degs">4</integer>
+    <string name="app_name">Zeichenroboter App</string>
+    <string name="bluetooth_disabled">Bluetooth ist deaktiviert!\nBitte aktiviere zuerst Bluetooth</string>
+    <string name="brick_mac_address">00:16:53:1C:46:C7</string>
+    <string name="brick_name">NummerS04</string>
+    <string name="connect_dialog_message">Verbindung wird hergestellt.</string>
+    <string name="connect_dialog_title">Verbinden…</string>
+    <string name="connection_failed">Fehler beim Herstellen der Verbindung!</string>
+    <string name="data_transfer_failed">Fehler beim Senden der Daten!</string>
+    <string name="data_transfer_success">Daten erfolgreich gesendet!</string>
+    <string name="nothing_drawn">Bitte fertige zuerst eine Zeichnung an!</string>
+    <string name="reset_button_name">Clear</string>
+    <string name="revert_button_name">Undo</string>
+    <string name="send_button_name">Send</string>
+    <string name="send_dialog_message">Sende Daten an den Brick</string>
+    <string name="send_dialog_title">Senden…</string>
+</resources>

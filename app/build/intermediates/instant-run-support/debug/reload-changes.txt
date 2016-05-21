@@ -1,0 +1,5 @@
+CHANGED,C:\Users\Lukas\Documents\zeichenrobotor-android-app\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
+CHANGED,C:\Users\Lukas\Documents\zeichenrobotor-android-app\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\de\lddt\zeichenroboterapp\MainActivity$2$override.class
+CHANGED,C:\Users\Lukas\Documents\zeichenrobotor-android-app\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\de\lddt\zeichenroboterapp\MainActivity$override.class
+CHANGED,C:\Users\Lukas\Documents\zeichenrobotor-android-app\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\de\lddt\zeichenroboterapp\MainActivity$Listener$override.class
+CHANGED,C:\Users\Lukas\Documents\zeichenrobotor-android-app\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\de\lddt\zeichenroboterapp\MainActivity$1$override.class

@@ -13,8 +13,10 @@
     <string name="nothing_drawn">Bitte fertige zuerst eine Zeichnung an!</string>
     <string name="connection_failed">Fehler beim Herstellen der Verbindung!</string>
     <string name="data_transfer_failed">Fehler beim Senden der Daten!</string>
+
     <!-- success messages -->
     <string name="data_transfer_success">Daten erfolgreich gesendet!</string>
+
     <!-- loading/progress dialog -->
     <string name="connect_dialog_title">Verbinden&#8230;</string>
     <string name="connect_dialog_message">Verbindung wird hergestellt.</string>

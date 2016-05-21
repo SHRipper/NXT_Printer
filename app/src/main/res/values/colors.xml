@@ -6,6 +6,7 @@
 
     <!-- draw View -->
     <color name="canvas_background_color">#eeeeee</color>
+    <color name="canvas_color_fade_out">#000000</color>
     <color name="canvas_border_color">#424242</color>
     <color name="hint_draw_color">#bdbdbd</color>
     <color name="final_draw_color">#212121</color>
