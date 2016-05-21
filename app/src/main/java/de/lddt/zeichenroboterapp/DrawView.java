@@ -54,8 +54,8 @@ public class DrawView extends SurfaceView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         paint.setStrokeWidth(getStrokeWidth());
-        for(int i = 0; i < liveDrawPaths.size(); i++) {
-            if(drawing && i == liveDrawPaths.size()-1) {
+        for (int i = 0; i < liveDrawPaths.size(); i++) {
+            if (drawing && i == liveDrawPaths.size() - 1) {
                 paint.setColor(getResources().getColor(R.color.hint_draw_color));
             } else {
                 paint.setColor(getResources().getColor(R.color.final_draw_color));
@@ -70,7 +70,7 @@ public class DrawView extends SurfaceView {
         invalidate();
     }
 
-    public void revert(){
+    public void revert() {
         if (posVPaths.size() > 0 && liveDrawPaths.size() > 0) {
             posVPaths.remove(posVPaths.size() - 1);
             liveDrawPaths.remove(liveDrawPaths.size() - 1);
@@ -85,12 +85,12 @@ public class DrawView extends SurfaceView {
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 drawing = true;
-                if(lineMode) {
+                if (lineMode) {
                     startVector = new Vector2D(event.getX(), event.getY());
                 }
 
                 liveDrawPaths.add(new Path());
-                liveDrawPaths.get(liveDrawPaths.size()-1).moveTo(event.getX(), event.getY());
+                liveDrawPaths.get(liveDrawPaths.size() - 1).moveTo(event.getX(), event.getY());
 
                 newVector = createVector(event.getX(), event.getY());
                 posVPaths.add(new ArrayList<Vector2D>());
@@ -100,14 +100,14 @@ public class DrawView extends SurfaceView {
                 return true;
 
             case MotionEvent.ACTION_MOVE:
-                if(drawing) {
-                    if(lineMode) {
+                if (drawing) {
+                    if (lineMode) {
                         liveDrawPaths.get(liveDrawPaths.size() - 1).rewind();
                         liveDrawPaths.get(liveDrawPaths.size() - 1).moveTo(startVector.x, startVector.y);
                     }
                     liveDrawPaths.get(liveDrawPaths.size() - 1).lineTo(event.getX(), event.getY());
 
-                    if(!lineMode) {
+                    if (!lineMode) {
                         newVector = createVector(event.getX(), event.getY());
                         List<Vector2D> currentList = posVPaths.get(posVPaths.size() - 1);
                         if (!currentList.get(currentList.size() - 1).equals(newVector)) {
@@ -120,14 +120,13 @@ public class DrawView extends SurfaceView {
                 return true;
 
             case MotionEvent.ACTION_UP:
-                if(drawing) {
-                    drawing = false;
-
-                    if(lineMode) {
-                        newVector = createVector(event.getX(), event.getY());
-                        posVPaths.get(posVPaths.size() - 1).add(newVector);
-                    }
+                if (drawing && lineMode) {
+                    newVector = createVector(event.getX(), event.getY());
+                    posVPaths.get(posVPaths.size() - 1).add(newVector);
                 }
+                drawing = false;
+
+                invalidate();
                 return true;
         }
         return false;
@@ -135,12 +134,13 @@ public class DrawView extends SurfaceView {
 
     /**
      * Create a new Vector2D instance.
+     *
      * @param x value of the new vector.
      * @param y value of the new vector.
      * @return the new vector. The x and y value are projected on the grid the nxt robot can process.
      */
     private Vector2D createVector(float x, float y) {
-        Vector2D v = new Vector2D(x,y);
+        Vector2D v = new Vector2D(x, y);
         int gridLength = getResources().getInteger(R.integer.grid_length);
         applyGrid(v, this.getMeasuredWidth(), this.getMeasuredHeight(), gridLength);
         applyBounds(v, gridLength);
@@ -151,12 +151,13 @@ public class DrawView extends SurfaceView {
      * Create a List with all vectors of the recorded lines.
      * Different lines are separate with a special vector.
      * The x and y value of this vector are set to Short.Max_Value.
+     *
      * @return list with all vectors.
      */
     public List<Vector2D> getPosVList() {
         List<Vector2D> completeList = new ArrayList<>();
         for (List<Vector2D> vectorList : posVPaths) {
-            if(completeList.size() > 0) {
+            if (completeList.size() > 0) {
                 completeList.add(new Vector2D(Short.MAX_VALUE, Short.MAX_VALUE));
             }
             completeList.addAll(vectorList);
@@ -166,10 +167,11 @@ public class DrawView extends SurfaceView {
 
     /**
      * Calculates the stroke width in pixels. The width depends on the size of the draw view canvas.
+     *
      * @return stroke width
      */
     private float getStrokeWidth() {
-        return ((float)this.getMeasuredHeight()) / 150;
+        return ((float) this.getMeasuredHeight()) / 150;
     }
 
     public void setLineMode(boolean lineMode) {
