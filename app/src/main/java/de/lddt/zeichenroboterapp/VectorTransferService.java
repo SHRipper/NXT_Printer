@@ -1,6 +1,5 @@
 package de.lddt.zeichenroboterapp;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
 import java.util.List;
@@ -15,17 +14,17 @@ import de.lddt.zeichenroboterapp.math.vector.Vector2D;
  */
 public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, Boolean> {
     private TransferListener listener;
-    private Context context;
+    private MyBrick brick;
     private final int maxVectors;
 
-    public VectorTransferService(Context context) {
-        this.context = context;
+    public VectorTransferService(MyBrick brick) {
+        this.brick = brick;
         this.maxVectors = 63;
     }
 
     @Override
     protected Boolean doInBackground(List<Vector2D>... params) {
-        boolean success = BluetoothConn.connectTo(getDefaultBrick());
+        boolean success = BluetoothConn.connectTo(brick);
         if (!success) {return false;}
 
         List<Vector2D> vectorList = params[0];
@@ -76,11 +75,6 @@ public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, Bo
 
     private boolean waitForBrick() {
         return BluetoothConn.waitForResponse();
-    }
-
-    private MyBrick getDefaultBrick() {
-        return new MyBrick(context.getString(R.string.brick_name),
-                context.getString(R.string.brick_mac_address));
     }
 
     public void registerListener(TransferListener listener) {

@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import de.lddt.zeichenroboterapp.bluetooth.BluetoothConn;
+import de.lddt.zeichenroboterapp.entity.MyBrick;
 import de.lddt.zeichenroboterapp.listener.TransferListener;
 import de.lddt.zeichenroboterapp.math.vector.Vector2D;
 
@@ -33,7 +34,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        service = new VectorTransferService(this);
+        service = new VectorTransferService(getDefaultBrick());
         service.registerListener(new Listener());
     }
 
@@ -197,5 +198,15 @@ public class MainActivity extends Activity {
         Intent intent = new Intent();
         intent.setAction(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS);
         startActivity(intent);
+    }
+
+    /**
+     * Returns a MyBrick instance with name and mac address specified in the resource file
+     *
+     * @return
+     */
+    private MyBrick getDefaultBrick() {
+        return new MyBrick(getString(R.string.brick_name),
+                getString(R.string.brick_mac_address));
     }
 }
