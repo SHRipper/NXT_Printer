@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
      * @param v the button, not used.
      */
     public void sendClick(View v) {
-        float accuracyDeg = getResources().getInteger(R.integer.optimization_accuracy);
+        float accuracyDeg = getResources().getInteger(R.integer.optimization_accuracy_degs);
         List<Vector2D> directionVectorList =
                 posVToDirVList(drawView.getPosVList(), accuracyDeg);
 
