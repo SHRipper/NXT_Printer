@@ -35,6 +35,7 @@ public class MainActivity extends Activity {
     private Drawable defaultButtonBackground;
     private LineMode lineMode;
     private int animationDurationFade;
+    private boolean menuIsHidden;
 
     private int clickCounter;
 
@@ -65,6 +66,7 @@ public class MainActivity extends Activity {
         defaultButtonBackground = buttonLineMode.getBackground();
 
         clickCounter = 0;
+        menuIsHidden = true;
         animationDurationFade = getResources().getInteger(R.integer.animation_duration_ms);
     }
 
@@ -136,30 +138,6 @@ public class MainActivity extends Activity {
         drawView.undo();
     }
 
-    //TODO: Löschen oder nicht löschen, das ist hier die frage.
-    /*public void freeDrawingModeClick(View v) {
-        if (!drawView.isDrawing()) {
-            buttonFreeMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
-            buttonLineMode.setBackground(defaultButtonBackground);
-           // drawView.setLineMode(false);
-        }
-    }
-        /**
-     * Called when the button for line drawing is clicked.
-     * Change the drawing mode only if the user currently does not draw on the canvas.
-     *
-     * @param v not used.
-
-    public void lineDrawingModeClick(View v) {
-        if (!drawView.isDrawing()) {
-            buttonFreeMode.setBackground(defaultButtonBackground);
-            buttonLineMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
-           // drawView.setLineMode(true);
-        }
-    }
-     */
-
-
     /**
      * Called when the one of the line mode buttons is clicked,
      * e.g. the line mode should change.
@@ -173,7 +151,7 @@ public class MainActivity extends Activity {
 
         int buttonID = v.getId();
 
-        if (!drawView.isDrawing()) {
+        if (!drawView.isDrawing() && !menuIsHidden) {
             if (buttonID == R.id.button_free_mode) {
                 lineMode = LineMode.FREE;
                 buttonFreeMode.setBackgroundResource(R.drawable.linemode_child_button_shape_selected);
@@ -191,12 +169,12 @@ public class MainActivity extends Activity {
     public void lineModeChooserClick(View v) {
         clickCounter++;
 
-        if (clickCounter == 1) {
+        if (menuIsHidden) {
             // fade out chooser button
             // fade in line and free mode buttons
 
             showLineModeMenu();
-        } else if (clickCounter == 2) {
+        } else if (!menuIsHidden) {
             clickCounter = 0;
 
             // fade in chooser button
@@ -219,25 +197,26 @@ public class MainActivity extends Activity {
 
         buttonLineMode.startAnimation(animFadeOut);
         buttonLineMode.animate().setDuration(animationDurationFade).translationY(0).start();
+
+        menuIsHidden = true;
     }
 
     private void showLineModeMenu() {
 
         // Chooser button fades out and moves down
-        buttonLineModeChooser.animate().translationY(250).setDuration(animationDurationFade).start();
+        buttonLineModeChooser.animate().translationY(240).setDuration(animationDurationFade).start();
         Animation animFadeOut = AnimationUtils.loadAnimation(this, R.anim.button_chooser_fade_out);
         buttonLineModeChooser.startAnimation(animFadeOut);
 
         // line and free mode button fade in
         Animation animFadeIn = AnimationUtils.loadAnimation(this, R.anim.button_mode_fade_in);
-        buttonFreeMode.setVisibility(View.VISIBLE);
         buttonFreeMode.startAnimation(animFadeIn);
         buttonFreeMode.animate().setDuration(animationDurationFade).translationY(60).start();
 
-        buttonLineMode.setVisibility(View.VISIBLE);
         buttonLineMode.startAnimation(animFadeIn);
         buttonLineMode.animate().setDuration(animationDurationFade).translationY(-90).start();
 
+        menuIsHidden = false;
     }
 
     /**

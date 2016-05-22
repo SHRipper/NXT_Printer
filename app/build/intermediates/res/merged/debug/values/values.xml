@@ -9,7 +9,7 @@
     <color name="final_draw_color">#212121</color>
     <color name="hint_draw_color">#bdbdbd</color>
     <color name="transparent">@android:color/transparent</color>
-    <integer name="animation_duration_ms">1000</integer>
+    <integer name="animation_duration_ms">500</integer>
     <integer name="grid_length">500</integer>
     <integer name="optimization_accuracy_degs">4</integer>
     <string name="app_name">Zeichenroboter App</string>

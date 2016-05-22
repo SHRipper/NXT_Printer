@@ -18,99 +18,70 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4be81eab-d139-4a06-84b7-5e55e86219c5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/anim/button_chooser_fade_in.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/anim/button_chooser_fade_out.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/anim/button_mode_fade_in.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/linemode_child_button_shape_unselected.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values/integers.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/anim/button_fade_in.xml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/anim/button_fade_out.xml" afterPath="$PROJECT_DIR$/app/src/main/res/anim/button_mode_fade_out.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/linemode_child_button_shape.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/linemode_child_button_shape_selected.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/reload-changes.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/DrawView$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/MainActivity$1$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/MainActivity$2$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/MainActivity$Listener$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/R$attr$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/R$color$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/R$drawable$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/R$integer$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/R$layout$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/R$mipmap$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/R$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/R$string$override.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/DrawView.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/DrawView.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/MainActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/MainActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/MainActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/MainActivity$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/MainActivity$Listener.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/MainActivity$Listener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/MainActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/MainActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/R$attr.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/R$attr.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/R$color.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/R$color.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/R$drawable.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/R$integer.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/R$layout.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/R$mipmap.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/R$mipmap.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/R$string.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/de/lddt/zeichenroboterapp/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/DrawView.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/DrawView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/MainActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/MainActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/MainActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/MainActivity$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/MainActivity$Listener.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/MainActivity$Listener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/MainActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/MainActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/R$attr.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/R$attr.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/R$color.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/R$color.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/R$drawable.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/R$integer.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/R$layout.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/R$mipmap.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/R$mipmap.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/R$string.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/de/lddt/zeichenroboterapp/R$string.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/classes.zip" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/classes.zip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/resources.zip" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/resources.zip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug-androidTest.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_5/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_5/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/DrawView.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/DrawView.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/MainActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/MainActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/MainActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/MainActivity$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/MainActivity$Listener.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/MainActivity$Listener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/MainActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/MainActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$anim.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$anim.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$attr.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$attr.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$color.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$color.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$drawable.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$integer.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$layout.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$mipmap.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$mipmap.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$string.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/de/lddt/zeichenroboterapp/R$string.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/DrawView$override.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/DrawView$override.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/MainActivity$1$override.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/MainActivity$1$override.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/MainActivity$2$override.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/MainActivity$2$override.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/MainActivity$Listener$override.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/MainActivity$Listener$override.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/MainActivity$override.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/MainActivity$override.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/R$drawable$override.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/R$drawable$override.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/R$integer$override.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/R$integer$override.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/DrawView.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/DrawView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/R$id$override.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/de/lddt/zeichenroboterapp/R$id$override.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/MainActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/MainActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/MainActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/MainActivity$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/MainActivity$Listener.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/MainActivity$Listener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/MainActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/MainActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$anim.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$anim.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$attr.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$attr.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$color.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$color.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$drawable.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$integer.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$layout.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$mipmap.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$mipmap.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$string.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/de/lddt/zeichenroboterapp/R$string.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/de/lddt/zeichenroboterapp/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/de/lddt/zeichenroboterapp/R.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi/values.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi/values.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/anim.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/anim.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/drawable.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/drawable.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/drawable-hdpi-v4.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/drawable-hdpi-v4.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/reload-changes.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/reload-changes.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/activity_main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values/values.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values/values.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/restart-dex/debug/build-info.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/restart-dex/debug/build-info.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/buildId.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/buildId.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/de/lddt/zeichenroboterapp/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/de/lddt/zeichenroboterapp/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/integers.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/integers.xml" />
     </list>
     <ignored path="zeichenrobotor-android-app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -138,14 +109,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30612245">
-              <caret line="58" column="12" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="52" />
+            <state vertical-scroll-proportion="-1.2142857">
+              <caret line="44" column="41" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -161,25 +132,45 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/de/lddt/zeichenroboterapp/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="221" column="5" selection-start-line="221" selection-start-column="5" selection-end-line="221" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.29616725">
+              <caret line="183" column="0" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
               <folding>
-                <element signature="e#2530#2588#0" expanded="true" />
-                <element signature="e#9500#9563#0" expanded="true" />
-                <element signature="e#9825#9858#0" expanded="true" />
-                <element signature="e#10060#10098#0" expanded="true" />
-                <element signature="e#10949#10989#0" expanded="true" />
-                <element signature="e#11011#11053#0" expanded="true" />
-                <element signature="e#11507#11544#0" expanded="true" />
-                <element signature="e#11570#11609#0" expanded="true" />
-                <element signature="e#12023#12064#0" expanded="true" />
-                <element signature="e#12254#12294#0" expanded="true" />
-                <element signature="e#13659#13689#0" expanded="true" />
-                <element signature="e#13707#13744#0" expanded="true" />
+                <element signature="e#2593#2651#0" expanded="true" />
+                <element signature="e#8690#8753#0" expanded="true" />
+                <element signature="e#9015#9048#0" expanded="true" />
+                <element signature="e#9250#9288#0" expanded="true" />
+                <element signature="e#10139#10179#0" expanded="true" />
+                <element signature="e#10201#10243#0" expanded="true" />
+                <element signature="e#10697#10734#0" expanded="true" />
+                <element signature="e#10760#10799#0" expanded="true" />
+                <element signature="e#11213#11254#0" expanded="true" />
+                <element signature="e#11444#11484#0" expanded="true" />
+                <element signature="e#12849#12879#0" expanded="true" />
+                <element signature="e#12897#12934#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="integers.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/integers.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.3076923">
+              <caret line="2" column="45" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1820,12 +1811,12 @@
         <option value="$PROJECT_DIR$/app/src/main/res/anim/button_linemode_fade_in.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/linemode_child_button_shape_selected.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/linemode_child_button_shape_unselected.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/integers.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/anim/button_mode_fade_in.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/anim/button_mode_fade_out.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/anim/button_chooser_fade_out.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/anim/button_chooser_fade_in.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/integers.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/de/lddt/zeichenroboterapp/MainActivity.java" />
       </list>
     </option>
@@ -2318,7 +2309,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463907798801</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="implemented draw mode menu and animation with bugs">
+      <created>1463913718894</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1463913718894</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2355,7 +2352,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997773" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2378,11 +2375,38 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added method descriptions" />
     <MESSAGE value="Implemented new button design. &#10;Implemented chooser button animation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented new button design. &#10;Implemented chooser button animation" />
+    <MESSAGE value="implemented draw mode menu and animation with bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented draw mode menu and animation with bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/de/lddt/zeichenroboterapp/MainActivity.java</url>
+          <line>153</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/de/lddt/zeichenroboterapp/MainActivity.java</url>
+          <line>218</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/de/lddt/zeichenroboterapp/MainActivity.java</url>
+          <line>200</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/de/lddt/zeichenroboterapp/MainActivity.java</url>
+          <line>169</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2403,18 +2427,18 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="165" column="7" selection-start-line="165" selection-start-column="7" selection-end-line="165" selection-end-column="7" />
           <folding>
-            <element signature="e#2530#2588#0" expanded="true" />
-            <element signature="e#9500#9563#0" expanded="true" />
-            <element signature="e#9825#9858#0" expanded="true" />
-            <element signature="e#10060#10098#0" expanded="true" />
-            <element signature="e#10949#10989#0" expanded="true" />
-            <element signature="e#11011#11053#0" expanded="true" />
-            <element signature="e#11507#11544#0" expanded="true" />
-            <element signature="e#11570#11609#0" expanded="true" />
-            <element signature="e#12023#12064#0" expanded="true" />
-            <element signature="e#12254#12294#0" expanded="true" />
-            <element signature="e#13659#13689#0" expanded="true" />
-            <element signature="e#13707#13744#0" expanded="true" />
+            <element signature="e#2593#2651#0" expanded="true" />
+            <element signature="e#8690#8753#0" expanded="true" />
+            <element signature="e#9015#9048#0" expanded="true" />
+            <element signature="e#9250#9288#0" expanded="true" />
+            <element signature="e#10139#10179#0" expanded="true" />
+            <element signature="e#10201#10243#0" expanded="true" />
+            <element signature="e#10697#10734#0" expanded="true" />
+            <element signature="e#10760#10799#0" expanded="true" />
+            <element signature="e#11213#11254#0" expanded="true" />
+            <element signature="e#11444#11484#0" expanded="true" />
+            <element signature="e#12849#12879#0" expanded="true" />
+            <element signature="e#12897#12934#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2424,16 +2448,16 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1463913068923" expanded="true" signature="59:197038" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="95:442" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="108:139" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="153:427" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="237:412" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="254:396" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="481:539" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="626:742" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="720:742" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="196964:197027" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="59:178276" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="95:442" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="108:139" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="153:427" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="237:412" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="254:396" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="481:539" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="626:742" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="720:742" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="178202:178265" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -2478,18 +2502,18 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="162" column="13" selection-start-line="162" selection-start-column="13" selection-end-line="162" selection-end-column="13" />
           <folding>
-            <element signature="e#2530#2588#0" expanded="true" />
-            <element signature="e#9500#9563#0" expanded="true" />
-            <element signature="e#9825#9858#0" expanded="true" />
-            <element signature="e#10060#10098#0" expanded="true" />
-            <element signature="e#10949#10989#0" expanded="true" />
-            <element signature="e#11011#11053#0" expanded="true" />
-            <element signature="e#11507#11544#0" expanded="true" />
-            <element signature="e#11570#11609#0" expanded="true" />
-            <element signature="e#12023#12064#0" expanded="true" />
-            <element signature="e#12254#12294#0" expanded="true" />
-            <element signature="e#13659#13689#0" expanded="true" />
-            <element signature="e#13707#13744#0" expanded="true" />
+            <element signature="e#2593#2651#0" expanded="true" />
+            <element signature="e#8690#8753#0" expanded="true" />
+            <element signature="e#9015#9048#0" expanded="true" />
+            <element signature="e#9250#9288#0" expanded="true" />
+            <element signature="e#10139#10179#0" expanded="true" />
+            <element signature="e#10201#10243#0" expanded="true" />
+            <element signature="e#10697#10734#0" expanded="true" />
+            <element signature="e#10760#10799#0" expanded="true" />
+            <element signature="e#11213#11254#0" expanded="true" />
+            <element signature="e#11444#11484#0" expanded="true" />
+            <element signature="e#12849#12879#0" expanded="true" />
+            <element signature="e#12897#12934#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2570,16 +2594,16 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1463913068923" expanded="true" signature="59:197038" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="95:442" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="108:139" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="153:427" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="237:412" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="254:396" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="481:539" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="626:742" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="720:742" placeholder="..." />
-            <marker date="1463913068923" expanded="true" signature="196964:197027" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="59:178276" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="95:442" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="108:139" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="153:427" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="237:412" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="254:396" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="481:539" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="626:742" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="720:742" placeholder="..." />
+            <marker date="1463913887243" expanded="true" signature="178202:178265" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -2604,14 +2628,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.153846">
           <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/integers.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
           <folding />
         </state>
       </provider>
@@ -2656,27 +2672,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/de/lddt/zeichenroboterapp/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="221" column="5" selection-start-line="221" selection-start-column="5" selection-end-line="221" selection-end-column="5" />
-          <folding>
-            <element signature="e#2530#2588#0" expanded="true" />
-            <element signature="e#9500#9563#0" expanded="true" />
-            <element signature="e#9825#9858#0" expanded="true" />
-            <element signature="e#10060#10098#0" expanded="true" />
-            <element signature="e#10949#10989#0" expanded="true" />
-            <element signature="e#11011#11053#0" expanded="true" />
-            <element signature="e#11507#11544#0" expanded="true" />
-            <element signature="e#11570#11609#0" expanded="true" />
-            <element signature="e#12023#12064#0" expanded="true" />
-            <element signature="e#12254#12294#0" expanded="true" />
-            <element signature="e#13659#13689#0" expanded="true" />
-            <element signature="e#13707#13744#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/draw_view_background.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2690,9 +2685,46 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30612245">
-          <caret line="58" column="12" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="52" />
+        <state vertical-scroll-proportion="-1.2142857">
+          <caret line="44" column="41" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/integers.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3076923">
+          <caret line="2" column="45" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/de/lddt/zeichenroboterapp/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29616725">
+          <caret line="183" column="0" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+          <folding>
+            <element signature="e#2593#2651#0" expanded="true" />
+            <element signature="e#8690#8753#0" expanded="true" />
+            <element signature="e#9015#9048#0" expanded="true" />
+            <element signature="e#9250#9288#0" expanded="true" />
+            <element signature="e#10139#10179#0" expanded="true" />
+            <element signature="e#10201#10243#0" expanded="true" />
+            <element signature="e#10697#10734#0" expanded="true" />
+            <element signature="e#10760#10799#0" expanded="true" />
+            <element signature="e#11213#11254#0" expanded="true" />
+            <element signature="e#11444#11484#0" expanded="true" />
+            <element signature="e#12849#12879#0" expanded="true" />
+            <element signature="e#12897#12934#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

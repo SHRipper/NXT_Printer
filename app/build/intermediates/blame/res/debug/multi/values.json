@@ -115,8 +115,8 @@
                     "startLine": 11,
                     "startColumn": 4,
                     "startOffset": 541,
-                    "endColumn": 56,
-                    "endOffset": 593
+                    "endColumn": 55,
+                    "endOffset": 592
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\integers.xml",
@@ -124,8 +124,8 @@
                         "startLine": 2,
                         "startColumn": 4,
                         "startOffset": 57,
-                        "endColumn": 56,
-                        "endOffset": 109
+                        "endColumn": 55,
+                        "endOffset": 108
                     }
                 }
             },
@@ -133,9 +133,9 @@
                 "to": {
                     "startLine": 12,
                     "startColumn": 4,
-                    "startOffset": 598,
+                    "startOffset": 597,
                     "endColumn": 45,
-                    "endOffset": 639
+                    "endOffset": 638
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\config.xml"
@@ -145,9 +145,9 @@
                 "to": {
                     "startLine": 13,
                     "startColumn": 4,
-                    "startOffset": 644,
+                    "startOffset": 643,
                     "endColumn": 58,
-                    "endOffset": 698
+                    "endOffset": 697
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\config.xml"
@@ -157,9 +157,9 @@
                 "to": {
                     "startLine": 14,
                     "startColumn": 4,
-                    "startOffset": 703,
+                    "startOffset": 702,
                     "endColumn": 55,
-                    "endOffset": 754
+                    "endOffset": 753
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
@@ -169,9 +169,9 @@
                 "to": {
                     "startLine": 15,
                     "startColumn": 4,
-                    "startOffset": 759,
+                    "startOffset": 758,
                     "endColumn": 107,
-                    "endOffset": 862
+                    "endOffset": 861
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
@@ -181,9 +181,9 @@
                 "to": {
                     "startLine": 16,
                     "startColumn": 4,
-                    "startOffset": 867,
+                    "startOffset": 866,
                     "endColumn": 63,
-                    "endOffset": 926
+                    "endOffset": 925
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\config.xml"
@@ -193,9 +193,9 @@
                 "to": {
                     "startLine": 17,
                     "startColumn": 4,
-                    "startOffset": 931,
+                    "startOffset": 930,
                     "endColumn": 48,
-                    "endOffset": 975
+                    "endOffset": 974
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\config.xml"
@@ -205,9 +205,9 @@
                 "to": {
                     "startLine": 18,
                     "startColumn": 4,
-                    "startOffset": 980,
+                    "startOffset": 979,
                     "endColumn": 79,
-                    "endOffset": 1055
+                    "endOffset": 1054
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
@@ -217,9 +217,9 @@
                 "to": {
                     "startLine": 19,
                     "startColumn": 4,
-                    "startOffset": 1060,
+                    "startOffset": 1059,
                     "endColumn": 59,
-                    "endOffset": 1115
+                    "endOffset": 1114
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
@@ -229,9 +229,9 @@
                 "to": {
                     "startLine": 20,
                     "startColumn": 4,
-                    "startOffset": 1120,
+                    "startOffset": 1119,
                     "endColumn": 84,
-                    "endOffset": 1200
+                    "endOffset": 1199
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
@@ -241,9 +241,9 @@
                 "to": {
                     "startLine": 21,
                     "startColumn": 4,
-                    "startOffset": 1205,
+                    "startOffset": 1204,
                     "endColumn": 78,
-                    "endOffset": 1279
+                    "endOffset": 1278
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
@@ -253,9 +253,9 @@
                 "to": {
                     "startLine": 22,
                     "startColumn": 4,
-                    "startOffset": 1284,
+                    "startOffset": 1283,
                     "endColumn": 77,
-                    "endOffset": 1357
+                    "endOffset": 1356
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
@@ -265,9 +265,9 @@
                 "to": {
                     "startLine": 23,
                     "startColumn": 4,
-                    "startOffset": 1362,
+                    "startOffset": 1361,
                     "endColumn": 81,
-                    "endOffset": 1439
+                    "endOffset": 1438
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
@@ -277,9 +277,9 @@
                 "to": {
                     "startLine": 24,
                     "startColumn": 4,
-                    "startOffset": 1444,
+                    "startOffset": 1443,
                     "endColumn": 51,
-                    "endOffset": 1491
+                    "endOffset": 1490
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
@@ -289,9 +289,9 @@
                 "to": {
                     "startLine": 25,
                     "startColumn": 4,
-                    "startOffset": 1496,
+                    "startOffset": 1495,
                     "endColumn": 51,
-                    "endOffset": 1543
+                    "endOffset": 1542
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
@@ -301,9 +301,9 @@
                 "to": {
                     "startLine": 26,
                     "startColumn": 4,
-                    "startOffset": 1548,
+                    "startOffset": 1547,
                     "endColumn": 49,
-                    "endOffset": 1593
+                    "endOffset": 1592
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
@@ -313,9 +313,9 @@
                 "to": {
                     "startLine": 27,
                     "startColumn": 4,
-                    "startOffset": 1598,
+                    "startOffset": 1597,
                     "endColumn": 72,
-                    "endOffset": 1666
+                    "endOffset": 1665
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
@@ -325,9 +325,9 @@
                 "to": {
                     "startLine": 28,
                     "startColumn": 4,
-                    "startOffset": 1671,
+                    "startOffset": 1670,
                     "endColumn": 53,
-                    "endOffset": 1720
+                    "endOffset": 1719
                 },
                 "from": {
                     "file": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\src\\main\\res\\values\\strings.xml"
