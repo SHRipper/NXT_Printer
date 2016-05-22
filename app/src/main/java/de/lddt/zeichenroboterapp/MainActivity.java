@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.TrafficStats;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,17 +43,14 @@ public class MainActivity extends Activity {
     private ProgressDialog dialog;
     private Toast toast;
     //Service to perform bluetooth operations in a second thread.
-    private VectorTransferService service;
+    private Listener transferListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Create a Service instance which performs bluetooth operations in a second thread.
-        service = new VectorTransferService(getDefaultBrick());
-        //Register a Listener to update the UI while sending data to the nxt brick.
-        service.registerListener(new Listener());
+        transferListener = new Listener();
     }
 
     @Override
@@ -247,7 +245,11 @@ public class MainActivity extends Activity {
         //For Debug display how many vectors are excluded because of the optimization algorithm.
         showToast("Vector optimization kicked out " + ((drawView.getPosVList().size() - 1) - directionVectorList.size()) + "/" + drawView.getPosVList().size() + " vectors.");
 
-        //start to transfer the vectors to the brick in a secont thread.
+        //Create a Service instance which performs bluetooth operations in a second thread.
+        VectorTransferService service = new VectorTransferService(getDefaultBrick());
+        //Register a Listener to update the UI while sending data to the nxt brick.
+        service.registerListener(transferListener);
+        //start to transfer the vectors to the brick in a second thread.
         service.execute(directionVectorList);
     }
 
