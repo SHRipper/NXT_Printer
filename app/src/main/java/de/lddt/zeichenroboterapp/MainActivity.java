@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.view.ViewPropertyAnimator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.List;
@@ -35,10 +37,11 @@ import static de.lddt.zeichenroboterapp.util.VectorConverter.posVToDirVList;
  */
 public class MainActivity extends Activity {
     private DrawView drawView;
-    private Button buttonFreeMode, buttonLineMode;
+    private ImageButton buttonFreeMode, buttonLineMode,buttonLineModeChooser;
     private Drawable defaultButtonBackground;
     private LineMode lineMode;
 
+    private int clickCounter;
 
     private ProgressDialog dialog;
     private Toast toast;
@@ -61,8 +64,9 @@ public class MainActivity extends Activity {
         super.onStart();
         //Get a reference to important views.
         drawView = (DrawView) findViewById(R.id.main_draw_view);
-        buttonFreeMode = (Button) findViewById(R.id.button_free_mode);
-        buttonLineMode = (Button) findViewById(R.id.button_line_mode);
+        buttonFreeMode = (ImageButton) findViewById(R.id.button_free_mode);
+        buttonLineMode = (ImageButton) findViewById(R.id.button_line_mode);
+        buttonLineModeChooser = (ImageButton) findViewById(R.id.button_line_mode_chooser);
         defaultButtonBackground = buttonLineMode.getBackground();
     }
 
@@ -134,7 +138,7 @@ public class MainActivity extends Activity {
         drawView.undo();
     }
 
-
+    //TODO: Löschen oder nicht löschen, das ist hier die frage.
     /*public void freeDrawingModeClick(View v) {
         if (!drawView.isDrawing()) {
             buttonFreeMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
@@ -182,6 +186,15 @@ public class MainActivity extends Activity {
             }
             drawView.setLineMode(lineMode);
         }
+    }
+
+    public void lineModeChooserClick(View v){
+
+        // Chooser button fades out
+        Animation animFadeOut = AnimationUtils.loadAnimation(this,R.anim.button_fade_out);
+        v.startAnimation(animFadeOut);
+
+
     }
 
     /**

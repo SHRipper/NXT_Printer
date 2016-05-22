@@ -4,36 +4,37 @@
     api-level="23"
     density="xxhdpi"
     format="7"
-    timestamp="28114246428623" >
+    timestamp="8477689252781" >
 
     <task
         name="javac"
-        duration="162" />
+        duration="204" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="17" />
+        duration="44" />
     <task
         name="verifier"
-        duration="2" />
+        duration="5" />
 
+    <artifact
+        location="C:\Users\Lukas\Documents\zeichenrobotor-android-app\app\build\intermediates\res\resources-debug.ap_"
+        type="RESOURCES" />
     <artifact
         location="C:\Users\Lukas\Documents\zeichenrobotor-android-app\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
         type="DEX" />
 
-    <build timestamp="25935467713538" >
+    <build timestamp="8192975020472" >
         <artifact
             location="C:\Users\Lukas\Documents\zeichenrobotor-android-app\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
-    <build timestamp="27915290374599" >
+    <build timestamp="8477689252781" >
         <artifact
             location="C:\Users\Lukas\Documents\zeichenrobotor-android-app\app\build\intermediates\res\resources-debug.ap_"
             type="RESOURCES" />
-    </build>
-    <build timestamp="28114246428623" >
         <artifact
             location="C:\Users\Lukas\Documents\zeichenrobotor-android-app\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
             type="DEX" />
