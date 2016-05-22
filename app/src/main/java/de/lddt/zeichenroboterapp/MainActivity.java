@@ -243,7 +243,7 @@ public class MainActivity extends Activity {
         }
 
         //For Debug display how many vectors are excluded because of the optimization algorithm.
-        showToast("Vector optimization kicked out " + ((drawView.getPosVList().size() - 1) - directionVectorList.size()) + "/" + drawView.getPosVList().size() + " vectors.");
+        showToast("Vector optimization kicked out " + (drawView.getPosVList().size() - directionVectorList.size()) + "/" + drawView.getPosVList().size() + " vectors.");
 
         //Create a Service instance which performs bluetooth operations in a second thread.
         VectorTransferService service = new VectorTransferService(getDefaultBrick());
