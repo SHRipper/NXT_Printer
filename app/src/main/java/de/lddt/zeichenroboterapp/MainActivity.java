@@ -3,23 +3,17 @@ package de.lddt.zeichenroboterapp;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ArgbEvaluator;
-import android.animation.IntEvaluator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -37,9 +31,10 @@ import static de.lddt.zeichenroboterapp.util.VectorConverter.posVToDirVList;
  */
 public class MainActivity extends Activity {
     private DrawView drawView;
-    private ImageButton buttonFreeMode, buttonLineMode,buttonLineModeChooser;
+    private ImageButton buttonFreeMode, buttonLineMode, buttonLineModeChooser;
     private Drawable defaultButtonBackground;
     private LineMode lineMode;
+    private int animationDurationFade;
 
     private int clickCounter;
 
@@ -68,6 +63,9 @@ public class MainActivity extends Activity {
         buttonLineMode = (ImageButton) findViewById(R.id.button_line_mode);
         buttonLineModeChooser = (ImageButton) findViewById(R.id.button_line_mode_chooser);
         defaultButtonBackground = buttonLineMode.getBackground();
+
+        clickCounter = 0;
+        animationDurationFade = getResources().getInteger(R.integer.animation_duration_ms);
     }
 
     /**
@@ -90,9 +88,9 @@ public class MainActivity extends Activity {
      * Called when the "CLEAR" button is clicked.
      * The DrawView changes its color to the color of the brush
      * and then to its default again.
-     *
+     * <p/>
      * The animation takes 300 milliseconds
-     *
+     * <p/>
      * After this process the border of the DrawView is reset.
      *
      * @param v not used.
@@ -110,7 +108,7 @@ public class MainActivity extends Activity {
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 drawView.setBackgroundColor((int) animator.getAnimatedValue());
-                if(((ColorDrawable)drawView.getBackground()).getColor() == colorBlack){
+                if (((ColorDrawable) drawView.getBackground()).getColor() == colorBlack) {
                     drawView.clear();
                 }
 
@@ -165,35 +163,80 @@ public class MainActivity extends Activity {
     /**
      * Called when the one of the line mode buttons is clicked,
      * e.g. the line mode should change.
-     *
+     * <p/>
      * Change the drawing mode only if the user currently does not draw on the canvas.
      * TODO: das hört sich scheiße an, stimmt das?
+     *
      * @param v is the view of the clicked button.
      */
-    public void changeDrawingModeClick(View v){
+    public void changeDrawingModeClick(View v) {
 
         int buttonID = v.getId();
 
         if (!drawView.isDrawing()) {
-            if (buttonID == R.id.button_free_mode){
+            if (buttonID == R.id.button_free_mode) {
                 lineMode = LineMode.FREE;
-                buttonFreeMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
-                buttonLineMode.setBackground(defaultButtonBackground);
-            }else if (buttonID == R.id.button_line_mode){
+                buttonFreeMode.setBackgroundResource(R.drawable.linemode_child_button_shape_selected);
+                buttonLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
+            } else if (buttonID == R.id.button_line_mode) {
                 lineMode = lineMode.LINE;
-                buttonLineMode.setBackgroundColor(Color.argb(255, 0, 255, 0));
-                buttonFreeMode.setBackground(defaultButtonBackground);
+                buttonFreeMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
+                buttonLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_selected);
             }
+            hideLineModeMenu();
             drawView.setLineMode(lineMode);
         }
     }
 
-    public void lineModeChooserClick(View v){
+    public void lineModeChooserClick(View v) {
+        clickCounter++;
 
-        // Chooser button fades out
-        Animation animFadeOut = AnimationUtils.loadAnimation(this,R.anim.button_fade_out);
-        v.startAnimation(animFadeOut);
+        if (clickCounter == 1) {
+            // fade out chooser button
+            // fade in line and free mode buttons
 
+            showLineModeMenu();
+        } else if (clickCounter == 2) {
+            clickCounter = 0;
+
+            // fade in chooser button
+            // fade out line an free mode buttons
+            hideLineModeMenu();
+        }
+    }
+
+    private void hideLineModeMenu() {
+
+        // Chooser button fades in and moves up
+        buttonLineModeChooser.animate().translationY(0).setDuration(animationDurationFade).start();
+        Animation animFadeIn = AnimationUtils.loadAnimation(this, R.anim.button_chooser_fade_in);
+        buttonLineModeChooser.startAnimation(animFadeIn);
+
+        // line and free mode button fade out
+        Animation animFadeOut = AnimationUtils.loadAnimation(this, R.anim.button_mode_fade_out);
+        buttonFreeMode.startAnimation(animFadeOut);
+        buttonFreeMode.animate().setDuration(animationDurationFade).translationY(0).start();
+
+        buttonLineMode.startAnimation(animFadeOut);
+        buttonLineMode.animate().setDuration(animationDurationFade).translationY(0).start();
+    }
+
+    private void showLineModeMenu() {
+
+        // Chooser button fades out and moves down
+        buttonLineModeChooser.animate().translationY(250).setDuration(animationDurationFade).start();
+        Animation animFadeOut = AnimationUtils.loadAnimation(this, R.anim.button_chooser_fade_out);
+        buttonLineModeChooser.startAnimation(animFadeOut);
+
+        // line and free mode button fade in
+        Animation animFadeIn = AnimationUtils.loadAnimation(this, R.anim.button_mode_fade_in);
+        buttonFreeMode.setVisibility(View.VISIBLE);
+        buttonFreeMode.startAnimation(animFadeIn);
+        buttonFreeMode.animate().setDuration(animationDurationFade).translationY(60).start();
+
+        buttonLineMode.setVisibility(View.VISIBLE);
+        buttonLineMode.startAnimation(animFadeIn);
+        buttonLineMode.animate().setDuration(animationDurationFade).translationY(-90).start();
 
     }
 

@@ -2,16 +2,9 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android"
     android:fillAfter="true">
 
-    <!--Move-->
-    <translate
-        android:duration="1000"
-        android:fromYDelta="0%"
-        android:interpolator="@android:anim/linear_interpolator"
-        android:toYDelta="75%"></translate>
-
     <!--Fade Out-->
     <alpha
-        android:duration="1500"
+        android:duration="@integer/animation_duration_ms"
         android:fromAlpha="1.0"
         android:interpolator="@android:anim/accelerate_interpolator"
         android:toAlpha="0.5"></alpha>

@@ -9,8 +9,10 @@ package de.lddt.zeichenroboterapp;
 
 public final class R {
     public static final class anim {
-        public static final int button_fade_in =0x7f050000;
-        public static final int button_fade_out=0x7f050001;
+        public static final int button_chooser_fade_in=0x7f050000;
+        public static final int button_chooser_fade_out=0x7f050001;
+        public static final int button_mode_fade_in=0x7f050002;
+        public static final int button_mode_fade_out=0x7f050003;
     }
     public static final class attr {
     }
@@ -31,11 +33,12 @@ public final class R {
         public static final int delete=0x7f020002;
         public static final int draw_view_background=0x7f020003;
         public static final int lead_pencil=0x7f020004;
-        public static final int linemode_child_button_shape=0x7f020005;
-        public static final int linemode_parent_button_shape=0x7f020006;
-        public static final int undo_variant=0x7f020007;
-        public static final int vector_line=0x7f020008;
-        public static final int vector_polyline=0x7f020009;
+        public static final int linemode_child_button_shape_selected=0x7f020005;
+        public static final int linemode_child_button_shape_unselected=0x7f020006;
+        public static final int linemode_parent_button_shape=0x7f020007;
+        public static final int undo_variant=0x7f020008;
+        public static final int vector_line=0x7f020009;
+        public static final int vector_polyline=0x7f02000a;
     }
     public static final class id {
         public static final int button_clear=0x7f090000;
@@ -48,8 +51,9 @@ public final class R {
         public static final int main_layout=0x7f090005;
     }
     public static final class integer {
-        public static final int grid_length=0x7f070000;
-        public static final int optimization_accuracy_degs=0x7f070001;
+        public static final int animation_duration_ms=0x7f070000;
+        public static final int grid_length=0x7f070001;
+        public static final int optimization_accuracy_degs=0x7f070002;
     }
     public static final class layout {
         public static final int activity_main=0x7f040000;
