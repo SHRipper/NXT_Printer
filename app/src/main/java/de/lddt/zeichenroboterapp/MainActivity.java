@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
 
         clickCounter = 0;
         menuIsHidden = true;
-        animationDurationFade = getResources().getInteger(R.integer.animation_duration_ms);
+        animationDurationFade = getResources().getInteger(R.integer.animation_fade_duration_ms);
     }
 
     /**

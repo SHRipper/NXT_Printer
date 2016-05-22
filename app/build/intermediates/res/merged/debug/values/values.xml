@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="background_color">#2196f3</color>
+    <color name="border_button_selected">#64dd17</color>
+    <color name="border_button_unselected">#fafafa</color>
     <color name="canvas_background_color">#eeeeee</color>
     <color name="canvas_border_color">#424242</color>
-    <color name="canvas_color_fade_out">#000000</color>
-    <color name="color_child_fab">#3868CF</color>
-    <color name="color_parent_fab">#E04894</color>
+    <color name="color_chooser_button">#ff4081</color>
+    <color name="color_linemode_button">#fafafa</color>
     <color name="final_draw_color">#212121</color>
     <color name="hint_draw_color">#bdbdbd</color>
     <color name="transparent">@android:color/transparent</color>
-    <integer name="animation_duration_ms">500</integer>
+    <integer name="animation_fade_duration_ms">500</integer>
     <integer name="grid_length">500</integer>
     <integer name="optimization_accuracy_degs">4</integer>
     <string name="app_name">Zeichenroboter App</string>

@@ -1,3 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\Lukas\Documents\zeichenrobotor-android-app\app\libs\pccomm.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="23be9505ddf58540529d00a725bee2cae801a314">
+        <dex dex="C:\Users\Lukas\Documents\zeichenrobotor-android-app\app\build\intermediates\pre-dexed\debug\pccomm_3a46ba9c23a2e111d7d168e48889ace14286c58b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lukas\Documents\zeichenrobotor-android-app\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f5ca79685787077c4e9a42e366604cb11ef5d173">
+        <dex dex="C:\Users\Lukas\Documents\zeichenrobotor-android-app\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_a81c652083ab816003a6ba3d905d4ae34129a85b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lukas\Documents\zeichenrobotor-android-app\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="81d24ae5640756f1c8c1a8c78379b9249d66e6f7">
+        <dex dex="C:\Users\Lukas\Documents\zeichenrobotor-android-app\app\build\intermediates\pre-dexed\debug\instant-run_99f64ee31ec27d6717bdee3865eab4690da7181c.jar" />
+    </item>
+
+</items>

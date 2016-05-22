@@ -4,7 +4,7 @@
         android:radius="100dp"
         />
     <solid
-        android:color="#F21F4A"
+        android:color="@color/color_linemode_button"
         />
     <size
         android:width="40dp"
@@ -12,6 +12,6 @@
         />
     <stroke
         android:width="2dp"
-        android:color="#4FF227"
+        android:color="@color/border_button_selected"
         />
 </shape>

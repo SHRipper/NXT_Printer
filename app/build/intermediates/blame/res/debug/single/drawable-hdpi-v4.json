@@ -8,12 +8,12 @@
         "source": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\vector_line.png"
     },
     {
-        "merged": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\undo_variant.png",
-        "source": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\undo_variant.png"
-    },
-    {
         "merged": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\vector_polyline.png",
         "source": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\vector_polyline.png"
+    },
+    {
+        "merged": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\undo_variant.png",
+        "source": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\undo_variant.png"
     },
     {
         "merged": "C:\\Users\\Lukas\\Documents\\zeichenrobotor-android-app\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\delete.png",

@@ -18,14 +18,15 @@ public final class R {
     }
     public static final class color {
         public static final int background_color=0x7f060000;
-        public static final int canvas_background_color=0x7f060001;
-        public static final int canvas_border_color=0x7f060002;
-        public static final int canvas_color_fade_out=0x7f060003;
-        public static final int color_child_fab=0x7f060004;
-        public static final int color_parent_fab=0x7f060005;
-        public static final int final_draw_color=0x7f060006;
-        public static final int hint_draw_color=0x7f060007;
-        public static final int transparent=0x7f060008;
+        public static final int border_button_selected=0x7f060001;
+        public static final int border_button_unselected=0x7f060002;
+        public static final int canvas_background_color=0x7f060003;
+        public static final int canvas_border_color=0x7f060004;
+        public static final int color_chooser_button=0x7f060005;
+        public static final int color_linemode_button=0x7f060006;
+        public static final int final_draw_color=0x7f060007;
+        public static final int hint_draw_color=0x7f060008;
+        public static final int transparent=0x7f060009;
     }
     public static final class drawable {
         public static final int brush=0x7f020000;
@@ -51,7 +52,7 @@ public final class R {
         public static final int main_layout=0x7f090005;
     }
     public static final class integer {
-        public static final int animation_duration_ms=0x7f070000;
+        public static final int animation_fade_duration_ms=0x7f070000;
         public static final int grid_length=0x7f070001;
         public static final int optimization_accuracy_degs=0x7f070002;
     }

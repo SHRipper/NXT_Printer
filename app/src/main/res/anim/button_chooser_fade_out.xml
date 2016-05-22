@@ -4,7 +4,7 @@
 
     <!--Fade Out-->
     <alpha
-        android:duration="@integer/animation_duration_ms"
+        android:duration="@integer/animation_fade_duration_ms"
         android:fromAlpha="1.0"
         android:interpolator="@android:anim/accelerate_interpolator"
         android:toAlpha="0.5"></alpha>
