@@ -18,44 +18,55 @@ public class Vector2D {
     }
 
     /**
-     * Subtraction of 2 vectors
+     * Subtraction of 2 vectors.
      *
      * @param v1 minuend
      * @param v2 subtrahend
-     * @return new vector. The is the difference of the values of the 2 given vectors.
+     * @return new vector instance.
      */
     public static Vector2D sub(Vector2D v1, Vector2D v2) {
         return new Vector2D((v1.x - v2.x), (v1.y - v2.y));
     }
 
-    public static Vector2D sum(Vector2D... v) {
-        Vector2D val = new Vector2D();
-        for (Vector2D aV : v) {
-            val.x += aV.x;
-            val.y += aV.y;
-        }
-        return val;
-    }
-
+    /**
+     * Calculate the dot product of two vectors.
+     *
+     * @return the dot product
+     */
     public static float dot(Vector2D v1, Vector2D v2) {
         return (v1.x * v2.x + v1.y * v2.y);
     }
 
+    /**
+     * The length of the vector.
+     * @return the calculated length.
+     */
     public float length() {
         return (float) Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     }
 
+    /**
+     * normalize the vector;
+     */
     public void normalize() {
         float len = length();
         x /= len;
         y /= len;
     }
 
+    /**
+     * Return a new normalized vector instance.
+     * @param v the vector on which the new vector is based on.
+     * @return a new vector instance.
+     */
     public static Vector2D normalize(Vector2D v) {
         float len = v.length();
         return new Vector2D(v.x / len, v.y / len);
     }
 
+    /**
+     * Round the vector.
+     */
     public void round() {
         this.x = Math.round(x);
         this.y = Math.round(y);
