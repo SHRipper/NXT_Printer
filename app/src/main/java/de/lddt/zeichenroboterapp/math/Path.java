@@ -5,6 +5,9 @@ import java.util.List;
 
 import de.lddt.zeichenroboterapp.math.vector.Vector2D;
 
+/**
+ * A Path stores a List of Vectors representing the drawn path.
+ */
 public class Path {
     private List<Vector2D> vectors;
 
@@ -13,16 +16,28 @@ public class Path {
         vectors.add(start);
     }
 
+    /**
+     * Add a vector to the list. This extends the path by one vector.
+     *
+     * @param newVector the new vector to add.
+     */
     public void lineTo(Vector2D newVector) {
         vectors.add(newVector);
     }
 
+    /**
+     * Remove the last vector of the list.
+     * This rewinds the path by one element.
+     */
     public void rewind() {
         if (vectors.size() > 0) {
             vectors.remove(vectors.size() - 1);
         }
     }
 
+    /**
+     * @return a float array containing the positions of each line from the path.
+     */
     public float[] getPointsOfLine() {
         float[] array = new float[vectors.size() * 4 - 4];
         int i = 0;
@@ -40,6 +55,9 @@ public class Path {
         return array;
     }
 
+    /**
+     * @return a copy of the vectorList.
+     */
     public List<Vector2D> getVectors() {
         List<Vector2D> copy = new ArrayList<>();
         for (Vector2D v : vectors) {
@@ -48,10 +66,16 @@ public class Path {
         return copy;
     }
 
+    /**
+     * @return the last vector of the list.
+     */
     public Vector2D last() {
         return vectors.get(vectors.size() - 1);
     }
 
+    /**
+     * @return the number of vectors
+     */
     public int length() {
         return vectors.size();
     }
