@@ -13,7 +13,7 @@ import de.lddt.zeichenroboterapp.math.vector.Vector2D;
 /**
  * This class transfers vectors to a nxt brick.
  * Perform all Bluetooth operations in a background thread to keep the main thread responsive.
- *
+ * <p/>
  * Class extends AsyncTask, because the AsyncTask provides an easy way to execute code in a background thread
  * while still being able update the main ui thread.
  */
@@ -45,7 +45,8 @@ public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, Bo
         //try to connect
         boolean success = BluetoothConn.connectTo(brick);
         if (!success) {
-            return false;}
+            return false;
+        }
 
         List<Vector2D> vectorList = params[0];
         Log.v(TAG, "About to transfer " + vectorList.size() + " vectors to " + brick.getName());
@@ -72,13 +73,16 @@ public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, Bo
 
             //Wait till the brick is ready for the next package.
             success = BluetoothConn.waitForResponse();
-            if(!success) {return false;}
+            if (!success) {
+                return false;
+            }
         }
 
         //Sleep some time before finishing and dismissing the 100% progress indicator
         try {
             Thread.sleep(2500);
-        } catch (InterruptedException e) {}
+        } catch (InterruptedException e) {
+        }
         return true;
     }
 
@@ -93,6 +97,7 @@ public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, Bo
 
     /**
      * Update the progress indicator.
+     *
      * @param values the amount of packages already transferred and the total amount of packages.
      */
     @Override
@@ -103,12 +108,13 @@ public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, Bo
     /**
      * When finished close the bluetooth connection.
      * Call listener to update the ui.
+     *
      * @param success true if the vectors have been transferred successfully.
      */
     @Override
     protected void onPostExecute(Boolean success) {
         BluetoothConn.close();
-        if(success) {
+        if (success) {
             listener.onFinished();
         } else {
             listener.error();
@@ -117,6 +123,7 @@ public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, Bo
 
     /**
      * Set a listener to communicate progress updates and actions.
+     *
      * @param listener the listener to be called at different actions.
      */
     public void registerListener(TransferListener listener) {

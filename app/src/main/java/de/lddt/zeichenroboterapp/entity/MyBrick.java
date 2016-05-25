@@ -1,5 +1,9 @@
 package de.lddt.zeichenroboterapp.entity;
 
+import android.content.Context;
+
+import de.lddt.zeichenroboterapp.R;
+
 /**
  * Entity of a nxt brick
  */
@@ -20,5 +24,16 @@ public class MyBrick {
 
     public String getName() {
         return name;
+    }
+
+    /**
+     * Creates a MyBrick instance with name and mac address specified in the resource file
+     *
+     * @param context needed to access the config xml file
+     * @return the created MyyBrick Object
+     */
+    public static MyBrick getDefaultBrick(Context context) {
+        return new MyBrick(context.getString(R.string.brick_name),
+                context.getString(R.string.brick_mac_address));
     }
 }

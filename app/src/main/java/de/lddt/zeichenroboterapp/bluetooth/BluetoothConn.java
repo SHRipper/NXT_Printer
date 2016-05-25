@@ -19,13 +19,14 @@ import lejos.pc.comm.NXTConnector;
  * This Class handles everything related to Bluetooth.
  * It establishes bluetooth connections, transfers Vectors and closes bluetooth connections.
  */
-public class BluetoothConn{
+public class BluetoothConn {
     private static final String TAG = "BluetoothConn";
     //The via bluetooth connected nxt brick
     private static NXTConnector brickConn;
 
     /**
      * Check if Bluetooth is enabled
+     *
      * @return true if bluetooth in the device system settings is enabled
      */
     public static boolean isBluetoothEnabled() {
@@ -34,6 +35,7 @@ public class BluetoothConn{
 
     /**
      * Connect to a NXT brick via bluetooth
+     *
      * @param myBrick the desired brick
      * @return true if connection is established
      */
@@ -67,8 +69,9 @@ public class BluetoothConn{
     /**
      * Transfer vectors to the connected NXT brick.
      * In Packet mode only 254 Bytes can be transferred at once.
+     *
      * @param vectorList List of vectors;
-     * @param pId the id of the package. Last package has id 1, first package has id n.
+     * @param pId        the id of the package. Last package has id 1, first package has id n.
      * @return true if sending was successful.
      */
     public static boolean send(List<Vector2D> vectorList, short pId) {
@@ -77,10 +80,10 @@ public class BluetoothConn{
             //write the number of packages to come including this one
             dataOutStream.writeShort(pId);
             //write the vectors
-            for(int i = 0; i < vectorList.size(); i++) {
+            for (int i = 0; i < vectorList.size(); i++) {
                 Vector2D v = vectorList.get(i);
-                dataOutStream.writeShort((short)v.x);
-                dataOutStream.writeShort((short)v.y);
+                dataOutStream.writeShort((short) v.x);
+                dataOutStream.writeShort((short) v.y);
             }
             dataOutStream.flush();
             Log.d(TAG, "Transferred" + vectorList.size() + " vectors." +
@@ -95,6 +98,7 @@ public class BluetoothConn{
 
     /**
      * Wait for a response from the NXT brick.
+     *
      * @return true if the Break sends a boolean with value true
      */
     public static boolean waitForResponse() {

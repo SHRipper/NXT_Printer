@@ -80,9 +80,9 @@ public class MainActivity extends Activity {
      * Called when the "CLEAR" button is clicked.
      * The DrawView changes its color to the color of the brush
      * and then to its default again.
-     * <p>
+     * <p/>
      * The animation takes 300 milliseconds
-     * <p>
+     * <p/>
      * After this process the border of the DrawView is reset.
      *
      * @param v not used.
@@ -135,7 +135,7 @@ public class MainActivity extends Activity {
     /**
      * Called when the one of the line mode buttons is clicked,
      * e.g. the line mode should change.
-     * <p>
+     * <p/>
      * Change the drawing mode only if the user currently does not draw on the canvas.
      * TODO: das hört sich scheiße an, stimmt das?
      *
@@ -240,7 +240,7 @@ public class MainActivity extends Activity {
         showToast("Vector optimization kicked out " + (posVList.size() - dirVList.size()) + "/" + posVList.size() + " vectors.");
 
         //Create a Service instance which performs bluetooth operations in a second thread.
-        VectorTransferService service = new VectorTransferService(getDefaultBrick());
+        VectorTransferService service = new VectorTransferService(MyBrick.getDefaultBrick(this));
         //Register a Listener to update the UI while sending data to the nxt brick.
         service.registerListener(transferListener);
         //start to transfer the vectors to the brick in a second thread.
@@ -335,15 +335,5 @@ public class MainActivity extends Activity {
         Intent intent = new Intent();
         intent.setAction(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS);
         startActivity(intent);
-    }
-
-    /**
-     * Creates a MyBrick instance with name and mac address specified in the resource file
-     *
-     * @return the created instance
-     */
-    private MyBrick getDefaultBrick() {
-        return new MyBrick(getString(R.string.brick_name),
-                getString(R.string.brick_mac_address));
     }
 }

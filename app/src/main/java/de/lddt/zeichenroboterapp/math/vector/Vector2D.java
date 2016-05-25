@@ -7,7 +7,7 @@ public class Vector2D {
     public float x;
     public float y;
 
-    public Vector2D(){
+    public Vector2D() {
         this.x = 0;
         this.y = 0;
     }
@@ -19,15 +19,16 @@ public class Vector2D {
 
     /**
      * Subtraction of 2 vectors
+     *
      * @param v1 minuend
      * @param v2 subtrahend
      * @return new vector. The is the difference of the values of the 2 given vectors.
      */
-    public static Vector2D sub(Vector2D v1, Vector2D v2){
+    public static Vector2D sub(Vector2D v1, Vector2D v2) {
         return new Vector2D((v1.x - v2.x), (v1.y - v2.y));
     }
 
-    public static Vector2D sum(Vector2D... v){
+    public static Vector2D sum(Vector2D... v) {
         Vector2D val = new Vector2D();
         for (Vector2D aV : v) {
             val.x += aV.x;
@@ -36,21 +37,21 @@ public class Vector2D {
         return val;
     }
 
-    public static float dot(Vector2D v1, Vector2D v2){
+    public static float dot(Vector2D v1, Vector2D v2) {
         return (v1.x * v2.x + v1.y * v2.y);
     }
 
-    public float length(){
-        return (float)Math.sqrt(Math.pow(x, 2) + Math.pow(y,2));
+    public float length() {
+        return (float) Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     }
 
-    public void normalize(){
+    public void normalize() {
         float len = length();
         x /= len;
         y /= len;
     }
 
-    public static Vector2D normalize(Vector2D v){
+    public static Vector2D normalize(Vector2D v) {
         float len = v.length();
         return new Vector2D(v.x / len, v.y / len);
     }
