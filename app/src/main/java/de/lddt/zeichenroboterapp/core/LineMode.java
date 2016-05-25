@@ -1,4 +1,4 @@
-package de.lddt.zeichenroboterapp;
+package de.lddt.zeichenroboterapp.core;
 
 /**
  * Created by Lukas on 21.05.2016.

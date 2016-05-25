@@ -43,7 +43,7 @@
             android:layout_below="@id/button_undo"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="30dp"
-            android:background="@drawable/linemode_child_button_shape_selected"
+            android:background="@drawable/linemode_child_button_shape_unselected"
             android:onClick="changeDrawingModeClick"
             android:src="@drawable/vector_line"
             android:clickable="false"/>
@@ -55,7 +55,7 @@
             android:layout_below="@id/button_undo"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="30dp"
-            android:background="@drawable/linemode_child_button_shape_unselected"
+            android:background="@drawable/linemode_child_button_shape_selected"
             android:onClick="changeDrawingModeClick"
             android:src="@drawable/vector_polyline"
             android:clickable="false"/>
@@ -80,7 +80,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <de.lddt.zeichenroboterapp.DrawView
+        <de.lddt.zeichenroboterapp.core.DrawView
             android:id="@+id/main_draw_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

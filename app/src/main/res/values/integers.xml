@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Animation Duration -->
-    <integer name="animation_fade_duration_ms">500</integer>
+    <integer name="animation_alpha_fade_duration_ms">500</integer>
+    <integer name="animation_transition_fade_duration_ms">500</integer>
+    <integer name="animation_color_fade_duration_ms">300</integer>
 </resources>

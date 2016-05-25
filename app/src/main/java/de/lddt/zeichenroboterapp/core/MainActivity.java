@@ -1,4 +1,4 @@
-package de.lddt.zeichenroboterapp;
+package de.lddt.zeichenroboterapp.core;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -7,9 +7,6 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.TrafficStats;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +17,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import de.lddt.zeichenroboterapp.R;
 import de.lddt.zeichenroboterapp.bluetooth.BluetoothConn;
 import de.lddt.zeichenroboterapp.entity.MyBrick;
 import de.lddt.zeichenroboterapp.listener.TransferListener;
@@ -33,7 +31,6 @@ import static de.lddt.zeichenroboterapp.util.VectorConverter.posVToDirVList;
 public class MainActivity extends Activity {
     private DrawView drawView;
     private ImageButton buttonFreeMode, buttonLineMode, buttonLineModeChooser;
-    private Drawable defaultButtonBackground;
     private LineMode lineMode;
     private int animationDurationFade;
     private boolean menuIsHidden;
@@ -61,11 +58,10 @@ public class MainActivity extends Activity {
         buttonFreeMode = (ImageButton) findViewById(R.id.button_free_mode);
         buttonLineMode = (ImageButton) findViewById(R.id.button_line_mode);
         buttonLineModeChooser = (ImageButton) findViewById(R.id.button_line_mode_chooser);
-        defaultButtonBackground = buttonLineMode.getBackground();
 
         clickCounter = 0;
         menuIsHidden = true;
-        animationDurationFade = getResources().getInteger(R.integer.animation_fade_duration_ms);
+        animationDurationFade = getResources().getInteger(R.integer.animation_alpha_fade_duration_ms);
     }
 
     /**
@@ -88,30 +84,27 @@ public class MainActivity extends Activity {
      * Called when the "CLEAR" button is clicked.
      * The DrawView changes its color to the color of the brush
      * and then to its default again.
-     * <p/>
+     * <p>
      * The animation takes 300 milliseconds
-     * <p/>
+     * <p>
      * After this process the border of the DrawView is reset.
      *
      * @param v not used.
      */
     public void clearCanvasClick(View v) {
 
-
         final int colorWhite = getResources().getColor(R.color.canvas_background_color);
         final int colorBlack = getResources().getColor(R.color.final_draw_color);
-        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorWhite, colorBlack);
-        colorAnimation.setDuration(300);
+        int duration = getResources().getInteger(R.integer.animation_color_fade_duration_ms);
+
+        final ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorWhite, colorBlack);
+        colorAnimation.setDuration(duration);
         colorAnimation.setRepeatMode(ValueAnimator.REVERSE);
         colorAnimation.setRepeatCount(1);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
-            public void onAnimationUpdate(ValueAnimator animator) {
-                drawView.setBackgroundColor((int) animator.getAnimatedValue());
-                if (((ColorDrawable) drawView.getBackground()).getColor() == colorBlack) {
-                    drawView.clear();
-                }
-
+            public void onAnimationUpdate(ValueAnimator animation) {
+                drawView.setBackgroundColor((int) colorAnimation.getAnimatedValue());
             }
         });
         colorAnimation.start();
@@ -123,7 +116,14 @@ public class MainActivity extends Activity {
                 super.onAnimationEnd(animation);
                 drawView.setBackgroundResource(R.drawable.draw_view_background);
             }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+                super.onAnimationRepeat(animation);
+                drawView.clear();
+            }
         });
+
     }
 
     /**
@@ -139,7 +139,7 @@ public class MainActivity extends Activity {
     /**
      * Called when the one of the line mode buttons is clicked,
      * e.g. the line mode should change.
-     * <p/>
+     * <p>
      * Change the drawing mode only if the user currently does not draw on the canvas.
      * TODO: das hört sich scheiße an, stimmt das?
      *

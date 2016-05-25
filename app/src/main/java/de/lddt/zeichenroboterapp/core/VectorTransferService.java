@@ -1,4 +1,4 @@
-package de.lddt.zeichenroboterapp;
+package de.lddt.zeichenroboterapp.core;
 
 import android.os.AsyncTask;
 import android.util.Log;
