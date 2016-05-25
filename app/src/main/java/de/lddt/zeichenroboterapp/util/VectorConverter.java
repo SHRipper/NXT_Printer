@@ -6,7 +6,7 @@ import java.util.List;
 import de.lddt.zeichenroboterapp.math.vector.Vector2D;
 
 /**
- * This Class does operations on different kind of vectors
+ * This Class does operations on different kind of vectors.
  */
 public class VectorConverter {
     /**
@@ -36,6 +36,14 @@ public class VectorConverter {
         return dirVList;
     }
 
+    /**
+     * Project the vectors on the grid so the nxt brick can process the vectors.
+     *
+     * @param vectorList   the list of vectors.
+     * @param canvasLength the length of the canvas
+     * @param gridLength   the length of the grid
+     * @return the on the grid projected vectors.
+     */
     public static List<Vector2D> applyGrid(List<Vector2D> vectorList, int canvasLength, int gridLength) {
         List<Vector2D> appliedList = new ArrayList<>();
         Vector2D temp = null;
@@ -77,7 +85,7 @@ public class VectorConverter {
     /**
      * Creates a Vector2D. This Vector is the direction vector from one position to another position.
      *
-     * @param v1 start postion
+     * @param v1 start position
      * @param v2 end position
      * @return direction vector.
      */
@@ -86,7 +94,7 @@ public class VectorConverter {
     }
 
     /**
-     * projects a vector on the grid
+     * Projects a vector on the grid.
      *
      * @param v            the vector to be projected
      * @param gridLength   the width and height of the grid
