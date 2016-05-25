@@ -35,11 +35,8 @@ public class MainActivity extends Activity {
     private int animationDurationFade;
     private boolean menuIsHidden;
 
-    private int clickCounter;
-
     private ProgressDialog dialog;
     private Toast toast;
-    //Service to perform bluetooth operations in a second thread.
     private Listener transferListener;
 
     @Override
@@ -59,7 +56,6 @@ public class MainActivity extends Activity {
         buttonLineMode = (ImageButton) findViewById(R.id.button_line_mode);
         buttonLineModeChooser = (ImageButton) findViewById(R.id.button_line_mode_chooser);
 
-        clickCounter = 0;
         menuIsHidden = true;
         animationDurationFade = getResources().getInteger(R.integer.animation_alpha_fade_duration_ms);
     }
@@ -165,16 +161,11 @@ public class MainActivity extends Activity {
     }
 
     public void lineModeChooserClick(View v) {
-        clickCounter++;
-
         if (menuIsHidden) {
             // fade out chooser button
             // fade in line and free mode buttons
-
             showLineModeMenu();
         } else if (!menuIsHidden) {
-            clickCounter = 0;
-
             // fade in chooser button
             // fade out line an free mode buttons
             hideLineModeMenu();
