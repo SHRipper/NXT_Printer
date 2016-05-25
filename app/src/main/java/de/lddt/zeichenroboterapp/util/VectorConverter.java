@@ -11,11 +11,12 @@ import de.lddt.zeichenroboterapp.math.vector.Vector2D;
 public class VectorConverter {
     /**
      * Convert position vectors to direction vectors
-     * @param posVList a list of position vectors
+     *
+     * @param posVList    a list of position vectors
      * @param accuracyDeg tolerance value needed for optimization.
      * @return a List of direction vectors
      */
-    public static List<Vector2D> posVToDirVList(List<Vector2D> posVList, float accuracyDeg) {
+    public static List<Vector2D> posVToDirV(List<Vector2D> posVList, float accuracyDeg) {
         //leave recorded Vectors untouched
         List<Vector2D> optimizedVList = new ArrayList<>(posVList);
         //remove unnecessary position Vectors
@@ -24,11 +25,10 @@ public class VectorConverter {
         //create a List of direction Vectors which will be drawn by the robot
         List<Vector2D> dirVList = new ArrayList<>();
         Vector2D temp = new Vector2D(0, 0);
-        for(Vector2D vector : optimizedVList) { //create directions
+        for (Vector2D vector : optimizedVList) { //create directions
             if (vector.x == Short.MAX_VALUE && vector.y == Short.MAX_VALUE) {
                 dirVList.add(new Vector2D(Short.MAX_VALUE, Short.MAX_VALUE));
             } else {
-                vector.round();
                 dirVList.add(posVToDirV(vector, temp));
                 temp = vector;
             }
@@ -36,21 +36,37 @@ public class VectorConverter {
         return dirVList;
     }
 
+    public static List<Vector2D> applyGrid(List<Vector2D> vectorList, int canvasLength, int gridLength) {
+        List<Vector2D> appliedList = new ArrayList<>();
+        Vector2D temp = null;
+        for (Vector2D v : vectorList) {
+            if (v.x != Short.MAX_VALUE && v.y != Short.MAX_VALUE) {
+                applyGrid(v, canvasLength, gridLength);
+            }
+            if (!v.equals(temp)) {
+                appliedList.add(v);
+                temp = v;
+            }
+        }
+        return appliedList;
+    }
+
     /**
      * Position Vectors which lay on a line (with a certain tolerance) are excluded.
-     * @param posVList the list of all position vectors
+     *
+     * @param posVList    the list of all position vectors
      * @param accuracyDeg tolerance value for optimization.
      * @return List of optimized position vectors.
      */
     private static List<Vector2D> optimizePosVectors(List<Vector2D> posVList, float accuracyDeg) {
         float accuracy = (float) Math.cos(accuracyDeg / 180 * Math.PI);
-        for(int i = 2; i < posVList.size(); i++) { //optimize positions
-            if(posVList.get(i-2).x != Short.MAX_VALUE && posVList.get(i-1).x != Short.MAX_VALUE && posVList.get(i).x != Short.MAX_VALUE){
-                Vector2D v1 = Vector2D.normalize(posVToDirV(posVList.get(i-1), posVList.get(i-2)));
-                Vector2D v2 = Vector2D.normalize(posVToDirV(posVList.get(i  ), posVList.get(i-1)));
+        for (int i = 2; i < posVList.size(); i++) { //optimize positions
+            if (posVList.get(i - 2).x != Short.MAX_VALUE && posVList.get(i - 1).x != Short.MAX_VALUE && posVList.get(i).x != Short.MAX_VALUE) {
+                Vector2D v1 = Vector2D.normalize(posVToDirV(posVList.get(i - 1), posVList.get(i - 2)));
+                Vector2D v2 = Vector2D.normalize(posVToDirV(posVList.get(i), posVList.get(i - 1)));
                 float dot = Math.abs(Vector2D.dot(v1, v2));
-                if(dot > accuracy){
-                    posVList.remove(i-1);
+                if (dot > accuracy) {
+                    posVList.remove(i - 1);
                     i--;
                 }
             }
@@ -58,7 +74,9 @@ public class VectorConverter {
         return posVList;
     }
 
-    /** Creates a Vector2D. This Vector is the direction vector from one position to another position.
+    /**
+     * Creates a Vector2D. This Vector is the direction vector from one position to another position.
+     *
      * @param v1 start postion
      * @param v2 end position
      * @return direction vector.
@@ -69,19 +87,21 @@ public class VectorConverter {
 
     /**
      * projects a vector on the grid
-     * @param v the vector to be projected
-     * @param gridLength the width and height of the grid
-     * @param canvasWidth the width of the actual canvas on the screen
-     * @param canvasHeight the height of the actual canvas
+     *
+     * @param v            the vector to be projected
+     * @param gridLength   the width and height of the grid
+     * @param canvasLength the width/the height of the actual canvas on the screen
      */
-    public static void applyGrid(Vector2D v, float canvasWidth, float canvasHeight, float gridLength) {
-        v.x *= gridLength/canvasWidth;
-        v.y *= gridLength/canvasHeight;
+    public static void applyGrid(Vector2D v, float canvasLength, float gridLength) {
+        v.x *= gridLength / canvasLength;
+        v.y *= gridLength / canvasLength;
+        v.round();
     }
 
     /**
      * Vectors should never be outside of the grid area
-     * @param v the vector to precess
+     *
+     * @param v         the vector to precess
      * @param maxLength the maximum allowed x and y value
      */
     public static void applyBounds(Vector2D v, float maxLength) {

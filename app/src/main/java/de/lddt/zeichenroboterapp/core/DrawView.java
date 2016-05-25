@@ -3,7 +3,6 @@ package de.lddt.zeichenroboterapp.core;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
@@ -12,21 +11,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.lddt.zeichenroboterapp.R;
+import de.lddt.zeichenroboterapp.math.Path;
 import de.lddt.zeichenroboterapp.math.vector.Vector2D;
 
 import static de.lddt.zeichenroboterapp.util.VectorConverter.applyBounds;
-import static de.lddt.zeichenroboterapp.util.VectorConverter.applyGrid;
 
 /**
  * The Canvas for the drawing.
  */
 public class DrawView extends SurfaceView {
-    private List<List<Vector2D>> posVPaths;
-    private List<Path> liveDrawPaths;
-    private Vector2D startVector;
+    private List<Path> paths;
     private Paint paint;
-    private boolean drawing;
     private LineMode lineMode;
+    private boolean drawing, lineIsLinked;
+    private int canvasLength;
 
     public DrawView(Context context) {
         super(context);
@@ -44,12 +42,20 @@ public class DrawView extends SurfaceView {
     }
 
     private void init() {
-        this.posVPaths = new ArrayList<>();
-        drawing = false;
-        lineMode = LineMode.FREE;
-        liveDrawPaths = new ArrayList<>();
+        this.paths = new ArrayList<>();
         paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);
+        lineMode = LineMode.FREE;
+        drawing = false;
+        lineIsLinked = false;
+        canvasLength = -1;
+    }
+
+    public int getCanvasLength() {
+        if (canvasLength == -1) {
+            canvasLength = Math.min(getMeasuredHeight(), getMeasuredWidth());
+        }
+        return canvasLength;
     }
 
     /**
@@ -63,16 +69,18 @@ public class DrawView extends SurfaceView {
         //set the strokeWidth relative to the canvas resolution
         paint.setStrokeWidth(getStrokeWidth());
 
-        for (int i = 0; i < liveDrawPaths.size(); i++) {
-            if (drawing && i == liveDrawPaths.size() - 1) {
-                //While the user is drawing, set another color for the current path.
-                paint.setColor(getResources().getColor(R.color.hint_draw_color));
-            } else {
-                //Default color
-                paint.setColor(getResources().getColor(R.color.final_draw_color));
+        for (int i = 0; i < paths.size(); i++) {
+            Path curPath = paths.get(i);
+            if (curPath.length() >= 2) {
+                if (drawing && i == paths.size() - 1) {
+                    //While the user is drawing, set another color for the current path.
+                    paint.setColor(getResources().getColor(R.color.hint_draw_color));
+                } else {
+                    paint.setColor(getResources().getColor(R.color.final_draw_color));
+                }
+                //draw the path on the canvas
+                canvas.drawLines(curPath.getPointsOfLine(), paint);
             }
-            //draw the path on the canvas
-            canvas.drawPath(liveDrawPaths.get(i), paint);
         }
     }
 
@@ -80,8 +88,8 @@ public class DrawView extends SurfaceView {
      * Clear all recorded paths and vectors.
      */
     public void clear() {
-        posVPaths.clear();
-        liveDrawPaths.clear();
+        drawing = false;
+        paths.clear();
         invalidate();
     }
 
@@ -89,73 +97,51 @@ public class DrawView extends SurfaceView {
      * Remove only the last drawn path.
      */
     public void undo() {
-        if (posVPaths.size() > 0 && liveDrawPaths.size() > 0) {
-            posVPaths.remove(posVPaths.size() - 1);
-            liveDrawPaths.remove(liveDrawPaths.size() - 1);
+        drawing = false;
+        if (paths.size() > 0) {
+            paths.remove(paths.size() - 1);
         }
         invalidate();
     }
 
     /**
      * Handle touch events.
+     *
      * @param event
      * @return true if the event was handled
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        int action = event.getAction();
-        Vector2D newVector;
-        switch (action) {
+        float x = event.getX();
+        float y = event.getY();
+
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                //started drawing on the canvas
-                drawing = true;
-                if (lineMode == LineMode.LINE) {
-                    startVector = new Vector2D(event.getX(), event.getY());
+                Vector2D linkedLineStart = getLinkedLineStart();
+                if (linkedLineStart != null && lineMode == LineMode.LINKED_LINE) {
+                    startNewPath(linkedLineStart.x, linkedLineStart.y);
+                    addToPath(x, y);
+                    invalidate();
+                } else {
+                    startNewPath(x, y);
                 }
 
-                //add a new path to the liveDrawPathsList and set this position as the start position
-                liveDrawPaths.add(new Path());
-                liveDrawPaths.get(liveDrawPaths.size() - 1).moveTo(event.getX(), event.getY());
-
-                //also save this position (projected on the grid for future transfer to the nxt brick)
-                newVector = createVector(event.getX(), event.getY());
-                posVPaths.add(new ArrayList<Vector2D>());
-                posVPaths.get(posVPaths.size() - 1).add(newVector);
                 return true;
 
             case MotionEvent.ACTION_MOVE:
-                if (drawing) {
-                    /*If drawing in line mode, reset the last path.
-                    Set the previously stored start position as start position for the path.*/
-                    if (lineMode == LineMode.LINE) {
-                        liveDrawPaths.get(liveDrawPaths.size() - 1).rewind();
-                        liveDrawPaths.get(liveDrawPaths.size() - 1).moveTo(startVector.x, startVector.y);
+                if (drawing || lineMode == LineMode.LINE || lineMode == LineMode.LINKED_LINE) {
+                    addToPath(x, y);
+                    invalidate();//Redraw the canvas.
+                    drawing = isInBounds(x, y);
+                } else {
+                    drawing = isInBounds(x, y);
+                    if (drawing) {
+                        startNewPath(x, y);
                     }
-                    //Extend the path by the new position
-                    liveDrawPaths.get(liveDrawPaths.size() - 1).lineTo(event.getX(), event.getY());
-
-                    /*If in free mode save this position.
-                    (projected on the grid for future transfer to the nxt brick)*/
-                    if (lineMode == LineMode.FREE) {
-                        newVector = createVector(event.getX(), event.getY());
-                        List<Vector2D> currentList = posVPaths.get(posVPaths.size() - 1);
-                        if (!currentList.get(currentList.size() - 1).equals(newVector)) {
-                            currentList.add(newVector);
-                        }
-                    }
-
-                    //Redraw the canvas.
-                    invalidate();
                 }
                 return true;
 
             case MotionEvent.ACTION_UP:
-                /* Save the position where the user lifts his finger .
-                This is the position to which a line will be drawn*/
-                if (drawing && lineMode == LineMode.LINE) {
-                    newVector = createVector(event.getX(), event.getY());
-                    posVPaths.get(posVPaths.size() - 1).add(newVector);
-                }
                 //finished drawing
                 drawing = false;
 
@@ -166,19 +152,50 @@ public class DrawView extends SurfaceView {
         return false;
     }
 
+    private void startNewPath(float x, float y) {
+        drawing = true;//started drawing on the canvas
+        lineIsLinked = (lineMode == LineMode.LINKED_LINE);
+        //also save this position
+        Vector2D start = createVector(x, y);
+        paths.add(new Path(start));
+    }
+
+    private void addToPath(float x, float y) {
+        if (paths.size() > 0) {
+            Path currentPath = paths.get(paths.size() - 1);
+            if ((lineMode == LineMode.LINE || lineMode == LineMode.LINKED_LINE)
+                    && currentPath.length() > 1) {
+                currentPath.rewind();
+            }
+            //Extend the path by the new position
+            currentPath.lineTo(createVector(x, y));
+        }
+    }
+
+    private Vector2D getLinkedLineStart() {
+        if (lineIsLinked && paths.size() > 0) {
+            Path currentPath = paths.get(paths.size() - 1);
+            return currentPath.last();
+        }
+        return null;
+    }
+
     /**
      * Create a new Vector2D instance.
      *
      * @param x value of the new vector.
      * @param y value of the new vector.
-     * @return the new vector. The x and y value are projected on the grid the nxt robot can process.
+     * @return the new vector.
      */
     private Vector2D createVector(float x, float y) {
         Vector2D v = new Vector2D(x, y);
-        int gridLength = getResources().getInteger(R.integer.grid_length);
-        applyGrid(v, this.getMeasuredWidth(), this.getMeasuredHeight(), gridLength);
-        applyBounds(v, gridLength);
+        applyBounds(v, canvasLength);
         return v;
+    }
+
+    private boolean isInBounds(float x, float y) {
+        return x >= 0 && x <= canvasLength
+                && y >= 0 && y <= canvasLength;
     }
 
     /**
@@ -190,11 +207,9 @@ public class DrawView extends SurfaceView {
      */
     public List<Vector2D> getPosVList() {
         List<Vector2D> completeList = new ArrayList<>();
-        for (List<Vector2D> vectorList : posVPaths) {
-            if (completeList.size() > 0) {
-                completeList.add(new Vector2D(Short.MAX_VALUE, Short.MAX_VALUE));
-            }
-            completeList.addAll(vectorList);
+        for (Path path : paths) {
+            completeList.addAll(path.getVectors());
+            completeList.add(new Vector2D(Short.MAX_VALUE, Short.MAX_VALUE));
         }
         return completeList;
     }
@@ -205,11 +220,10 @@ public class DrawView extends SurfaceView {
      * @return stroke width
      */
     private float getStrokeWidth() {
-        return ((float) this.getMeasuredHeight()) / 150;
+        return ((float) this.canvasLength) / 150;
     }
 
     public void setLineMode(LineMode lineMode) {
-
         this.lineMode = lineMode;
     }
 

@@ -23,7 +23,8 @@ import de.lddt.zeichenroboterapp.entity.MyBrick;
 import de.lddt.zeichenroboterapp.listener.TransferListener;
 import de.lddt.zeichenroboterapp.math.vector.Vector2D;
 
-import static de.lddt.zeichenroboterapp.util.VectorConverter.posVToDirVList;
+import static de.lddt.zeichenroboterapp.util.VectorConverter.applyGrid;
+import static de.lddt.zeichenroboterapp.util.VectorConverter.posVToDirV;
 
 /**
  * The main activity for the "Zeichenroboter" project. The Canvas is part of this activity.
@@ -69,10 +70,9 @@ public class MainActivity extends Activity {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         //the drawView is a square. Set the width and height to the Minimum of width and height
-        int length = Math.min(drawView.getMeasuredHeight(), drawView.getMeasuredWidth());
         ViewGroup.LayoutParams drawViewParams = drawView.getLayoutParams();
-        drawViewParams.width = length;
-        drawViewParams.height = length;
+        drawViewParams.width = drawView.getCanvasLength();
+        drawViewParams.height = drawView.getCanvasLength();
         drawView.setLayoutParams(drawViewParams);
     }
 
@@ -147,7 +147,7 @@ public class MainActivity extends Activity {
 
         if (!drawView.isDrawing() && !menuIsHidden) {
             if (buttonID == R.id.button_free_mode) {
-                lineMode = LineMode.FREE;
+                lineMode = LineMode.LINKED_LINE;
                 buttonFreeMode.setBackgroundResource(R.drawable.linemode_child_button_shape_selected);
                 buttonLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
             } else if (buttonID == R.id.button_line_mode) {
@@ -217,11 +217,14 @@ public class MainActivity extends Activity {
      */
     public void sendClick(View v) {
         float accuracyDeg = getResources().getInteger(R.integer.optimization_accuracy_degs);
-        List<Vector2D> directionVectorList =
-                posVToDirVList(drawView.getPosVList(), accuracyDeg);
+        int gridLength = getResources().getInteger(R.integer.grid_length);
+
+        List<Vector2D> posVList = drawView.getPosVList();
+        posVList = applyGrid(posVList, drawView.getCanvasLength(), gridLength);
+        List<Vector2D> dirVList = posVToDirV(posVList, accuracyDeg);
 
         //Check if nothing is drawn, show error Toast and cancel operation.
-        if (directionVectorList.size() == 0) {
+        if (dirVList.size() == 0) {
             showToast(getString(R.string.nothing_drawn));
             return;
         }
@@ -234,14 +237,14 @@ public class MainActivity extends Activity {
         }
 
         //For Debug display how many vectors are excluded because of the optimization algorithm.
-        showToast("Vector optimization kicked out " + (drawView.getPosVList().size() - directionVectorList.size()) + "/" + drawView.getPosVList().size() + " vectors.");
+        showToast("Vector optimization kicked out " + (posVList.size() - dirVList.size()) + "/" + posVList.size() + " vectors.");
 
         //Create a Service instance which performs bluetooth operations in a second thread.
         VectorTransferService service = new VectorTransferService(getDefaultBrick());
         //Register a Listener to update the UI while sending data to the nxt brick.
         service.registerListener(transferListener);
         //start to transfer the vectors to the brick in a second thread.
-        service.execute(directionVectorList);
+        service.execute(dirVList);
     }
 
     /**
