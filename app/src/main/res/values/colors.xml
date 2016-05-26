@@ -12,7 +12,7 @@
 
     <!-- Buttons -->
     <color name="border_button_selected">#64dd17</color>
-    <color name="border_button_unselected">#9e9e9e</color>
+    <color name="border_button_unselected">#616161</color>
     <color name="color_linemode_button">#fafafa</color>
     <color name="color_chooser_button">#ff4081</color>
 </resources>

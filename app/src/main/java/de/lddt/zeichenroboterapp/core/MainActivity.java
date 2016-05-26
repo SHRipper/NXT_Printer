@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.List;
@@ -29,7 +28,7 @@ import de.lddt.zeichenroboterapp.util.VectorConverter;
  */
 public class MainActivity extends Activity {
     private DrawView drawView;
-    private ImageButton buttonFreeMode, buttonLineMode, buttonLineModeChooser,buttonLinkedLineMode;
+    private ImageButton buttonFreeMode, buttonLineMode, buttonLineModeChooser, buttonLinkedLineMode;
     private LineMode lineMode;
     private int animationDurationMove;
     private boolean menuIsHidden;
@@ -80,9 +79,9 @@ public class MainActivity extends Activity {
      * Called when the "CLEAR" button is clicked.
      * The DrawView changes its color to the color of the brush
      * and then to its default again.
-     * <p>
+     * <p/>
      * The animation takes 300 milliseconds
-     * <p>
+     * <p/>
      * After this process the border of the DrawView is reset.
      *
      * @param v not used.
@@ -113,7 +112,7 @@ public class MainActivity extends Activity {
     /**
      * Called when the one of the line mode buttons is clicked,
      * e.g. the line mode should change.
-     * <p>
+     * <p/>
      * Change the drawing mode only if the user currently does not draw on the canvas.
      * TODO: das hört sich scheiße an, stimmt das?
      *
@@ -123,9 +122,9 @@ public class MainActivity extends Activity {
 
         int buttonID = v.getId();
         Drawable ICON_FREE_MODE, ICON_LINE_MODE, ICON_LINKED_LINE_MODE;
-        ICON_FREE_MODE = getResources().getDrawable(R.drawable.vector_polyline);
+        ICON_FREE_MODE = getResources().getDrawable(R.drawable.brush);
         ICON_LINE_MODE = getResources().getDrawable(R.drawable.vector_line);
-        ICON_LINKED_LINE_MODE = getResources().getDrawable(R.drawable.lead_pencil);
+        ICON_LINKED_LINE_MODE = getResources().getDrawable(R.drawable.vector_polyline);
 
 
         if (!drawView.isDrawing() && !menuIsHidden) {
@@ -135,9 +134,10 @@ public class MainActivity extends Activity {
                 // show free mode button as selected and line mode button as unselected
                 buttonFreeMode.setBackgroundResource(R.drawable.linemode_child_button_shape_selected);
                 buttonLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
+                buttonLinkedLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
 
                 // change icon of chooser button to the icon of the selected mode
-                buttonLineModeChooser.setBackground(ICON_FREE_MODE);
+                buttonLineModeChooser.setImageDrawable(ICON_FREE_MODE);
 
             } else if (buttonID == R.id.button_line_mode) {
                 lineMode = lineMode.LINE;
@@ -145,13 +145,21 @@ public class MainActivity extends Activity {
                 // show free mode button as selected and line mode button as unselected
                 buttonFreeMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
                 buttonLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_selected);
+                buttonLinkedLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
 
                 // change icon of chooser button to the icon of the selected mode
-                buttonLineModeChooser.setBackground(ICON_LINE_MODE);
+                buttonLineModeChooser.setImageDrawable(ICON_LINE_MODE);
 
-            } else if (buttonID == 0) {
-                // TODO: new button for linked line mode
+            } else if (buttonID == R.id.button_linked_line_mode) {
                 lineMode = LineMode.LINKED_LINE;
+
+                // show free mode button as selected and line mode button as unselected
+                buttonFreeMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
+                buttonLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
+                buttonLinkedLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_selected);
+
+                buttonLineModeChooser.setImageDrawable(ICON_LINKED_LINE_MODE);
+
             }
             hideLineModeMenu();
             drawView.setLineMode(lineMode);
@@ -198,15 +206,15 @@ public class MainActivity extends Activity {
 
         // free mode button fade in an move up
         buttonFreeMode.startAnimation(animFadeIn);
-        buttonFreeMode.animate().setDuration(animationDurationMove).translationY(-200).start();
+        buttonFreeMode.animate().setDuration(animationDurationMove).translationY(-175).start();
 
         // line mode button fade in and move up and right
         buttonLineMode.startAnimation(animFadeIn);
-        buttonLineMode.animate().setDuration(animationDurationMove).translationY(-150).start();
+        buttonLineMode.animate().setDuration(animationDurationMove).translationY(-150).translationX(150).start();
 
         // linked line mode button fade in and move right
         buttonLinkedLineMode.startAnimation(animFadeIn);
-        buttonLinkedLineMode.animate().setDuration(animationDurationMove).translationX(-100).start();
+        buttonLinkedLineMode.animate().setDuration(animationDurationMove).translationX(175).start();
 
         menuIsHidden = false;
     }
