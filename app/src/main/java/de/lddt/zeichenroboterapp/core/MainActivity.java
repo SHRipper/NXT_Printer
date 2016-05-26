@@ -114,7 +114,6 @@ public class MainActivity extends Activity {
      * e.g. the line mode should change.
      * <p/>
      * Change the drawing mode only if the user currently does not draw on the canvas.
-     * TODO: das hört sich scheiße an, stimmt das?
      *
      * @param v is the view of the clicked button.
      */
@@ -158,6 +157,7 @@ public class MainActivity extends Activity {
                 buttonLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
                 buttonLinkedLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_selected);
 
+                // change icon of chooser button to the icon of the selected mode
                 buttonLineModeChooser.setImageDrawable(ICON_LINKED_LINE_MODE);
 
             }
