@@ -4,12 +4,14 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.List;
@@ -27,9 +29,9 @@ import de.lddt.zeichenroboterapp.util.VectorConverter;
  */
 public class MainActivity extends Activity {
     private DrawView drawView;
-    private ImageButton buttonFreeMode, buttonLineMode, buttonLineModeChooser;
+    private ImageButton buttonFreeMode, buttonLineMode, buttonLineModeChooser,buttonLinkedLineMode;
     private LineMode lineMode;
-    private int animationDurationFade;
+    private int animationDurationMove;
     private boolean menuIsHidden;
 
     private ProgressDialog dialog;
@@ -52,10 +54,11 @@ public class MainActivity extends Activity {
         drawView = (DrawView) findViewById(R.id.main_draw_view);
         buttonFreeMode = (ImageButton) findViewById(R.id.button_free_mode);
         buttonLineMode = (ImageButton) findViewById(R.id.button_line_mode);
+        buttonLinkedLineMode = (ImageButton) findViewById(R.id.button_linked_line_mode);
         buttonLineModeChooser = (ImageButton) findViewById(R.id.button_line_mode_chooser);
 
         menuIsHidden = true;
-        animationDurationFade = getResources().getInteger(R.integer.animation_alpha_fade_duration_ms);
+        animationDurationMove = getResources().getInteger(R.integer.animation_alpha_fade_duration_ms);
     }
 
     /**
@@ -86,14 +89,15 @@ public class MainActivity extends Activity {
      */
     public void clearCanvasClick(View v) {
 
+        // Values for the color animator
         int colorWhite = getResources().getColor(R.color.canvas_background_color);
         int colorBlack = getResources().getColor(R.color.final_draw_color);
         int duration = getResources().getInteger(R.integer.animation_color_fade_duration_ms);
         int repeatMode = ValueAnimator.REVERSE;
 
+        // Set a colorAnimator for the drawView
         ColorAnimator colorAnimator = new ColorAnimator(drawView, colorWhite, colorBlack, repeatMode, 1);
         colorAnimator.start(duration);
-
     }
 
     /**
@@ -118,17 +122,35 @@ public class MainActivity extends Activity {
     public void changeDrawingModeClick(View v) {
 
         int buttonID = v.getId();
+        Drawable ICON_FREE_MODE, ICON_LINE_MODE, ICON_LINKED_LINE_MODE;
+        ICON_FREE_MODE = getResources().getDrawable(R.drawable.vector_polyline);
+        ICON_LINE_MODE = getResources().getDrawable(R.drawable.vector_line);
+        ICON_LINKED_LINE_MODE = getResources().getDrawable(R.drawable.lead_pencil);
+
 
         if (!drawView.isDrawing() && !menuIsHidden) {
             if (buttonID == R.id.button_free_mode) {
                 lineMode = LineMode.FREE;
+
+                // show free mode button as selected and line mode button as unselected
                 buttonFreeMode.setBackgroundResource(R.drawable.linemode_child_button_shape_selected);
                 buttonLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
+
+                // change icon of chooser button to the icon of the selected mode
+                buttonLineModeChooser.setBackground(ICON_FREE_MODE);
+
             } else if (buttonID == R.id.button_line_mode) {
                 lineMode = lineMode.LINE;
+
+                // show free mode button as selected and line mode button as unselected
                 buttonFreeMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
                 buttonLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_selected);
+
+                // change icon of chooser button to the icon of the selected mode
+                buttonLineModeChooser.setBackground(ICON_LINE_MODE);
+
             } else if (buttonID == 0) {
+                // TODO: new button for linked line mode
                 lineMode = LineMode.LINKED_LINE;
             }
             hideLineModeMenu();
@@ -151,41 +173,40 @@ public class MainActivity extends Activity {
 
     private void hideLineModeMenu() {
 
-        // Chooser button fades in and moves up
-        buttonLineModeChooser.animate().translationY(0).setDuration(animationDurationFade).start();
-        Animation animFadeIn = AnimationUtils.loadAnimation(this, R.anim.button_chooser_fade_in);
-        buttonLineModeChooser.startAnimation(animFadeIn);
-
-        // line and free mode button fade out
+        // set alpha fade out animation
         Animation animFadeOut = AnimationUtils.loadAnimation(this, R.anim.button_mode_fade_out);
+
+        // free mode button fade out und move down
         buttonFreeMode.startAnimation(animFadeOut);
-        buttonFreeMode.animate().setDuration(animationDurationFade).translationY(0).start();
+        buttonFreeMode.animate().setDuration(animationDurationMove).translationY(0).start();
 
+        // line mode button fade out and move down and left
         buttonLineMode.startAnimation(animFadeOut);
-        buttonLineMode.animate().setDuration(animationDurationFade).translationY(0).start();
+        buttonLineMode.animate().setDuration(animationDurationMove).translationY(0).translationX(0).start();
 
-        // linked line mode button fade out
+        // linked line mode button fade out and move left
+        buttonLinkedLineMode.startAnimation(animFadeOut);
+        buttonLinkedLineMode.animate().setDuration(animationDurationMove).translationX(0).start();
 
         menuIsHidden = true;
     }
 
     private void showLineModeMenu() {
 
-        // Chooser button fades out and moves down
-        buttonLineModeChooser.animate().translationY(240).setDuration(animationDurationFade).start();
-        Animation animFadeOut = AnimationUtils.loadAnimation(this, R.anim.button_chooser_fade_out);
-        buttonLineModeChooser.startAnimation(animFadeOut);
-
-        // line and free mode button fade in
+        // set alpha fade in animation
         Animation animFadeIn = AnimationUtils.loadAnimation(this, R.anim.button_mode_fade_in);
+
+        // free mode button fade in an move up
         buttonFreeMode.startAnimation(animFadeIn);
-        buttonFreeMode.animate().setDuration(animationDurationFade).translationY(60).start();
+        buttonFreeMode.animate().setDuration(animationDurationMove).translationY(-200).start();
 
-        // line mode button fade in
+        // line mode button fade in and move up and right
         buttonLineMode.startAnimation(animFadeIn);
-        buttonLineMode.animate().setDuration(animationDurationFade).translationY(-90).start();
+        buttonLineMode.animate().setDuration(animationDurationMove).translationY(-150).start();
 
-        // linked line mode button fade in
+        // linked line mode button fade in and move right
+        buttonLinkedLineMode.startAnimation(animFadeIn);
+        buttonLinkedLineMode.animate().setDuration(animationDurationMove).translationX(-100).start();
 
         menuIsHidden = false;
     }

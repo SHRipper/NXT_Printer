@@ -9,7 +9,6 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:padding="10dp">
 
         <ImageButton
@@ -40,9 +39,9 @@
             android:id="@+id/button_line_mode"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_below="@id/button_undo"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/linemode_child_button_shape_unselected"
             android:onClick="changeDrawingModeClick"
             android:src="@drawable/vector_line"
@@ -52,21 +51,33 @@
             android:id="@+id/button_free_mode"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_below="@id/button_undo"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/linemode_child_button_shape_selected"
             android:onClick="changeDrawingModeClick"
             android:src="@drawable/vector_polyline"
             android:clickable="false"/>
 
         <ImageButton
+            android:id="@+id/button_linked_line_mode"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/linemode_child_button_shape_selected"
+            android:onClick="changeDrawingModeClick"
+            android:src="@drawable/brush"
+            android:clickable="false"/>
+
+        <ImageButton
             android:id="@+id/button_line_mode_chooser"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_below="@id/button_undo"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/linemode_parent_button_shape"
             android:onClick="lineModeChooserClick"
             android:src="@drawable/brush"
@@ -94,7 +105,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:layout_weight="0">
 
         <ImageButton
             android:id="@+id/button_send"
