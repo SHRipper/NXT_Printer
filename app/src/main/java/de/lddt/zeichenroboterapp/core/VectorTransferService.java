@@ -8,7 +8,7 @@ import java.util.List;
 import de.lddt.zeichenroboterapp.bluetooth.BluetoothConn;
 import de.lddt.zeichenroboterapp.entity.MyBrick;
 import de.lddt.zeichenroboterapp.listener.TransferListener;
-import de.lddt.zeichenroboterapp.math.vector.Vector2D;
+import de.lddt.zeichenroboterapp.math.Vector2D;
 
 /**
  * This class transfers vectors to a nxt brick.

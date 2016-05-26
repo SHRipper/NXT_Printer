@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 import de.lddt.zeichenroboterapp.entity.MyBrick;
-import de.lddt.zeichenroboterapp.math.vector.Vector2D;
+import de.lddt.zeichenroboterapp.math.Vector2D;
 import lejos.pc.comm.NXTComm;
 import lejos.pc.comm.NXTCommFactory;
 import lejos.pc.comm.NXTCommLogListener;

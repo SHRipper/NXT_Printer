@@ -3,7 +3,7 @@ package de.lddt.zeichenroboterapp.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.lddt.zeichenroboterapp.math.vector.Vector2D;
+import de.lddt.zeichenroboterapp.math.Vector2D;
 
 /**
  * This Class does operations on different kind of vectors.

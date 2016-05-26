@@ -3,8 +3,6 @@ package de.lddt.zeichenroboterapp.math;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.lddt.zeichenroboterapp.math.vector.Vector2D;
-
 /**
  * A Path stores a List of Vectors representing the drawn path.
  */

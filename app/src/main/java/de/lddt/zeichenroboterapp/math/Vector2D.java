@@ -1,4 +1,4 @@
-package de.lddt.zeichenroboterapp.math.vector;
+package de.lddt.zeichenroboterapp.math;
 
 /**
  * This class is used to manage positions and directions.

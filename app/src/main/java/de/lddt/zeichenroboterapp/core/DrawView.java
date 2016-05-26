@@ -12,7 +12,7 @@ import java.util.List;
 
 import de.lddt.zeichenroboterapp.R;
 import de.lddt.zeichenroboterapp.math.Path;
-import de.lddt.zeichenroboterapp.math.vector.Vector2D;
+import de.lddt.zeichenroboterapp.math.Vector2D;
 
 import static de.lddt.zeichenroboterapp.util.VectorConverter.applyBounds;
 
