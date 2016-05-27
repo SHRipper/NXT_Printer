@@ -242,12 +242,22 @@ public class DrawView extends SurfaceView {
      */
     public List<Vector2D> getPosVList() {
         List<Vector2D> completeList = new ArrayList<>();
+        Vector2D lastOfPath = null;
         for (int i = 0; i < paths.size(); i++) {
-            //The vector (x = Short.MAX_VALUE, y = Short.MAX_VALUE) indicates a new path.
+            Path currentPath = paths.get(i);
+            
             if (i > 0) {
-                completeList.add(new Vector2D(Short.MAX_VALUE, Short.MAX_VALUE));
+                //If the last vector of the previous path and the first vector of the current path are equal,
+                // remove one of these equal vectors
+                if (lastOfPath != null && !lastOfPath.equals(currentPath.first())) {
+                    completeList.remove(completeList.size() - 1);
+                } else {
+                    //The vector (x = Short.MAX_VALUE, y = Short.MAX_VALUE) indicates a new path.
+                    completeList.add(new Vector2D(Short.MAX_VALUE, Short.MAX_VALUE));
+                }
             }
-            completeList.addAll(paths.get(i).getVectors());
+            lastOfPath = currentPath.last();
+            completeList.addAll(currentPath.getVectors());
         }
         return completeList;
     }
