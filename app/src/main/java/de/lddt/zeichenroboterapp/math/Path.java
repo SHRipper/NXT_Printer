@@ -37,18 +37,23 @@ public class Path {
      * @return a float array containing the positions of each line from the path.
      */
     public float[] getPointsOfLine() {
-        float[] array = new float[vectors.size() * 4 - 4];
+        //Every vector holds 2 values. Every vector, beside the first and the last, needs to be added twice.
+        int arraySize = vectors.size() * 4 - 4;
+        float[] array = new float[arraySize];
         int i = 0;
         for (Vector2D v : vectors) {
             array[i] = v.x;
             array[i + 1] = v.y;
 
+            //if this is not the first or last vector, add the values a second time to the array,
+            // because a new line starts where the previous line ended
             if (i > 0 && i + 2 < array.length) {
+                array[i + 2] = v.x;
+                array[i + 3] = v.y;
+                i += 4;
+            } else {
                 i += 2;
-                array[i] = v.x;
-                array[i + 1] = v.y;
             }
-            i += 2;
         }
         return array;
     }
