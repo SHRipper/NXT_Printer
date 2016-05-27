@@ -13,6 +13,7 @@ import java.util.List;
 import de.lddt.zeichenroboterapp.R;
 import de.lddt.zeichenroboterapp.math.Path;
 import de.lddt.zeichenroboterapp.math.Vector2D;
+import de.lddt.zeichenroboterapp.util.MetricsConverter;
 
 import static de.lddt.zeichenroboterapp.util.VectorConverter.applyBounds;
 
@@ -25,6 +26,7 @@ public class DrawView extends SurfaceView {
     private LineMode lineMode;
     private boolean drawing, lineIsLinked;
     private int canvasLength;
+    private float strokeWidth;
 
     public DrawView(Context context) {
         super(context);
@@ -52,6 +54,9 @@ public class DrawView extends SurfaceView {
         drawing = false;
         lineIsLinked = false;
         canvasLength = -1;
+        strokeWidth = MetricsConverter.convertToPixels(2.4f, getContext());
+        paint.setStrokeWidth(strokeWidth);
+        System.out.println("strokeWidt: " + strokeWidth);
     }
 
     /**
@@ -101,7 +106,6 @@ public class DrawView extends SurfaceView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         //set the stroke width
-        paint.setStrokeWidth(getStrokeWidth());
 
         for (int i = 0; i < paths.size(); i++) {
             Path curPath = paths.get(i);
