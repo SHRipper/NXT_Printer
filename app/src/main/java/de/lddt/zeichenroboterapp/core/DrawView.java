@@ -242,9 +242,12 @@ public class DrawView extends SurfaceView {
      */
     public List<Vector2D> getPosVList() {
         List<Vector2D> completeList = new ArrayList<>();
-        for (Path path : paths) {
-            completeList.addAll(path.getVectors());
-            completeList.add(new Vector2D(Short.MAX_VALUE, Short.MAX_VALUE));
+        for (int i = 0; i < paths.size(); i++) {
+            //The vector (x = Short.MAX_VALUE, y = Short.MAX_VALUE) indicates a new path.
+            if (i > 0) {
+                completeList.add(new Vector2D(Short.MAX_VALUE, Short.MAX_VALUE));
+            }
+            completeList.addAll(paths.get(i).getVectors());
         }
         return completeList;
     }
