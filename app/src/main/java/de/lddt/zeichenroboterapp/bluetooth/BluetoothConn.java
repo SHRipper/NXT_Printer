@@ -41,6 +41,7 @@ public class BluetoothConn {
      */
     public static boolean connectTo(MyBrick myBrick) {
         //see http://www.lejos.org/nxt/nxj/tutorial/Android/Android.htm
+        //TODO: try catch unnötig??
         Log.v(TAG, "Trying to connecto to " + myBrick.getName() + "; " + myBrick.getMacAddress());
         try {
             brickConn = new NXTConnector();

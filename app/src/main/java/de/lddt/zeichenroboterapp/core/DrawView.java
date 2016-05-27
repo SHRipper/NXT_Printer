@@ -196,7 +196,7 @@ public class DrawView extends SurfaceView {
                 currentPath.rewind();
             }
             //Extend the path by the new position
-            currentPath.lineTo(createVector(x, y));
+            currentPath.addNewPos(createVector(x, y));
         }
     }
 

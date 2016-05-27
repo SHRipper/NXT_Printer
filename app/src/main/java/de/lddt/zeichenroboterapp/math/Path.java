@@ -19,7 +19,7 @@ public class Path {
      *
      * @param newVector the new vector to add.
      */
-    public void lineTo(Vector2D newVector) {
+    public void addNewPos(Vector2D newVector) {
         vectors.add(newVector);
     }
 
@@ -57,11 +57,11 @@ public class Path {
      * @return a copy of the vectorList.
      */
     public List<Vector2D> getVectors() {
-        List<Vector2D> copy = new ArrayList<>();
+        List<Vector2D> clone = new ArrayList<>();
         for (Vector2D v : vectors) {
-            copy.add(new Vector2D(v.x, v.y));
+            clone.add(new Vector2D(v.x, v.y));
         }
-        return copy;
+        return clone;
     }
 
     /**
