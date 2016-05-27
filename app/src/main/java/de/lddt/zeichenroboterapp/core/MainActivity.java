@@ -228,11 +228,14 @@ public class MainActivity extends Activity {
      */
     public void sendClick(View v) {
         float accuracyDeg = getResources().getInteger(R.integer.optimization_accuracy_degs);
-        List<Vector2D> directionVectorList =
-                VectorConverter.posVToDirV(drawView.getPosVList(), accuracyDeg);
+        int gridLength = getResources().getInteger(R.integer.grid_length);
+
+        List<Vector2D> posVList = drawView.getPosVList();
+        posVList = VectorConverter.applyGrid(posVList, drawView.getCanvasLength(), gridLength);
+        List<Vector2D> dirVList = VectorConverter.posVToDirV(posVList, accuracyDeg);
 
         //Check if nothing is drawn, show error Toast and cancel operation.
-        if (directionVectorList.size() == 0) {
+        if (dirVList.size() == 0) {
             showToast(getString(R.string.nothing_drawn));
             return;
         }
@@ -245,15 +248,16 @@ public class MainActivity extends Activity {
         }
 
         //For Debug display how many vectors are excluded because of the optimization algorithm.
-        showToast("Vector optimization kicked out " + (drawView.getPosVList().size() - directionVectorList.size()) + "/" + drawView.getPosVList().size() + " vectors.");
+        showToast("Vector optimization kicked out " + (posVList.size() - dirVList.size()) + "/" + posVList.size() + " vectors.");
 
         //Create a Service instance which performs bluetooth operations in a second thread.
         VectorTransferService service = new VectorTransferService(getDefaultBrick());
         //Register a Listener to update the UI while sending data to the nxt brick.
         service.registerListener(transferListener);
         //start to transfer the vectors to the brick in a second thread.
-        service.execute(directionVectorList);
+        service.execute(dirVList);
     }
+
 
     /**
      * Listener class to perform updates on the ui and show the progress
