@@ -245,11 +245,11 @@ public class DrawView extends SurfaceView {
         Vector2D lastOfPath = null;
         for (int i = 0; i < paths.size(); i++) {
             Path currentPath = paths.get(i);
-            
+
             if (i > 0) {
                 //If the last vector of the previous path and the first vector of the current path are equal,
                 // remove one of these equal vectors
-                if (lastOfPath != null && !lastOfPath.equals(currentPath.first())) {
+                if (lastOfPath != null && lastOfPath.equals(currentPath.first())) {
                     completeList.remove(completeList.size() - 1);
                 } else {
                     //The vector (x = Short.MAX_VALUE, y = Short.MAX_VALUE) indicates a new path.
