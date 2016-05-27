@@ -56,7 +56,6 @@ public class DrawView extends SurfaceView {
         canvasLength = -1;
         strokeWidth = MetricsConverter.convertToPixels(2.4f, getContext());
         paint.setStrokeWidth(strokeWidth);
-        System.out.println("strokeWidt: " + strokeWidth);
     }
 
     /**
