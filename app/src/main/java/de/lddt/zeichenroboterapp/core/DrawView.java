@@ -26,7 +26,6 @@ public class DrawView extends SurfaceView {
     private LineMode lineMode;
     private boolean drawing, lineIsLinked;
     private int canvasLength;
-    private float strokeWidth;
 
     public DrawView(Context context) {
         super(context);
@@ -54,7 +53,7 @@ public class DrawView extends SurfaceView {
         drawing = false;
         lineIsLinked = false;
         canvasLength = -1;
-        strokeWidth = MetricsConverter.convertToPixels(2.4f, getContext());
+        float strokeWidth = MetricsConverter.convertToPixels(2.4f, getContext());
         paint.setStrokeWidth(strokeWidth);
     }
 
