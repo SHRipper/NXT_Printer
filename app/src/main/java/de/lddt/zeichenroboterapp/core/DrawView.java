@@ -148,11 +148,15 @@ public class DrawView extends SurfaceView {
             case MotionEvent.ACTION_MOVE:
                 //In draw mode add the new position to the path.
                 //If the drawing mode is line or linked line also change the path.
-                if (drawing || lineMode == LineMode.LINE || lineMode == LineMode.LINKED_LINE) {
+                if (drawing) {
                     addToPath(x, y);
                     invalidate();//Redraw the canvas.
-                    //Set bool drawing depending on whether the touch position is inside the canvas.
-                    drawing = isInBounds(x, y);
+
+                    //Only care about canvas Bounds, when in free drawing mode
+                    if (lineMode == LineMode.FREE) {
+                        //Set bool drawing depending on whether the touch position is inside the canvas.
+                        drawing = isInBounds(x, y);
+                    }
                 } else {
                     //Start a new path when the touch position is now inside the canvas
                     //and has previously been not.
