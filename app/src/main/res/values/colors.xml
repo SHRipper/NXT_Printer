@@ -14,5 +14,6 @@
     <color name="border_button_selected">#64dd17</color>
     <color name="border_button_unselected">#616161</color>
     <color name="color_linemode_button">#fafafa</color>
-    <color name="color_chooser_button">#ff4081</color>
+    <color name="color_chooser_button_filling">#ff4081</color>
+    <color name="color_chooser_button_outline">#ffffff</color>
 </resources>

@@ -3,9 +3,12 @@ package de.lddt.zeichenroboterapp.core;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -21,6 +24,7 @@ import de.lddt.zeichenroboterapp.entity.MyBrick;
 import de.lddt.zeichenroboterapp.listener.TransferListener;
 import de.lddt.zeichenroboterapp.math.Vector2D;
 import de.lddt.zeichenroboterapp.util.ColorAnimator;
+import de.lddt.zeichenroboterapp.util.MetricsConverter;
 import de.lddt.zeichenroboterapp.util.VectorConverter;
 
 /**
@@ -183,6 +187,9 @@ public class MainActivity extends Activity {
 
         // set alpha fade out animation
         Animation animFadeOut = AnimationUtils.loadAnimation(this, R.anim.button_mode_fade_out);
+        Animation animFadeIn = AnimationUtils.loadAnimation(this, R.anim.button_chooser_fade_in);
+
+        buttonLineModeChooser.startAnimation(animFadeIn);
 
         // free mode button fade out und move down
         buttonFreeMode.startAnimation(animFadeOut);
@@ -203,21 +210,32 @@ public class MainActivity extends Activity {
 
         // set alpha fade in animation
         Animation animFadeIn = AnimationUtils.loadAnimation(this, R.anim.button_mode_fade_in);
+        Animation animFadeOut = AnimationUtils.loadAnimation(this,R.anim.button_chooser_fade_out);
+
+        // translation values
+        float freeModeTranslationY= MetricsConverter.convertToPixels(-60,this);
+        float lineModeTranslationY = MetricsConverter.convertToPixels(-50, this);
+        float lineModeTranslationX = (-1)* lineModeTranslationY;
+        float linkedLineModeTranslationX = (-1) * freeModeTranslationY;
+
+        buttonLineModeChooser.startAnimation(animFadeOut);
 
         // free mode button fade in an move up
         buttonFreeMode.startAnimation(animFadeIn);
-        buttonFreeMode.animate().setDuration(animationDurationMove).translationY(-175).start();
+        buttonFreeMode.animate().setDuration(animationDurationMove).translationY(freeModeTranslationY).start();
 
         // line mode button fade in and move up and right
         buttonLineMode.startAnimation(animFadeIn);
-        buttonLineMode.animate().setDuration(animationDurationMove).translationY(-150).translationX(150).start();
+        buttonLineMode.animate().setDuration(animationDurationMove).translationY(lineModeTranslationY).translationX(lineModeTranslationX).start();
 
         // linked line mode button fade in and move right
         buttonLinkedLineMode.startAnimation(animFadeIn);
-        buttonLinkedLineMode.animate().setDuration(animationDurationMove).translationX(175).start();
+        buttonLinkedLineMode.animate().setDuration(animationDurationMove).translationX(linkedLineModeTranslationX).start();
 
         menuIsHidden = false;
     }
+
+
 
     /**
      * Called when the "SEND" button is clicked.

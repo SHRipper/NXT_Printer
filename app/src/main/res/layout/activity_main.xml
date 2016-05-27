@@ -103,7 +103,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="30dp"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/linemode_parent_button_shape"
+            android:background="@drawable/linemode_chooser_button_shape"
             android:clickable="true"
             android:onClick="lineModeChooserClick"
             android:src="@drawable/brush" />
