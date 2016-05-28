@@ -276,6 +276,52 @@ public class MainActivity extends Activity {
         service.execute(dirVList);
     }
 
+    /**
+     * Show toast on the screen. Cancel currently displayed toasts.
+     *
+     * @param message the message to be displayed.
+     */
+    private void showToast(String message) {
+        if (toast != null) {
+            toast.cancel();
+        }
+        toast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    /**
+     * Create a ProgressDialog instance. The Dialog is not cancelable.
+     *
+     * @param title   the title of tje dialog.
+     * @param message the message of the dialog.
+     * @return the created dialog.
+     */
+    private ProgressDialog createDialog(String title, String message) {
+        ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+        dialog.setTitle(title);
+        dialog.setMessage(message);
+        dialog.setCancelable(false);
+        return dialog;
+    }
+
+    /**
+     * Open the system bluetooth settings.
+     */
+    private void openSystemBluetoothSettings() {
+        Intent intent = new Intent();
+        intent.setAction(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS);
+        startActivity(intent);
+    }
+
+    /**
+     * Creates a MyBrick instance with name and mac address specified in the resource file
+     *
+     * @return the created instance
+     */
+    private MyBrick getDefaultBrick() {
+        return new MyBrick(getString(R.string.brick_name),
+                getString(R.string.brick_mac_address));
+    }
 
     /**
      * Listener class to perform updates on the ui and show the progress
@@ -330,50 +376,5 @@ public class MainActivity extends Activity {
         }
     }
 
-    /**
-     * Show toast on the screen. Cancel currently displayed toasts.
-     *
-     * @param message the message to be displayed.
-     */
-    private void showToast(String message) {
-        if (toast != null) {
-            toast.cancel();
-        }
-        toast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG);
-        toast.show();
-    }
 
-    /**
-     * Create a ProgressDialog instance. The Dialog is not cancelable.
-     *
-     * @param title   the title of tje dialog.
-     * @param message the message of the dialog.
-     * @return the created dialog.
-     */
-    private ProgressDialog createDialog(String title, String message) {
-        ProgressDialog dialog = new ProgressDialog(MainActivity.this);
-        dialog.setTitle(title);
-        dialog.setMessage(message);
-        dialog.setCancelable(false);
-        return dialog;
-    }
-
-    /**
-     * Open the system bluetooth settings.
-     */
-    private void openSystemBluetoothSettings() {
-        Intent intent = new Intent();
-        intent.setAction(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS);
-        startActivity(intent);
-    }
-
-    /**
-     * Creates a MyBrick instance with name and mac address specified in the resource file
-     *
-     * @return the created instance
-     */
-    private MyBrick getDefaultBrick() {
-        return new MyBrick(getString(R.string.brick_name),
-                getString(R.string.brick_mac_address));
-    }
 }

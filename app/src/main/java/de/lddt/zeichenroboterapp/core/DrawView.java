@@ -269,15 +269,9 @@ public class DrawView extends SurfaceView {
     }
 
     /**
-     * Calculates the stroke width in pixels for the preview drawing on the screen.
-     * The width depends on the resolution of the canvas.
-     *
-     * @return stroke width in pixels.
+     * This Class returns a boolean value that indicates if the user is
+     * currently drawing (=true) or not (=false)
      */
-    private float getStrokeWidth() {
-        return ((float) this.canvasLength) / 150;
-    }
-
     public boolean isDrawing() {
         return drawing;
     }
