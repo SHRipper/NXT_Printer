@@ -3,15 +3,19 @@ package de.lddt.zeichenroboterapp.math;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.lddt.zeichenroboterapp.core.LineMode;
+
 /**
  * A Path stores a List of Vectors representing the drawn path.
  */
 public class Path {
     private List<Vector2D> vectors;
+    private LineMode type;
 
-    public Path(Vector2D start) {
+    public Path(Vector2D start, LineMode type) {
         vectors = new ArrayList<>();
         vectors.add(start);
+        this.type = type;
     }
 
     /**
@@ -94,5 +98,12 @@ public class Path {
      */
     public int length() {
         return vectors.size();
+    }
+
+    /**
+     * @return the drawing mode of this path
+     */
+    public LineMode getType() {
+        return type;
     }
 }
