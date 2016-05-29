@@ -72,27 +72,7 @@ public class Path {
         }
         return clone;
     }
-
-    /**
-     * @return the last vector of the list.
-     */
-    public Vector2D last() {
-        if (vectors.size() > 0) {
-            return vectors.get(vectors.size() - 1);
-        }
-        return null;
-    }
-
-    /**
-     * @return the first vector of the list.
-     */
-    public Vector2D first() {
-        if (vectors.size() > 0) {
-            return vectors.get(0);
-        }
-        return null;
-    }
-
+    
     /**
      * @return the number of vectors
      */
