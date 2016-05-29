@@ -265,7 +265,7 @@ public class MainActivity extends Activity {
         showToast("Vector optimization kicked out " + (posVList.size() - dirVList.size()) + "/" + posVList.size() + " vectors.");
 
         //Create a Service instance which performs bluetooth operations in a second thread.
-        VectorTransferService service = new VectorTransferService(getDefaultBrick());
+        VectorTransferService service = new VectorTransferService(MyBrick.getDefaultBrick(this));
         //Register a Listener to update the UI while sending data to the nxt brick.
         service.registerListener(transferListener);
         //start to transfer the vectors to the brick in a second thread.
@@ -307,16 +307,6 @@ public class MainActivity extends Activity {
         Intent intent = new Intent();
         intent.setAction(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS);
         startActivity(intent);
-    }
-
-    /**
-     * Creates a MyBrick instance with name and mac address specified in the resource file
-     *
-     * @return the created instance
-     */
-    private MyBrick getDefaultBrick() {
-        return new MyBrick(getString(R.string.brick_name),
-                getString(R.string.brick_mac_address));
     }
 
     /**
