@@ -3,12 +3,9 @@ package de.lddt.zeichenroboterapp.core;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -37,7 +34,6 @@ public class MainActivity extends Activity {
     private int animationDurationMove;
     private boolean menuIsHidden;
 
-    private ProgressDialog dialog;
     private Toast toast;
     //Service to perform bluetooth operations in a second thread.
     private Listener transferListener;
@@ -328,6 +324,8 @@ public class MainActivity extends Activity {
      * during the transfer of vectors to the nxt brick.
      */
     private class Listener implements TransferListener {
+        private ProgressDialog dialog;
+
         /**
          * Show loading dialog while connection is established
          */
@@ -375,6 +373,4 @@ public class MainActivity extends Activity {
             showToast(getString(R.string.data_transfer_failed));
         }
     }
-
-
 }
