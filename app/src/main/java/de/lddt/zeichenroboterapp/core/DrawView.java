@@ -28,7 +28,6 @@ public class DrawView extends SurfaceView {
     private int canvasLength;
     private Path currentPath;    //Reference to the most recent path
 
-
     public DrawView(Context context) {
         super(context);
         init();
@@ -169,25 +168,11 @@ public class DrawView extends SurfaceView {
 
             case MotionEvent.ACTION_MOVE:
                 if (drawing) {
-                    //If the drawing mode is line or linked line, the last vector of the line is removed.
-                    if (currentPath.getType() == LineMode.LINE || currentPath.getType() == LineMode.LINKED_LINE
-                            && currentPath.length() > 1) {
-                        currentPath.rewind();
-                    }
-
-                    //Add a new position to the path.
-                    addToPath(x, y, currentPath);
-                    invalidate();//Redraw the canvas.
-
-                    //Only care about canvas Bounds, when in free drawing mode.
-                    if (lineMode == LineMode.FREE) {
-                        //Set bool drawing depending on whether the touch position is inside the canvas.
-                        drawing = isInBounds(x, y);
-                    }
+                    drawLine(x, y);
                 } else {
-                    drawing = isInBounds(x, y);
                     //Start a new path when the touch position is now inside the canvas
                     //and has previously been not.
+                    drawing = isInBounds(x, y);
                     if (drawing) {
                         currentPath = startNewPath(x, y);
                     }
@@ -200,6 +185,29 @@ public class DrawView extends SurfaceView {
                 return true;
         }
         return false;
+    }
+
+    /**
+     * Draw a line. The behaviour depends on the drawing mode of the current path.
+     *
+     * @param x the x position of the touch input.
+     * @param y the y position of the touch input.
+     */
+    private void drawLine(float x, float y) {
+        //If the drawing mode is line or linked line, the last vector of the line is removed.
+        if (currentPath.getType() == LineMode.LINE || currentPath.getType() == LineMode.LINKED_LINE
+                && currentPath.length() > 1) {
+            currentPath.rewind();
+        }
+
+        addToPath(x, y, currentPath); //Add a new position to the path.
+        invalidate();//Redraw the canvas.
+
+        //Only care about canvas Bounds, when in free drawing mode.
+        if (lineMode == LineMode.FREE) {
+            //Set bool drawing depending on whether the touch position is inside the canvas.
+            drawing = isInBounds(x, y);
+        }
     }
 
     /**
