@@ -337,7 +337,8 @@ public class MainActivity extends Activity {
         @Override
         public void onProgressUpdate(int progress, int packageCount) {
             if (dialog.getMax() != packageCount) {
-                dialog.cancel();
+                dialog.dismiss();
+                dialog = null;
                 dialog = createDialog(getString(R.string.send_dialog_title),
                         getString(R.string.send_dialog_message));
                 dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
