@@ -41,7 +41,6 @@ public class BluetoothConn {
      */
     public static boolean connectTo(MyBrick myBrick) {
         //see http://www.lejos.org/nxt/nxj/tutorial/Android/Android.htm
-        //TODO: try catch unnötig??
         Log.v(TAG, "Trying to connecto to " + myBrick.getName() + "; " + myBrick.getMacAddress());
         try {
             brickConn = new NXTConnector();
@@ -106,21 +105,13 @@ public class BluetoothConn {
         Log.v(TAG, "Waiting for response from " + brickConn.getNXTInfo().name);
         DataInputStream dataInStream = brickConn.getDataIn();
         boolean success = false;
-        while (!success) {
-            try {
-                success = dataInStream.readBoolean();
-            } catch (IOException | NullPointerException e) {
-                e.printStackTrace();
-                return false;
-            }
-
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        try {
+            success = dataInStream.readBoolean();
+        } catch (IOException | NullPointerException e) {
+            e.printStackTrace();
+            return false;
         }
-        return true;
+        return success;
     }
 
     /**
