@@ -353,7 +353,7 @@ public class MainActivity extends Activity {
          */
         @Override
         public void onFinished() {
-            dialog.cancel();
+            dialog.dismiss();
             showToast(getString(R.string.data_transfer_success));
         }
 
@@ -362,7 +362,7 @@ public class MainActivity extends Activity {
          */
         @Override
         public void error() {
-            dialog.cancel();
+            dialog.dismiss();
             showToast(getString(R.string.data_transfer_failed));
         }
     }
