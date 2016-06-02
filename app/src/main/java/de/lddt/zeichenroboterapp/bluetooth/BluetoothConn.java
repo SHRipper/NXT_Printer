@@ -131,6 +131,10 @@ public class BluetoothConn {
             try {
                 brickConn.getDataIn().close();
                 brickConn.getDataOut().close();
+            } catch (IOException | NullPointerException e) {
+                e.printStackTrace();
+            }
+            try {
                 brickConn.getNXTComm().close();
             } catch (IOException | NullPointerException e) {
                 e.printStackTrace();

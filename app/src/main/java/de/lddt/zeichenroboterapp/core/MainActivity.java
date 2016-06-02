@@ -34,6 +34,8 @@ public class MainActivity extends Activity {
     private int animationDurationMove;
     private boolean menuIsHidden;
 
+    private VectorTransferService service;
+
     private Toast toast;
     //Service to perform bluetooth operations in a second thread.
     private Listener transferListener;
@@ -265,7 +267,7 @@ public class MainActivity extends Activity {
         showToast("Vector optimization kicked out " + (posVList.size() - dirVList.size()) + "/" + posVList.size() + " vectors.");
 
         //Create a Service instance which performs bluetooth operations in a second thread.
-        VectorTransferService service = new VectorTransferService(MyBrick.getDefaultBrick(this));
+        service = new VectorTransferService(MyBrick.getDefaultBrick(this));
         //Register a Listener to update the UI while sending data to the nxt brick.
         service.registerListener(transferListener);
         //start to transfer the vectors to the brick in a second thread.
@@ -361,6 +363,14 @@ public class MainActivity extends Activity {
         public void error() {
             dialog.cancel();
             showToast(getString(R.string.data_transfer_failed));
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (service != null) {
+            service.cancel(true);
         }
     }
 }

@@ -7,8 +7,6 @@ import android.content.res.Resources;
  * Created by Lukas on 27.05.2016.
  */
 public class MetricsConverter {
-
-
     public static float convertToPixels(float dp, Context context){
         Resources resources = context.getResources();
         android.util.DisplayMetrics metrics = resources.getDisplayMetrics();

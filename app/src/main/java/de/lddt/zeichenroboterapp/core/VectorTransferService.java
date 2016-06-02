@@ -121,6 +121,12 @@ public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, Bo
         }
     }
 
+    @Override
+    protected void onCancelled() {
+        super.onCancelled();
+        BluetoothConn.close();
+    }
+
     /**
      * Set a listener to communicate progress updates and actions.
      *
