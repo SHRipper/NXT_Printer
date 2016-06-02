@@ -13,8 +13,8 @@ public class MyBrick {
     //unique bluetooth mac address of the brick
     private String macAddress;
 
-    public MyBrick(String brick, String macAddress) {
-        this.name = brick;
+    public MyBrick(String name, String macAddress) {
+        this.name = name;
         this.macAddress = macAddress;
     }
 

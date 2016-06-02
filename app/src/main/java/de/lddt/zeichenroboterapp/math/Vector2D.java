@@ -46,15 +46,6 @@ public class Vector2D {
     }
 
     /**
-     * normalize the vector;
-     */
-    public void normalize() {
-        float len = length();
-        x /= len;
-        y /= len;
-    }
-
-    /**
      * Return a new normalized vector instance.
      * @param v the vector on which the new vector is based on.
      * @return a new vector instance.

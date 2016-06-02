@@ -6,9 +6,10 @@ import java.util.List;
 import de.lddt.zeichenroboterapp.math.Vector2D;
 
 /**
- * This Class does operations on different kind of vectors.
+ * This Class does operations on different kinds of vectors.
  */
 public class VectorConverter {
+
     /**
      * Convert position vectors to direction vectors
      *
@@ -37,6 +38,17 @@ public class VectorConverter {
     }
 
     /**
+     * Creates a Vector2D. This Vector is the direction vector from one position to another position.
+     *
+     * @param v1 start position
+     * @param v2 end position
+     * @return direction vector.
+     */
+    private static Vector2D posVToDirV(Vector2D v1, Vector2D v2) {
+        return Vector2D.sub(v1, v2);
+    }
+
+    /**
      * Project the vectors on the grid so the nxt brick can process the vectors.
      *
      * @param vectorList   the list of vectors.
@@ -57,40 +69,6 @@ public class VectorConverter {
             }
         }
         return appliedList;
-    }
-
-    /**
-     * Position Vectors which lay on a line (with a certain tolerance) are excluded.
-     *
-     * @param posVList    the list of all position vectors
-     * @param accuracyDeg tolerance value for optimization.
-     * @return List of optimized position vectors.
-     */
-    private static List<Vector2D> optimizePosVectors(List<Vector2D> posVList, float accuracyDeg) {
-        float accuracy = (float) Math.cos(accuracyDeg / 180 * Math.PI);
-        for (int i = 2; i < posVList.size(); i++) { //optimize positions
-            if (posVList.get(i - 2).x != Short.MAX_VALUE && posVList.get(i - 1).x != Short.MAX_VALUE && posVList.get(i).x != Short.MAX_VALUE) {
-                Vector2D v1 = Vector2D.normalize(posVToDirV(posVList.get(i - 1), posVList.get(i - 2)));
-                Vector2D v2 = Vector2D.normalize(posVToDirV(posVList.get(i), posVList.get(i - 1)));
-                float dot = Math.abs(Vector2D.dot(v1, v2));
-                if (dot > accuracy) {
-                    posVList.remove(i - 1);
-                    i--;
-                }
-            }
-        }
-        return posVList;
-    }
-
-    /**
-     * Creates a Vector2D. This Vector is the direction vector from one position to another position.
-     *
-     * @param v1 start position
-     * @param v2 end position
-     * @return direction vector.
-     */
-    private static Vector2D posVToDirV(Vector2D v1, Vector2D v2) {
-        return Vector2D.sub(v1, v2);
     }
 
     /**
@@ -117,5 +95,28 @@ public class VectorConverter {
         v.x = Math.min(v.x, maxLength);
         v.y = Math.max(v.y, 0);
         v.y = Math.min(v.y, maxLength);
+    }
+
+    /**
+     * Position Vectors which lay on a line (with a certain tolerance) are excluded.
+     *
+     * @param posVList    the list of all position vectors
+     * @param accuracyDeg tolerance value for optimization.
+     * @return List of optimized position vectors.
+     */
+    private static List<Vector2D> optimizePosVectors(List<Vector2D> posVList, float accuracyDeg) {
+        float accuracy = (float) Math.cos(accuracyDeg / 180 * Math.PI);
+        for (int i = 2; i < posVList.size(); i++) { //optimize positions
+            if (posVList.get(i - 2).x != Short.MAX_VALUE && posVList.get(i - 1).x != Short.MAX_VALUE && posVList.get(i).x != Short.MAX_VALUE) {
+                Vector2D v1 = Vector2D.normalize(posVToDirV(posVList.get(i - 1), posVList.get(i - 2)));
+                Vector2D v2 = Vector2D.normalize(posVToDirV(posVList.get(i), posVList.get(i - 1)));
+                float dot = Math.abs(Vector2D.dot(v1, v2));
+                if (dot > accuracy) {
+                    posVList.remove(i - 1);
+                    i--;
+                }
+            }
+        }
+        return posVList;
     }
 }

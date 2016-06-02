@@ -3,12 +3,9 @@ package de.lddt.zeichenroboterapp.core;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -37,7 +34,6 @@ public class MainActivity extends Activity {
     private int animationDurationMove;
     private boolean menuIsHidden;
 
-    private ProgressDialog dialog;
     private Toast toast;
     //Service to perform bluetooth operations in a second thread.
     private Listener transferListener;
@@ -269,19 +265,57 @@ public class MainActivity extends Activity {
         showToast("Vector optimization kicked out " + (posVList.size() - dirVList.size()) + "/" + posVList.size() + " vectors.");
 
         //Create a Service instance which performs bluetooth operations in a second thread.
-        VectorTransferService service = new VectorTransferService(getDefaultBrick());
+        VectorTransferService service = new VectorTransferService(MyBrick.getDefaultBrick(this));
         //Register a Listener to update the UI while sending data to the nxt brick.
         service.registerListener(transferListener);
         //start to transfer the vectors to the brick in a second thread.
         service.execute(dirVList);
     }
 
+    /**
+     * Show toast on the screen. Cancel currently displayed toasts.
+     *
+     * @param message the message to be displayed.
+     */
+    private void showToast(String message) {
+        if (toast != null) {
+            toast.cancel();
+        }
+        toast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    /**
+     * Create a ProgressDialog instance. The Dialog is not cancelable.
+     *
+     * @param title   the title of tje dialog.
+     * @param message the message of the dialog.
+     * @return the created dialog.
+     */
+    private ProgressDialog createDialog(String title, String message) {
+        ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+        dialog.setTitle(title);
+        dialog.setMessage(message);
+        dialog.setCancelable(false);
+        return dialog;
+    }
+
+    /**
+     * Open the system bluetooth settings.
+     */
+    private void openSystemBluetoothSettings() {
+        Intent intent = new Intent();
+        intent.setAction(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS);
+        startActivity(intent);
+    }
 
     /**
      * Listener class to perform updates on the ui and show the progress
      * during the transfer of vectors to the nxt brick.
      */
     private class Listener implements TransferListener {
+        private ProgressDialog dialog;
+
         /**
          * Show loading dialog while connection is established
          */
@@ -328,52 +362,5 @@ public class MainActivity extends Activity {
             dialog.cancel();
             showToast(getString(R.string.data_transfer_failed));
         }
-    }
-
-    /**
-     * Show toast on the screen. Cancel currently displayed toasts.
-     *
-     * @param message the message to be displayed.
-     */
-    private void showToast(String message) {
-        if (toast != null) {
-            toast.cancel();
-        }
-        toast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG);
-        toast.show();
-    }
-
-    /**
-     * Create a ProgressDialog instance. The Dialog is not cancelable.
-     *
-     * @param title   the title of tje dialog.
-     * @param message the message of the dialog.
-     * @return the created dialog.
-     */
-    private ProgressDialog createDialog(String title, String message) {
-        ProgressDialog dialog = new ProgressDialog(MainActivity.this);
-        dialog.setTitle(title);
-        dialog.setMessage(message);
-        dialog.setCancelable(false);
-        return dialog;
-    }
-
-    /**
-     * Open the system bluetooth settings.
-     */
-    private void openSystemBluetoothSettings() {
-        Intent intent = new Intent();
-        intent.setAction(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS);
-        startActivity(intent);
-    }
-
-    /**
-     * Creates a MyBrick instance with name and mac address specified in the resource file
-     *
-     * @return the created instance
-     */
-    private MyBrick getDefaultBrick() {
-        return new MyBrick(getString(R.string.brick_name),
-                getString(R.string.brick_mac_address));
     }
 }
