@@ -278,7 +278,7 @@ public class DrawView extends SurfaceView {
         List<Vector2D> completeList = new ArrayList<>();
         for (Path path : paths) {
             //a path needs to consist of at least 2 vectors
-            if (path.length() < 2) {
+            if (path.length() >= 2) {
                 if (completeList.size() > 0) {
                     //The vector (x = Short.MAX_VALUE, y = Short.MAX_VALUE) indicates a new path.
                     Vector2D newPathIndicator = new Vector2D(Short.MAX_VALUE, Short.MAX_VALUE);
