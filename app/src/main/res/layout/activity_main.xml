@@ -26,8 +26,8 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_toLeftOf="@id/main_layout"
         android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@id/main_layout"
         android:padding="10dp">
 
         <ImageButton
@@ -35,10 +35,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:minHeight="75dp"
-            android:minWidth="75dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/action_button_shape"
             android:onClick="clearCanvasClick"
             android:src="@drawable/delete" />
 
@@ -48,10 +49,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@id/button_clear"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:minHeight="75dp"
-            android:minWidth="75dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+
+            android:background="@drawable/action_button_shape"
             android:onClick="undoClick"
             android:src="@drawable/undo_variant" />
 
@@ -122,10 +125,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+
             android:layout_marginBottom="5dp"
+            android:layout_marginRight="15dp"
             android:layout_marginTop="5dp"
-            android:minHeight="75dp"
-            android:minWidth="75dp"
+            android:background="@drawable/action_button_shape"
             android:onClick="sendClick"
             android:src="@drawable/cube_send" />
     </RelativeLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- General -->
-    <color name="background_color">#2196f3</color>
+    <color name="background_color">#607D8B</color>
     <color name="transparent">@android:color/transparent</color>
 
     <!-- Draw View -->
@@ -13,7 +13,8 @@
     <!-- Buttons -->
     <color name="border_button_selected">#64dd17</color>
     <color name="border_button_unselected">#616161</color>
-    <color name="color_linemode_button">#fafafa</color>
-    <color name="color_chooser_button_filling">#ff4081</color>
+    <color name="color_linemode_button_filling">#fafafa</color>
+    <color name="color_action_button_filling">#CFD8DC</color>
+    <color name="color_chooser_button_filling">#03A9F4</color>
     <color name="color_chooser_button_outline">#ffffff</color>
 </resources>
