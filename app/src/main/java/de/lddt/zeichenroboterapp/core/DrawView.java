@@ -90,10 +90,8 @@ public class DrawView extends SurfaceView {
                 paths.remove(currentPath);
                 //Update the currentPath reference
                 currentPath = getCurrentPath();
-            }
-
-            //In the linked line mode remove only the last line
-            if (currentPath.getType() == LineMode.LINKED_LINE) {
+            } else if (currentPath.getType() == LineMode.LINKED_LINE) {
+                //In the linked line mode remove only the last line
                 currentPath.rewind();
                 //Remove the path if the length of the path is 0
                 if (currentPath.length() == 0) {
