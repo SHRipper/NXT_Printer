@@ -58,7 +58,6 @@ public class BluetoothConn {
                     NXTCommFactory.BLUETOOTH, NXTComm.PACKET);
         } catch (Exception e) {
             e.printStackTrace();
-            brickConn = null;
             return false;
         }
 
