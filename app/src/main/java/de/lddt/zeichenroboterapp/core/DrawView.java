@@ -195,7 +195,7 @@ public class DrawView extends SurfaceView {
      */
     private void drawLine(float x, float y) {
         //If the drawing mode is line or linked line, the last vector of the line is removed.
-        if (currentPath.getType() == LineMode.LINE || currentPath.getType() == LineMode.LINKED_LINE
+        if ((currentPath.getType() == LineMode.LINE || currentPath.getType() == LineMode.LINKED_LINE)
                 && currentPath.length() > 1) {
             currentPath.rewind();
         }
