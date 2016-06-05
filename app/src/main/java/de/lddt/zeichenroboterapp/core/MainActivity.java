@@ -247,7 +247,8 @@ public class MainActivity extends Activity {
         int gridLength = getResources().getInteger(R.integer.grid_length);
 
         List<Vector2D> posVList = drawView.getPosVList();
-        posVList = VectorConverter.applyGrid(posVList, drawView.getCanvasLength(), gridLength);
+        int canvasLength = drawView.getCanvasLength();
+        posVList = VectorConverter.applyGrid(posVList, canvasLength, gridLength);
         List<Vector2D> dirVList = VectorConverter.posVToDirV(posVList, accuracyDeg);
 
         //Check if nothing is drawn, show error Toast and cancel operation.
