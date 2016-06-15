@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.lddt.zeichenroboterapp.R;
-import de.lddt.zeichenroboterapp.core.LineMode;
+import de.lddt.zeichenroboterapp.core.DrawMode;
 import de.lddt.zeichenroboterapp.math.Path;
 import de.lddt.zeichenroboterapp.math.Vector2D;
 
@@ -29,12 +29,12 @@ public class Sample {
 
         List<Path> sampleDrawing = new ArrayList<>();
 
-        Path currentPath = new Path(LineMode.LINKED_LINE);
+        Path currentPath = new Path(DrawMode.LINKED_LINE);
         sampleDrawing.add(currentPath);
         for (int i = 0; i < sample.length; i += 2) {
             //the value '-1' means a new path is starting now
             if (sample[i] == -1 && sample[i + 1] == -1) {
-                currentPath = new Path(LineMode.LINKED_LINE);
+                currentPath = new Path(DrawMode.LINKED_LINE);
                 sampleDrawing.add(currentPath);
             } else {
                 Vector2D v = new Vector2D(sample[i], gridLength - sample[i + 1]);

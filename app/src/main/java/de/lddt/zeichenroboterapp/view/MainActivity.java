@@ -17,7 +17,7 @@ import java.util.List;
 
 import de.lddt.zeichenroboterapp.R;
 import de.lddt.zeichenroboterapp.bluetooth.BluetoothConn;
-import de.lddt.zeichenroboterapp.core.LineMode;
+import de.lddt.zeichenroboterapp.core.DrawMode;
 import de.lddt.zeichenroboterapp.core.VectorTransferService;
 import de.lddt.zeichenroboterapp.entity.MyBrick;
 import de.lddt.zeichenroboterapp.listener.TransferListener;
@@ -33,7 +33,7 @@ import de.lddt.zeichenroboterapp.util.VectorConverter;
 public class MainActivity extends Activity {
     private DrawView drawView;
     private ImageButton buttonFreeMode, buttonLineMode, buttonLineModeChooser, buttonLinkedLineMode;
-    private LineMode lineMode;
+    private DrawMode drawMode;
     private int animationDurationMove;
     private boolean menuIsHidden;
 
@@ -149,7 +149,7 @@ public class MainActivity extends Activity {
 
         if (!drawView.isDrawing() && !menuIsHidden) {
             if (buttonID == R.id.button_free_mode) {
-                lineMode = LineMode.FREE;
+                drawMode = DrawMode.FREE;
 
                 // show free mode button as selected and line mode button as unselected
                 buttonFreeMode.setBackgroundResource(R.drawable.linemode_child_button_shape_selected);
@@ -160,7 +160,7 @@ public class MainActivity extends Activity {
                 buttonLineModeChooser.setImageDrawable(ICON_FREE_MODE);
 
             } else if (buttonID == R.id.button_line_mode) {
-                lineMode = lineMode.LINE;
+                drawMode = drawMode.LINE;
 
                 // show free mode button as selected and line mode button as unselected
                 buttonFreeMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
@@ -171,7 +171,7 @@ public class MainActivity extends Activity {
                 buttonLineModeChooser.setImageDrawable(ICON_LINE_MODE);
 
             } else if (buttonID == R.id.button_linked_line_mode) {
-                lineMode = LineMode.LINKED_LINE;
+                drawMode = DrawMode.LINKED_LINE;
 
                 // show free mode button as selected and line mode button as unselected
                 buttonFreeMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
@@ -183,7 +183,7 @@ public class MainActivity extends Activity {
 
             }
             hideLineModeMenu();
-            drawView.setLineMode(lineMode);
+            drawView.setDrawMode(drawMode);
         }
     }
 

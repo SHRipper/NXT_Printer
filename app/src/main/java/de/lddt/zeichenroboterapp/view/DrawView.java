@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.lddt.zeichenroboterapp.R;
-import de.lddt.zeichenroboterapp.core.LineMode;
+import de.lddt.zeichenroboterapp.core.DrawMode;
 import de.lddt.zeichenroboterapp.math.Path;
 import de.lddt.zeichenroboterapp.math.Vector2D;
 import de.lddt.zeichenroboterapp.util.MetricsConverter;
@@ -24,7 +24,7 @@ import static de.lddt.zeichenroboterapp.util.VectorConverter.applyBounds;
 public class DrawView extends SurfaceView {
     private List<Path> paths;
     private Paint paint;
-    private LineMode lineMode;
+    private DrawMode drawMode;
     private boolean drawing;
     private int canvasLength;
     private Path currentPath;    //Reference to the most recent path
@@ -51,7 +51,7 @@ public class DrawView extends SurfaceView {
         this.paths = new ArrayList<>();
         paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);
-        lineMode = LineMode.FREE;
+        drawMode = DrawMode.FREE;
         drawing = false;
         canvasLength = -1;
         currentPath = null;
@@ -87,11 +87,11 @@ public class DrawView extends SurfaceView {
         drawing = false;
         currentPath = getCurrentPath();
         if (currentPath != null) {
-            if (currentPath.getType() == LineMode.FREE || currentPath.getType() == LineMode.LINE) {
+            if (currentPath.getType() == DrawMode.FREE || currentPath.getType() == DrawMode.LINE) {
                 paths.remove(currentPath);
                 //Update the currentPath reference
                 currentPath = getCurrentPath();
-            } else if (currentPath.getType() == LineMode.LINKED_LINE) {
+            } else if (currentPath.getType() == DrawMode.LINKED_LINE) {
                 //In the linked line mode remove only the last line
                 currentPath.rewind();
                 //Remove the path if the length of the path is 0
@@ -108,10 +108,10 @@ public class DrawView extends SurfaceView {
     /**
      * Change the Drawing Mode. This effects how the touch input is processed.
      *
-     * @param lineMode the new drawing mode.
+     * @param drawMode the new drawing mode.
      */
-    public void setLineMode(LineMode lineMode) {
-        this.lineMode = lineMode;
+    public void setDrawMode(DrawMode drawMode) {
+        this.drawMode = drawMode;
     }
 
     /**
@@ -165,8 +165,8 @@ public class DrawView extends SurfaceView {
                 //If the drawing mode is linked line and the current path is a linked line path,
                 //a new line starts where the previous line ended.
                 if (currentPath != null
-                        && lineMode == LineMode.LINKED_LINE
-                        && currentPath.getType() == LineMode.LINKED_LINE) {
+                        && drawMode == DrawMode.LINKED_LINE
+                        && currentPath.getType() == DrawMode.LINKED_LINE) {
                     addToPath(x, y, currentPath);
                     invalidate();
                 } else {
@@ -204,7 +204,7 @@ public class DrawView extends SurfaceView {
      */
     private void drawLine(float x, float y) {
         //If the drawing mode is line or linked line, the last vector of the line is removed.
-        if ((currentPath.getType() == LineMode.LINE || currentPath.getType() == LineMode.LINKED_LINE)
+        if ((currentPath.getType() == DrawMode.LINE || currentPath.getType() == DrawMode.LINKED_LINE)
                 && currentPath.length() > 1) {
             currentPath.rewind();
         }
@@ -213,7 +213,7 @@ public class DrawView extends SurfaceView {
         invalidate();//Redraw the canvas.
 
         //Only care about canvas Bounds, when in free drawing mode.
-        if (lineMode == LineMode.FREE) {
+        if (drawMode == DrawMode.FREE) {
             //Set bool drawing depending on whether the touch position is inside the canvas.
             drawing = isInBounds(x, y);
         }
@@ -227,7 +227,7 @@ public class DrawView extends SurfaceView {
     private Path startNewPath(float x, float y) {
         //Create a new path and set x and y as the start position.
         //Also set the type of the path to the current drawing mode.
-        Path newPath = new Path(createVector(x, y), lineMode);
+        Path newPath = new Path(createVector(x, y), drawMode);
         //Add the path to List
         paths.add(newPath);
         return newPath;
