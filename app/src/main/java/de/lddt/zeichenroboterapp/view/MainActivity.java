@@ -56,10 +56,10 @@ public class MainActivity extends Activity {
         super.onStart();
         //Get a reference to important views.
         drawView = (DrawView) findViewById(R.id.main_draw_view);
-        buttonFreeMode = (ImageButton) findViewById(R.id.button_free_mode);
-        buttonLineMode = (ImageButton) findViewById(R.id.button_line_mode);
-        buttonLinkedLineMode = (ImageButton) findViewById(R.id.button_linked_line_mode);
-        buttonLineModeChooser = (ImageButton) findViewById(R.id.button_line_mode_chooser);
+        buttonFreeMode = (ImageButton) findViewById(R.id.button_child_free_mode);
+        buttonLineMode = (ImageButton) findViewById(R.id.button_child_line_mode);
+        buttonLinkedLineMode = (ImageButton) findViewById(R.id.button_child_linked_line_mode);
+        buttonLineModeChooser = (ImageButton) findViewById(R.id.button_parent_line_mode);
 
         menuIsHidden = true;
         animationDurationMove = getResources().getInteger(R.integer.animation_alpha_fade_duration_ms);
@@ -82,7 +82,7 @@ public class MainActivity extends Activity {
 
     /**
      * Called when the "CLEAR" button is clicked.
-     * The DrawView changes its color to the color of the brush
+     * The DrawView changes its color to the color of the src_brush
      * and then to its default again.
      * <p/>
      * The animation takes 300 milliseconds
@@ -94,8 +94,8 @@ public class MainActivity extends Activity {
     public void clearCanvasClick(View v) {
 
         // Values for the color animator
-        int colorWhite = getResources().getColor(R.color.canvas_background_color);
-        int colorBlack = getResources().getColor(R.color.final_draw_color);
+        int colorWhite = getResources().getColor(R.color.canvas_background);
+        int colorBlack = getResources().getColor(R.color.final_draw);
         int duration = getResources().getInteger(R.integer.animation_color_fade_duration_ms);
         int repeatMode = ValueAnimator.REVERSE;
 
@@ -142,41 +142,41 @@ public class MainActivity extends Activity {
 
         int buttonID = v.getId();
         Drawable ICON_FREE_MODE, ICON_LINE_MODE, ICON_LINKED_LINE_MODE;
-        ICON_FREE_MODE = getResources().getDrawable(R.drawable.brush);
-        ICON_LINE_MODE = getResources().getDrawable(R.drawable.vector_line);
-        ICON_LINKED_LINE_MODE = getResources().getDrawable(R.drawable.vector_polyline);
+        ICON_FREE_MODE = getResources().getDrawable(R.drawable.src_brush);
+        ICON_LINE_MODE = getResources().getDrawable(R.drawable.src_vector_line);
+        ICON_LINKED_LINE_MODE = getResources().getDrawable(R.drawable.src_vector_polyline);
 
 
         if (!drawView.isDrawing() && !menuIsHidden) {
-            if (buttonID == R.id.button_free_mode) {
+            if (buttonID == R.id.button_child_free_mode) {
                 drawMode = DrawMode.FREE;
 
                 // show free mode button as selected and line mode button as unselected
-                buttonFreeMode.setBackgroundResource(R.drawable.linemode_child_button_shape_selected);
-                buttonLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
-                buttonLinkedLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
+                buttonFreeMode.setBackgroundResource(R.drawable.button_drawmode_child_background_selected);
+                buttonLineMode.setBackgroundResource(R.drawable.button_drawmode_child_background);
+                buttonLinkedLineMode.setBackgroundResource(R.drawable.button_drawmode_child_background);
 
                 // change icon of chooser button to the icon of the selected mode
                 buttonLineModeChooser.setImageDrawable(ICON_FREE_MODE);
 
-            } else if (buttonID == R.id.button_line_mode) {
+            } else if (buttonID == R.id.button_child_line_mode) {
                 drawMode = DrawMode.LINE;
 
                 // show free mode button as selected and line mode button as unselected
-                buttonFreeMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
-                buttonLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_selected);
-                buttonLinkedLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
+                buttonFreeMode.setBackgroundResource(R.drawable.button_drawmode_child_background);
+                buttonLineMode.setBackgroundResource(R.drawable.button_drawmode_child_background_selected);
+                buttonLinkedLineMode.setBackgroundResource(R.drawable.button_drawmode_child_background);
 
                 // change icon of chooser button to the icon of the selected mode
                 buttonLineModeChooser.setImageDrawable(ICON_LINE_MODE);
 
-            } else if (buttonID == R.id.button_linked_line_mode) {
+            } else if (buttonID == R.id.button_child_linked_line_mode) {
                 drawMode = DrawMode.LINKED_LINE;
 
                 // show free mode button as selected and line mode button as unselected
-                buttonFreeMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
-                buttonLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
-                buttonLinkedLineMode.setBackgroundResource(R.drawable.linemode_child_button_shape_selected);
+                buttonFreeMode.setBackgroundResource(R.drawable.button_drawmode_child_background);
+                buttonLineMode.setBackgroundResource(R.drawable.button_drawmode_child_background);
+                buttonLinkedLineMode.setBackgroundResource(R.drawable.button_drawmode_child_background_selected);
 
                 // change icon of chooser button to the icon of the selected mode
                 buttonLineModeChooser.setImageDrawable(ICON_LINKED_LINE_MODE);

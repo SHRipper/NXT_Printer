@@ -135,10 +135,10 @@ public class DrawView extends SurfaceView {
             if (path.length() >= 2) {
                 if (drawing && path == currentPath) {
                     //While the user is drawing, set another color for the current path.
-                    paint.setColor(getResources().getColor(R.color.hint_draw_color));
+                    paint.setColor(getResources().getColor(R.color.hint_draw));
                 } else {
                     //The default color for drawing the paths on the canvas.
-                    paint.setColor(getResources().getColor(R.color.final_draw_color));
+                    paint.setColor(getResources().getColor(R.color.final_draw));
                 }
                 //draw the path on the canvas
                 canvas.drawLines(path.getPointsOfLine(), paint);

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
+    android:background="@color/background"
     android:baselineAligned="false"
     android:orientation="horizontal">
 
@@ -20,6 +20,7 @@
             android:layout_centerInParent="true"
             android:layout_gravity="center_horizontal"
             android:layout_margin="5dp"
+
             android:background="@drawable/draw_view_background" />
 
     </RelativeLayout>
@@ -40,9 +41,10 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/action_button_shape"
+
+            android:background="@drawable/action_button_selector"
             android:onClick="clearCanvasClick"
-            android:src="@drawable/delete" />
+            android:src="@drawable/src_delete" />
 
         <ImageButton
             android:id="@+id/button_undo"
@@ -55,97 +57,103 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
 
-            android:background="@drawable/action_button_shape"
+            android:background="@drawable/action_button_selector"
             android:onClick="undoClick"
-            android:src="@drawable/undo_variant" />
+            android:src="@drawable/src_undo_variant" />
 
 
         <ImageButton
-            android:id="@+id/button_line_mode"
+            android:id="@+id/button_child_line_mode"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="40dp"
             android:layout_marginLeft="15dp"
-            android:background="@drawable/linemode_child_button_shape_unselected"
+
+            android:background="@drawable/button_drawmode_child_background"
             android:clickable="false"
             android:onClick="changeDrawingModeClick"
-            android:src="@drawable/vector_line" />
+            android:src="@drawable/src_vector_line" />
 
         <ImageButton
-            android:id="@+id/button_free_mode"
+            android:id="@+id/button_child_free_mode"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="40dp"
             android:layout_marginLeft="15dp"
-            android:background="@drawable/linemode_child_button_shape_selected"
+
+            android:background="@drawable/button_drawmode_child_background_selected"
             android:clickable="false"
             android:onClick="changeDrawingModeClick"
-            android:src="@drawable/brush" />
+            android:src="@drawable/src_brush" />
 
         <ImageButton
-            android:id="@+id/button_linked_line_mode"
+            android:id="@+id/button_child_linked_line_mode"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="40dp"
             android:layout_marginLeft="15dp"
-            android:background="@drawable/linemode_child_button_shape_unselected"
+
+            android:background="@drawable/button_drawmode_child_background"
             android:clickable="false"
             android:onClick="changeDrawingModeClick"
-            android:src="@drawable/vector_polyline" />
+            android:src="@drawable/src_vector_polyline" />
 
         <ImageButton
-            android:id="@+id/button_line_mode_chooser"
+            android:id="@+id/button_parent_line_mode"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="30dp"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/linemode_chooser_button_shape"
+
+            android:background="@drawable/button_drawmode_parent_selector"
             android:clickable="true"
             android:onClick="lineModeChooserClick"
-            android:src="@drawable/brush" />
+            android:src="@drawable/src_brush" />
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_toRightOf="@id/main_layout"
         android:orientation="vertical"
-        android:padding="10dp"
-        android:id="@+id/relativeLayout">
+        android:padding="10dp">
 
         <ImageButton
             android:id="@+id/button_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerHorizontal="true"
-
             android:layout_marginBottom="5dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/action_button_shape"
+
+            android:background="@drawable/action_button_selector"
             android:onClick="sendClick"
-            android:src="@drawable/cube_send" />
+            android:src="@drawable/src_cube_send" />
 
         <ImageButton
             android:id="@+id/button_load_sample"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/action_button_shape"
-            android:onClick="loadSample"
-            android:src="@drawable/castle"
             android:layout_alignParentBottom="true"
-            android:layout_alignLeft="@+id/button_send"
-            android:layout_alignStart="@+id/button_send" />
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
+
+            android:background="@drawable/action_button_selector"
+            android:onClick="loadSample"
+            android:src="@drawable/src_castle" />
     </RelativeLayout>
 
 </RelativeLayout>

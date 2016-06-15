@@ -16,5 +16,5 @@
     <string name="connect_dialog_title">Verbinden&#8230;</string>
     <string name="connect_dialog_message">Verbindung wird hergestellt.</string>
     <string name="send_dialog_title">Senden&#8230;</string>
-    <string name="send_dialog_message">Sende Daten an den Brick</string>
+    <string name="send_dialog_message">Sende Daten an den Brick.</string>
 </resources>

@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- General -->
-    <color name="background_color">#607D8B</color>
+    <color name="background">#607D8B</color>
+
 
     <!-- Draw View -->
-    <color name="canvas_background_color">#eeeeee</color>
-    <color name="canvas_border_color">#424242</color>
-    <color name="hint_draw_color">#bdbdbd</color>
-    <color name="final_draw_color">#212121</color>
+    <color name="canvas_background">#eeeeee</color>
+    <color name="canvas_border">#424242</color>
+
+    <color name="hint_draw">#bdbdbd</color>
+    <color name="final_draw">#212121</color>
+
 
     <!-- Buttons -->
-    <color name="border_button_selected">#64dd17</color>
-    <color name="border_button_unselected">#616161</color>
-    <color name="color_linemode_button_filling">#fafafa</color>
-    <color name="color_action_button_filling">#CFD8DC</color>
-    <color name="color_chooser_button_filling">#03A9F4</color>
-    <color name="color_chooser_button_outline">#ffffff</color>
+
+    <!-- action buttons -->
+    <color name="action_button_bg">#CFD8DC</color>
+    <color name="action_button_bg_pressed">#90A4AE</color>
+    <color name="action_button_border">#ffffff</color>
+    <!-- draw mode buttons -->
+    <!-- child -->
+    <color name="button_draw_mode_child_border_selected">#64dd17</color>
+    <color name="button_draw_mode_child_bg">#fafafa</color>
+    <color name="button_draw_mode_child_border">#616161</color>
+    <!-- parent -->
+    <color name="button_draw_mode_parent_bg">#03A9F4</color>
+    <color name="button_draw_mode_child_bg_pressed">#0288D1</color>
+    <color name="button_draw_mode_parent_border">#ffffff</color>
 </resources>

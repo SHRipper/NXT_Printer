@@ -5,7 +5,7 @@
     <!--Fade In-->
     <alpha
         android:duration="@integer/animation_alpha_fade_duration_ms"
-        android:fromAlpha="0.7"
+        android:fromAlpha="0.5"
         android:interpolator="@android:anim/decelerate_interpolator"
         android:toAlpha="1.0" />
 
