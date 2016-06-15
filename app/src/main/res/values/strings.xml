@@ -2,12 +2,8 @@
     <!-- general -->
     <string name="app_name">Zeichenroboter App</string>
 
-    <!-- Buttons -->
-    <string name="reset_button_name">Clear</string>
-    <string name="revert_button_name">Undo</string>
-    <string name="send_button_name">Send</string>
+    <!-- bluetooth transfer -->
 
-    <!-- Bluetooth transfer -->
     <!-- error messages -->
     <string name="bluetooth_disabled">Bluetooth ist deaktiviert!\nBitte aktiviere zuerst Bluetooth</string>
     <string name="nothing_drawn">Bitte fertige zuerst eine Zeichnung an!</string>
