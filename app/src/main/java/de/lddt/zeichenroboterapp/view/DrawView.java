@@ -1,4 +1,4 @@
-package de.lddt.zeichenroboterapp.core;
+package de.lddt.zeichenroboterapp.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.lddt.zeichenroboterapp.R;
+import de.lddt.zeichenroboterapp.core.LineMode;
 import de.lddt.zeichenroboterapp.math.Path;
 import de.lddt.zeichenroboterapp.math.Vector2D;
 import de.lddt.zeichenroboterapp.util.MetricsConverter;

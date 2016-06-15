@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true">
 
-        <de.lddt.zeichenroboterapp.core.DrawView
+        <de.lddt.zeichenroboterapp.view.DrawView
             android:id="@+id/main_draw_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

@@ -1,4 +1,4 @@
-package de.lddt.zeichenroboterapp.util;
+package de.lddt.zeichenroboterapp.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -7,7 +7,6 @@ import android.animation.ValueAnimator;
 import android.view.animation.Animation;
 
 import de.lddt.zeichenroboterapp.R;
-import de.lddt.zeichenroboterapp.core.DrawView;
 
 /**
  * This class is a wrapper for the ValueAnimator we use to animate the clearing of the drawView

@@ -1,4 +1,4 @@
-package de.lddt.zeichenroboterapp.core;
+package de.lddt.zeichenroboterapp.view;
 
 import android.animation.ValueAnimator;
 import android.app.Activity;
@@ -17,11 +17,12 @@ import java.util.List;
 
 import de.lddt.zeichenroboterapp.R;
 import de.lddt.zeichenroboterapp.bluetooth.BluetoothConn;
+import de.lddt.zeichenroboterapp.core.LineMode;
+import de.lddt.zeichenroboterapp.core.VectorTransferService;
 import de.lddt.zeichenroboterapp.entity.MyBrick;
 import de.lddt.zeichenroboterapp.listener.TransferListener;
 import de.lddt.zeichenroboterapp.math.Path;
 import de.lddt.zeichenroboterapp.math.Vector2D;
-import de.lddt.zeichenroboterapp.util.ColorAnimator;
 import de.lddt.zeichenroboterapp.util.MetricsConverter;
 import de.lddt.zeichenroboterapp.util.Sample;
 import de.lddt.zeichenroboterapp.util.VectorConverter;
