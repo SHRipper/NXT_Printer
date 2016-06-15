@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <include layout="@layout/left_button_bar" />
 
     <RelativeLayout
         android:id="@+id/main_layout"
@@ -17,13 +16,14 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
 
             android:background="@drawable/draw_view_background" />
 
     </RelativeLayout>
 
+    <include layout="@layout/left_button_bar" />
     <include layout="@layout/right_button_bar" />
 
 </RelativeLayout>

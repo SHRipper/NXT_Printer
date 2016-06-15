@@ -78,6 +78,9 @@ public class MainActivity extends Activity {
         drawViewParams.width = drawView.getCanvasLength();
         drawViewParams.height = drawView.getCanvasLength();
         drawView.setLayoutParams(drawViewParams);
+
+        findViewById(R.id.main_left_layout).bringToFront();
+        findViewById(R.id.main_right_layout).bringToFront();
     }
 
     /**
