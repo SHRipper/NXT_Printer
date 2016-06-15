@@ -121,7 +121,7 @@ public class MainActivity extends Activity {
      *
      * @param v not used.
      */
-    public void loadSample(View v) {
+    public void loadSampleClick(View v) {
         List<Path> sampleDrawing =
                 Sample.loadSample(this, R.array.sample_castle, drawView.getCanvasLength());
 

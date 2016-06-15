@@ -9,28 +9,19 @@
 
     <ImageButton
         android:id="@+id/button_send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="5dp"
+        style="@style/ActionButton"
 
-        android:background="@drawable/action_button_selector"
+        android:layout_alignParentRight="true"
         android:onClick="sendClick"
         android:src="@drawable/src_cube_send" />
 
     <ImageButton
         android:id="@+id/button_load_sample"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/ActionButton"
+
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="5dp"
-
         android:background="@drawable/action_button_selector"
-        android:onClick="loadSample"
+        android:onClick="loadSampleClick"
         android:src="@drawable/src_castle" />
 </RelativeLayout>
