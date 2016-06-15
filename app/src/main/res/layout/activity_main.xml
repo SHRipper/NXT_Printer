@@ -136,16 +136,16 @@
             android:onClick="sendClick"
             android:src="@drawable/cube_send" />
 
-        <Button
+        <ImageButton
+            android:id="@+id/button_load_sample"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LOAD"
-            android:id="@+id/button"
+            android:background="@drawable/action_button_shape"
+            android:onClick="loadSample"
+            android:src="@drawable/castle"
             android:layout_alignParentBottom="true"
             android:layout_alignLeft="@+id/button_send"
-            android:layout_alignStart="@+id/button_send"
-            android:onClick="loadSample" />
-
+            android:layout_alignStart="@+id/button_send" />
     </RelativeLayout>
 
 </RelativeLayout>

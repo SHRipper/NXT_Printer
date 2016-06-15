@@ -251,8 +251,6 @@ public class MainActivity extends Activity {
         menuIsHidden = false;
     }
 
-
-
     /**
      * Called when the "SEND" button is clicked.
      * Check if something is drawn and bluetooth is enabled.
