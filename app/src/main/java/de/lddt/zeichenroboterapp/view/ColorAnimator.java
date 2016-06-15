@@ -16,7 +16,7 @@ class ColorAnimator extends Animation {
     private final ValueAnimator colorAnimation;
 
     /**
-     * Instanciates the ColorAnimator with the given inputs.
+     * Instantiates the ColorAnimator with the given inputs.
      *
      * @param drawView is the affected view
      * @param colorFrom is the current color the background
@@ -62,7 +62,7 @@ class ColorAnimator extends Animation {
         @Override
         public void onAnimationUpdate(ValueAnimator animation) {
             // if the animated value, e.g. the color, changes, the drawView should
-            // set the curren color as background color
+            // set the current color as background color
             drawView.setBackgroundColor((int) animation.getAnimatedValue());
         }
     };
