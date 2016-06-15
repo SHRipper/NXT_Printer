@@ -202,8 +202,8 @@ public class MainActivity extends Activity {
     private void hideLineModeMenu() {
 
         // set alpha fade out animation
-        Animation animFadeOut = AnimationUtils.loadAnimation(this, R.anim.button_mode_fade_out);
-        Animation animFadeIn = AnimationUtils.loadAnimation(this, R.anim.button_chooser_fade_in);
+        Animation animFadeOut = AnimationUtils.loadAnimation(this, R.anim.button_drawmode_child_fade_out);
+        Animation animFadeIn = AnimationUtils.loadAnimation(this, R.anim.button_drawmode_parent_fade_in);
 
         buttonLineModeChooser.startAnimation(animFadeIn);
 
@@ -225,8 +225,8 @@ public class MainActivity extends Activity {
     private void showLineModeMenu() {
 
         // set alpha fade in animation
-        Animation animFadeIn = AnimationUtils.loadAnimation(this, R.anim.button_mode_fade_in);
-        Animation animFadeOut = AnimationUtils.loadAnimation(this,R.anim.button_chooser_fade_out);
+        Animation animFadeIn = AnimationUtils.loadAnimation(this, R.anim.button_drawmode_child_fade_in);
+        Animation animFadeOut = AnimationUtils.loadAnimation(this, R.anim.button_drawmode_parent_fade_out);
 
         // translation values
         float freeModeTranslationY= MetricsConverter.convertToPixels(-60,this);
