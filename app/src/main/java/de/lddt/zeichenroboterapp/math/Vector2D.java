@@ -17,6 +17,11 @@ public class Vector2D {
         this.y = y;
     }
 
+    public void add(Vector2D v) {
+        this.x += v.x;
+        this.y += v.y;
+    }
+
     /**
      * Subtraction of 2 vectors.
      *

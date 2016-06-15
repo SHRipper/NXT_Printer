@@ -19,9 +19,11 @@ import de.lddt.zeichenroboterapp.R;
 import de.lddt.zeichenroboterapp.bluetooth.BluetoothConn;
 import de.lddt.zeichenroboterapp.entity.MyBrick;
 import de.lddt.zeichenroboterapp.listener.TransferListener;
+import de.lddt.zeichenroboterapp.math.Path;
 import de.lddt.zeichenroboterapp.math.Vector2D;
 import de.lddt.zeichenroboterapp.util.ColorAnimator;
 import de.lddt.zeichenroboterapp.util.MetricsConverter;
+import de.lddt.zeichenroboterapp.util.Sample;
 import de.lddt.zeichenroboterapp.util.VectorConverter;
 
 /**
@@ -109,6 +111,22 @@ public class MainActivity extends Activity {
      */
     public void undoClick(View v) {
         drawView.undo();
+    }
+
+
+    /**
+     * Called when "LOAD" button is clicked.
+     * Loads a sample drawing and gives it to the drawView.
+     *
+     * @param v not used.
+     */
+    public void loadSample(View v) {
+        List<Path> sampleDrawing =
+                Sample.loadSample(this, R.array.sample_castle, drawView.getCanvasLength());
+
+        for (Path samplepath : sampleDrawing) {
+            drawView.addPath(samplepath);
+        }
     }
 
     /**

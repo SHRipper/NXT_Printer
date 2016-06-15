@@ -114,6 +114,16 @@ public class DrawView extends SurfaceView {
     }
 
     /**
+     * Adds a given Path to the List of paths on the canvas.
+     *
+     * @param path the new path
+     */
+    public void addPath(Path path) {
+        paths.add(path);
+        invalidate();
+    }
+
+    /**
      * Redraw the recorded paths.
      */
     @Override
@@ -210,6 +220,7 @@ public class DrawView extends SurfaceView {
 
     /**
      * Create a new path with x and y as start position and add it to the list of paths.
+     *
      * @return the path we just created
      */
     private Path startNewPath(float x, float y) {

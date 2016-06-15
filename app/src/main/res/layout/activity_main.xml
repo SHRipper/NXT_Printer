@@ -15,12 +15,13 @@
 
         <de.lddt.zeichenroboterapp.core.DrawView
             android:id="@+id/main_draw_view"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:layout_gravity="center_horizontal"
             android:layout_margin="5dp"
             android:background="@drawable/draw_view_background" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -118,7 +119,8 @@
         android:layout_height="match_parent"
         android:layout_toRightOf="@id/main_layout"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:id="@+id/relativeLayout">
 
         <ImageButton
             android:id="@+id/button_send"
@@ -133,6 +135,17 @@
             android:background="@drawable/action_button_shape"
             android:onClick="sendClick"
             android:src="@drawable/cube_send" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOAD"
+            android:id="@+id/button"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/button_send"
+            android:layout_alignStart="@+id/button_send"
+            android:onClick="loadSample" />
+
     </RelativeLayout>
 
 </RelativeLayout>

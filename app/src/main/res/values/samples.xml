@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="sample_castle">
+        <!-- linker turm -->
+        <item>5</item>
+        <item>60</item>
+        <item>5</item>
+        <item>375</item>
+        <item>25</item>
+        <item>375</item>
+        <item>25</item>
+        <item>360</item>
+        <item>40</item>
+        <item>360</item>
+        <item>40</item>
+        <item>375</item>
+        <item>60</item>
+        <item>375</item>
+        <item>60</item>
+        <item>360</item>
+        <item>75</item>
+        <item>360</item>
+        <item>75</item>
+        <item>375</item>
+        <item>95</item>
+        <item>375</item>
+        <item>95</item>
+        <item>60</item>
+        <item>5</item>
+        <item>60</item>
+
+        <item>-1</item>
+        <item>-1</item>
+        <!-- rechter turm -->
+        <item>405</item>
+        <item>60</item>
+        <item>405</item>
+        <item>375</item>
+        <item>425</item>
+        <item>375</item>
+        <item>425</item>
+        <item>360</item>
+        <item>440</item>
+        <item>360</item>
+        <item>440</item>
+        <item>375</item>
+        <item>460</item>
+        <item>375</item>
+        <item>460</item>
+        <item>360</item>
+        <item>475</item>
+        <item>360</item>
+        <item>475</item>
+        <item>375</item>
+        <item>495</item>
+        <item>375</item>
+        <item>495</item>
+        <item>60</item>
+        <item>405</item>
+        <item>60</item>
+
+
+        <item>-1</item>
+        <item>-1</item>
+        <!-- mitte -->
+        <item>96</item>
+        <item>320</item>
+        <item>121</item>
+        <item>320</item>
+        <item>121</item>
+        <item>300</item>
+        <item>143</item>
+        <item>300</item>
+        <item>143</item>
+        <item>320</item>
+        <item>168</item>
+        <item>320</item>
+        <item>168</item>
+        <item>300</item>
+        <!--<item>190</item> <item>300</item>-->
+        <item>190</item>
+        <item>300</item>
+        <item>190</item>
+        <item>320</item>
+        <item>215</item>
+        <item>320</item>
+        <item>215</item>
+        <item>300</item>
+        <item>237</item>
+        <item>300</item>
+        <item>237</item>
+        <item>320</item>
+        <item>263</item>
+        <item>320</item>
+        <item>263</item>
+        <item>300</item>
+        <item>285</item>
+        <item>300</item>
+        <item>285</item>
+        <item>320</item>
+        <item>310</item>
+        <item>320</item>
+        <item>310</item>
+        <item>300</item>
+        <item>332</item>
+        <item>300</item>
+        <item>332</item>
+        <item>320</item>
+        <item>357</item>
+        <item>320</item>
+        <item>357</item>
+        <item>300</item>
+        <item>379</item>
+        <item>300</item>
+        <item>379</item>
+        <item>320</item>
+        <item>404</item>
+        <item>320</item>
+        <item>404</item>
+        <item>60</item>
+        <item>96</item>
+        <item>60</item>
+        <item>96</item>
+        <item>320</item>
+
+
+        <item>-1</item>
+        <item>-1</item>
+        <!-- tür -->
+        <!-- rahmen -->
+        <item>190</item>
+        <item>60</item>
+        <item>190</item>
+        <item>180</item>
+        <item>310</item>
+        <item>180</item>
+        <item>310</item>
+        <item>60</item>
+
+
+        <item>-1</item>
+        <item>-1</item>
+        <!-- balken -->
+        <item>190</item>
+        <item>170</item>
+        <item>310</item>
+        <item>170</item>
+        <item>-1</item>
+        <item>-1</item>
+
+        <item>190</item>
+        <item>150</item>
+        <item>310</item>
+        <item>150</item>
+        <item>-1</item>
+        <item>-1</item>
+
+        <item>190</item>
+        <item>130</item>
+        <item>310</item>
+        <item>130</item>
+        <item>-1</item>
+        <item>-1</item>
+
+        <item>190</item>
+        <item>110</item>
+        <item>310</item>
+        <item>110</item>
+        <item>-1</item>
+        <item>-1</item>
+
+        <item>190</item>
+        <item>90</item>
+        <item>310</item>
+        <item>90</item>
+        <item>-1</item>
+        <item>-1</item>
+
+        <item>190</item>
+        <item>70</item>
+        <item>310</item>
+        <item>70</item>
+
+
+        <item>-1</item>
+        <item>-1</item>
+        <!-- fahne -->
+        <item>250</item>
+        <item>320</item>
+        <item>250</item>
+        <item>425</item>
+        <item>310</item>
+        <item>425</item>
+        <item>310</item>
+        <item>390</item>
+        <item>250</item>
+        <item>390</item>
+
+
+        <item>-1</item>
+        <item>-1</item>
+        <!-- fenster 1 -->
+        <item>130</item>
+        <item>230</item>
+        <item>130</item>
+        <item>270</item>
+        <item>145</item>
+        <item>270</item>
+        <item>145</item>
+        <item>230</item>
+        <item>130</item>
+        <item>230</item>
+
+        <item>-1</item>
+        <item>-1</item>
+        <!-- fenster 2 mitte -->
+        <item>242</item>
+        <item>230</item>
+        <item>242</item>
+        <item>270</item>
+        <item>258</item>
+        <item>270</item>
+        <item>258</item>
+        <item>230</item>
+        <item>242</item>
+        <item>230</item>
+
+        <item>-1</item>
+        <item>-1</item>
+        <!-- fenster 3 -->
+        <item>370</item>
+        <item>230</item>
+        <item>370</item>
+        <item>270</item>
+        <item>355</item>
+        <item>270</item>
+        <item>355</item>
+        <item>230</item>
+        <item>370</item>
+        <item>230</item>
+
+        <item>-1</item>
+        <item>-1</item>
+        <!-- fenster turm 1 -->
+        <item>37</item>
+        <item>270</item>
+        <item>37</item>
+        <item>310</item>
+        <item>53</item>
+        <item>310</item>
+        <item>53</item>
+        <item>270</item>
+        <item>37</item>
+        <item>270</item>
+
+        <item>-1</item>
+        <item>-1</item>
+        <!-- fenster turm 2 -->
+        <item>463</item>
+        <item>270</item>
+        <item>463</item>
+        <item>310</item>
+        <item>447</item>
+        <item>310</item>
+        <item>447</item>
+        <item>270</item>
+        <item>463</item>
+        <item>270</item>
+
+    </integer-array>
+</resources>

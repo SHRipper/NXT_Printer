@@ -18,6 +18,11 @@ public class Path {
         this.type = type;
     }
 
+    public Path(LineMode type) {
+        vectors = new ArrayList<>();
+        this.type = type;
+    }
+
     /**
      * Add a vector to the list. This extends the path by one vector.
      *
