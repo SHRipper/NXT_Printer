@@ -2,7 +2,6 @@
 <resources>
     <!-- General -->
     <color name="background_color">#607D8B</color>
-    <color name="transparent">@android:color/transparent</color>
 
     <!-- Draw View -->
     <color name="canvas_background_color">#eeeeee</color>

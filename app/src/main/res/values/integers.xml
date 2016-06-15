@@ -2,6 +2,5 @@
 <resources>
     <!-- Animation Duration -->
     <integer name="animation_alpha_fade_duration_ms">500</integer>
-    <integer name="animation_transition_fade_duration_ms">500</integer>
     <integer name="animation_color_fade_duration_ms">300</integer>
 </resources>

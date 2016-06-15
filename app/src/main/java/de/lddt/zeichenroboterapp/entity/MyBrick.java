@@ -9,9 +9,9 @@ import de.lddt.zeichenroboterapp.R;
  */
 public class MyBrick {
     //name of the brick
-    private String name;
+    private final String name;
     //unique bluetooth mac address of the brick
-    private String macAddress;
+    private final String macAddress;
 
     public MyBrick(String name, String macAddress) {
         this.name = name;

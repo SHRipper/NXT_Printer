@@ -11,9 +11,9 @@ import de.lddt.zeichenroboterapp.R;
 /**
  * This class is a wrapper for the ValueAnimator we use to animate the clearing of the drawView
  */
-public class ColorAnimator extends Animation {
-    DrawView drawView;
-    ValueAnimator colorAnimation;
+class ColorAnimator extends Animation {
+    private final DrawView drawView;
+    private final ValueAnimator colorAnimation;
 
     /**
      * Instanciates the ColorAnimator with the given inputs.
@@ -51,9 +51,14 @@ public class ColorAnimator extends Animation {
     /**
      * Listener which is called every time the color value of the animated color changes
      *
-     * @param animation is the animation that the listener is linked to
+     *
      */
-    private ValueAnimator.AnimatorUpdateListener updateListener = new ValueAnimator.AnimatorUpdateListener() {
+    private final ValueAnimator.AnimatorUpdateListener updateListener = new ValueAnimator.AnimatorUpdateListener() {
+        /**
+         * <p>Notifies the occurrence of another frame of the animation.</p>
+         *
+         * @param animation is the animation that the listener is linked to
+         */
         @Override
         public void onAnimationUpdate(ValueAnimator animation) {
             // if the animated value, e.g. the color, changes, the drawView should
@@ -65,7 +70,7 @@ public class ColorAnimator extends Animation {
     /**
      * Listener Adapter that is called every time the animation progress reaches certain stages
      */
-    private AnimatorListenerAdapter animatorListenerAdapter = new AnimatorListenerAdapter() {
+    private final AnimatorListenerAdapter animatorListenerAdapter = new AnimatorListenerAdapter() {
 
         /**
          * Called if the animation has ended.

@@ -9,8 +9,8 @@ import de.lddt.zeichenroboterapp.core.DrawMode;
  * A Path stores a List of Vectors representing the drawn path.
  */
 public class Path {
-    private List<Vector2D> vectors;
-    private DrawMode type;
+    private final List<Vector2D> vectors;
+    private final DrawMode type;
 
     public Path(Vector2D start, DrawMode type) {
         vectors = new ArrayList<>();

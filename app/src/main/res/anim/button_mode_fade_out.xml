@@ -7,6 +7,6 @@
         android:duration="@integer/animation_alpha_fade_duration_ms"
         android:fromAlpha="1.0"
         android:interpolator="@android:anim/accelerate_interpolator"
-        android:toAlpha="0"></alpha>
+        android:toAlpha="0" />
 
 </set>

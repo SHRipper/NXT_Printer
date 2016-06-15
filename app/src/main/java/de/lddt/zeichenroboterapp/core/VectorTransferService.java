@@ -23,8 +23,8 @@ public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, Bo
     //Listener to communicate progress updates and actions.
     private TransferListener listener;
     // the brick to connect to and to send vectors to.
-    private MyBrick brick;
-    //the maximim amounts of vectors per package
+    private final MyBrick brick;
+    //the maximum amounts of vectors per package
     private final int maxVectors = 63;
 
     /**
@@ -40,8 +40,9 @@ public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, Bo
      * @param params List of Vectors to be transferred.
      * @return true if successful.
      */
+    @SafeVarargs
     @Override
-    protected Boolean doInBackground(List<Vector2D>... params) {
+    protected final Boolean doInBackground(List<Vector2D>... params) {
         //try to connect
         boolean success = BluetoothConn.connectTo(brick);
         if (!success) {
@@ -57,7 +58,7 @@ public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, Bo
         publishProgress(0, packagesTotal);
         //Send multiple packages to brick, because of the 254 Byte limit.
         for (int i = 0; i < packagesTotal; i++) {
-            //send a sublist of vectors to the brick
+            //send a subList of vectors to the brick
             int startIndex = i * maxVectors;
             int endIndex = Math.min(vectorList.size(), (i + 1) * maxVectors);
             List<Vector2D> vPackage = vectorList.subList(startIndex, endIndex);
@@ -82,6 +83,7 @@ public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, Bo
         try {
             Thread.sleep(2500);
         } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         return true;
     }

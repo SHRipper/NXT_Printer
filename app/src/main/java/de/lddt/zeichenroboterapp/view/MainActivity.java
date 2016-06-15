@@ -125,8 +125,8 @@ public class MainActivity extends Activity {
         List<Path> sampleDrawing =
                 Sample.loadSample(this, R.array.sample_castle, drawView.getCanvasLength());
 
-        for (Path samplepath : sampleDrawing) {
-            drawView.addPath(samplepath);
+        for (Path samplePath : sampleDrawing) {
+            drawView.addPath(samplePath);
         }
     }
 
@@ -160,7 +160,7 @@ public class MainActivity extends Activity {
                 buttonLineModeChooser.setImageDrawable(ICON_FREE_MODE);
 
             } else if (buttonID == R.id.button_line_mode) {
-                drawMode = drawMode.LINE;
+                drawMode = DrawMode.LINE;
 
                 // show free mode button as selected and line mode button as unselected
                 buttonFreeMode.setBackgroundResource(R.drawable.linemode_child_button_shape_unselected);
@@ -191,9 +191,8 @@ public class MainActivity extends Activity {
         if (menuIsHidden) {
             // fade out chooser button
             // fade in line and free mode buttons
-
             showLineModeMenu();
-        } else if (!menuIsHidden) {
+        } else {
             // fade in chooser button
             // fade out line an free mode buttons
             hideLineModeMenu();

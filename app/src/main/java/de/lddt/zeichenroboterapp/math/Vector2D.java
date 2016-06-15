@@ -47,6 +47,7 @@ public class Vector2D {
      * @return the calculated length.
      */
     public float length() {
+        //noinspection SuspiciousNameCombination
         return (float) Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     }
 

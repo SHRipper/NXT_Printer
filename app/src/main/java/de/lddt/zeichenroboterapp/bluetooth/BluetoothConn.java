@@ -41,7 +41,7 @@ public class BluetoothConn {
      */
     public static boolean connectTo(MyBrick myBrick) {
         //see http://www.lejos.org/nxt/nxj/tutorial/Android/Android.htm
-        Log.v(TAG, "Trying to connecto to " + myBrick.getName() + "; " + myBrick.getMacAddress());
+        Log.v(TAG, "Trying to connect to " + myBrick.getName() + "; " + myBrick.getMacAddress());
         try {
             brickConn = new NXTConnector();
             brickConn.setDebug(true);
@@ -103,7 +103,7 @@ public class BluetoothConn {
     public static boolean waitForResponse() {
         Log.v(TAG, "Waiting for response from " + brickConn.getNXTInfo().name);
         DataInputStream dataInStream = brickConn.getDataIn();
-        boolean success = false;
+        boolean success;
         try {
             success = dataInStream.readBoolean();
         } catch (IOException | NullPointerException e) {
