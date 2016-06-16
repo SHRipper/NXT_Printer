@@ -33,7 +33,7 @@ import de.lddt.zeichenroboterapp.util.VectorConverter;
 public class MainActivity extends Activity {
     private DrawView drawView;
     private ImageButton buttonFreeMode, buttonLineMode, buttonLineModeChooser, buttonLinkedLineMode;
-    private DrawMode drawMode;
+
     private int animationDurationMove;
     private boolean menuIsHidden;
 
@@ -87,9 +87,9 @@ public class MainActivity extends Activity {
      * Called when the "CLEAR" button is clicked.
      * The DrawView changes its color to the color of the src_brush
      * and then to its default again.
-     * <p/>
+     * <p>
      * The animation takes 300 milliseconds
-     * <p/>
+     * </p/>
      * After this process the border of the DrawView is reset.
      *
      * @param v not used.
@@ -136,57 +136,44 @@ public class MainActivity extends Activity {
     /**
      * Called when the one of the line mode buttons is clicked,
      * e.g. the line mode should change.
-     * <p/>
+     * <p>
      * Change the drawing mode only if the user currently does not draw on the canvas.
      *
      * @param v is the view of the clicked button.
      */
     public void changeDrawingModeClick(View v) {
+        Drawable icon;
+        DrawMode newDrawMode;
 
-        int buttonID = v.getId();
-        Drawable ICON_FREE_MODE, ICON_LINE_MODE, ICON_LINKED_LINE_MODE;
-        ICON_FREE_MODE = getResources().getDrawable(R.drawable.src_brush);
-        ICON_LINE_MODE = getResources().getDrawable(R.drawable.src_vector_line);
-        ICON_LINKED_LINE_MODE = getResources().getDrawable(R.drawable.src_vector_polyline);
-
+        buttonFreeMode.setBackgroundResource(R.drawable.button_drawmode_child_background);
+        buttonLineMode.setBackgroundResource(R.drawable.button_drawmode_child_background);
+        buttonLinkedLineMode.setBackgroundResource(R.drawable.button_drawmode_child_background);
 
         if (!drawView.isDrawing() && !menuIsHidden) {
-            if (buttonID == R.id.button_child_free_mode) {
-                drawMode = DrawMode.FREE;
-
-                // show free mode button as selected and line mode button as unselected
-                buttonFreeMode.setBackgroundResource(R.drawable.button_drawmode_child_background_selected);
-                buttonLineMode.setBackgroundResource(R.drawable.button_drawmode_child_background);
-                buttonLinkedLineMode.setBackgroundResource(R.drawable.button_drawmode_child_background);
-
-                // change icon of chooser button to the icon of the selected mode
-                buttonLineModeChooser.setImageDrawable(ICON_FREE_MODE);
-
-            } else if (buttonID == R.id.button_child_line_mode) {
-                drawMode = DrawMode.LINE;
-
-                // show free mode button as selected and line mode button as unselected
-                buttonFreeMode.setBackgroundResource(R.drawable.button_drawmode_child_background);
-                buttonLineMode.setBackgroundResource(R.drawable.button_drawmode_child_background_selected);
-                buttonLinkedLineMode.setBackgroundResource(R.drawable.button_drawmode_child_background);
-
-                // change icon of chooser button to the icon of the selected mode
-                buttonLineModeChooser.setImageDrawable(ICON_LINE_MODE);
-
-            } else if (buttonID == R.id.button_child_linked_line_mode) {
-                drawMode = DrawMode.LINKED_LINE;
-
-                // show free mode button as selected and line mode button as unselected
-                buttonFreeMode.setBackgroundResource(R.drawable.button_drawmode_child_background);
-                buttonLineMode.setBackgroundResource(R.drawable.button_drawmode_child_background);
-                buttonLinkedLineMode.setBackgroundResource(R.drawable.button_drawmode_child_background_selected);
-
-                // change icon of chooser button to the icon of the selected mode
-                buttonLineModeChooser.setImageDrawable(ICON_LINKED_LINE_MODE);
-
+            switch (v.getId()) {
+                case R.id.button_child_free_mode:
+                    icon = getResources().getDrawable(R.drawable.src_brush);
+                    buttonFreeMode.setBackgroundResource(R.drawable.button_drawmode_child_background_selected);
+                    newDrawMode = DrawMode.FREE;
+                    break;
+                case R.id.button_child_line_mode:
+                    icon = getResources().getDrawable(R.drawable.src_vector_line);
+                    buttonLineMode.setBackgroundResource(R.drawable.button_drawmode_child_background_selected);
+                    newDrawMode = DrawMode.LINE;
+                    break;
+                case R.id.button_child_linked_line_mode:
+                    icon = getResources().getDrawable(R.drawable.src_vector_polyline);
+                    buttonLinkedLineMode.setBackgroundResource(R.drawable.button_drawmode_child_background_selected);
+                    newDrawMode = DrawMode.LINKED_LINE;
+                    break;
+                default:
+                    icon = getResources().getDrawable(R.drawable.src_brush);
+                    newDrawMode = DrawMode.FREE;
+                    break;
             }
             hideLineModeMenu();
-            drawView.setDrawMode(drawMode);
+            buttonLineModeChooser.setImageDrawable(icon);
+            drawView.setDrawMode(newDrawMode);
         }
     }
 
@@ -232,9 +219,9 @@ public class MainActivity extends Activity {
         Animation animFadeOut = AnimationUtils.loadAnimation(this, R.anim.button_drawmode_parent_fade_out);
 
         // translation values
-        float freeModeTranslationY= MetricsConverter.convertToPixels(-60,this);
+        float freeModeTranslationY = MetricsConverter.convertToPixels(-60, this);
         float lineModeTranslationY = MetricsConverter.convertToPixels(-50, this);
-        float lineModeTranslationX = (-1)* lineModeTranslationY;
+        float lineModeTranslationX = (-1) * lineModeTranslationY;
         float linkedLineModeTranslationX = (-1) * freeModeTranslationY;
 
         buttonLineModeChooser.startAnimation(animFadeOut);
