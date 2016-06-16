@@ -34,7 +34,7 @@ class ColorAnimator extends Animation {
     }
 
     /**
-     * Starts the animation with the given duration
+     * Starts the animation with the given duration.
      *
      * @param duration is the duration of the animation
      */
@@ -49,9 +49,7 @@ class ColorAnimator extends Animation {
     }
 
     /**
-     * Listener which is called every time the color value of the animated color changes
-     *
-     *
+     * Listener which is called every time the color value of the animated color changes.
      */
     private final ValueAnimator.AnimatorUpdateListener updateListener = new ValueAnimator.AnimatorUpdateListener() {
         /**

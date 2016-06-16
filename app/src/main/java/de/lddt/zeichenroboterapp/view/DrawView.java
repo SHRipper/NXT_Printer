@@ -19,13 +19,14 @@ import de.lddt.zeichenroboterapp.util.MetricsConverter;
 import static de.lddt.zeichenroboterapp.util.VectorConverter.applyBounds;
 
 /**
- * The Canvas for the drawing.
+ * <p>A Draw View containing the canvas.</p>
+ * <P>This class stores a list of vectors.</P>
  */
 public class DrawView extends SurfaceView {
     private List<Path> paths;
     private Paint paint;
-    private DrawMode drawMode;
-    private boolean drawing;
+    private DrawMode drawMode; //the current draw mode
+    private boolean drawing;   //boolean wether the user is currently drawing on the screen.
     private int canvasLength;
 
     public DrawView(Context context) {
@@ -58,7 +59,7 @@ public class DrawView extends SurfaceView {
     }
 
     /**
-     * Calculate the length (width and height) of the canvas.
+     * Calculate the length (width and height) of the canvas. The canvas is square.
      */
     public int getCanvasLength() {
         if (canvasLength == -1) {
@@ -78,7 +79,7 @@ public class DrawView extends SurfaceView {
     }
 
     /**
-     * Remove the last drawn path or the last drawn line (in linked line mode)
+     * Remove the last drawn path or the last drawn line (in linked line mode).
      */
     public void undo() {
         drawing = false;
@@ -158,8 +159,8 @@ public class DrawView extends SurfaceView {
             case MotionEvent.ACTION_DOWN:
                 drawing = true;//Started drawing on the canvas.
 
-                //If the drawing mode is linked line and the current path is a linked line path,
-                //a new line starts where the previous line ended.
+                /*If the drawing mode is linked line and the current path is a linked line path,
+                a new line starts where the previous line ended.*/
                 if (currentPath != null
                         && drawMode == DrawMode.LINKED_LINE
                         && currentPath.getType() == DrawMode.LINKED_LINE) {
@@ -175,8 +176,8 @@ public class DrawView extends SurfaceView {
                 if (drawing) {
                     drawLine(x, y);
                 } else {
-                    //Start a new path when the touch position is now inside the canvas
-                    //and has previously been not.
+                    /*Start a new path when the touch position is now inside the canvas
+                    and has previously been not.*/
                     drawing = isInBounds(x, y);
                     if (drawing) {
                         startNewPath(x, y);
@@ -211,7 +212,7 @@ public class DrawView extends SurfaceView {
 
         //Only care about canvas Bounds, when in free drawing mode.
         if (drawMode == DrawMode.FREE) {
-            //Set bool drawing depending on whether the touch position is inside the canvas.
+            //Set boolean drawing depending on whether the touch position is inside the canvas.
             drawing = isInBounds(x, y);
         }
     }
@@ -267,7 +268,7 @@ public class DrawView extends SurfaceView {
     }
 
     /**
-     * This Class returns a boolean value that indicates if the user is
+     * Return a boolean value that indicates if the user is
      * currently drawing (=true) or not (=false)
      */
     public boolean isDrawing() {
@@ -275,9 +276,10 @@ public class DrawView extends SurfaceView {
     }
 
     /**
-     * Create a List with all vectors of the recorded paths.
-     * Different paths are separate with a special vector.
-     * The x and y value of this special vector are set to Short.Max_Value.
+     *<p></p> Create a List with all vectors of the recorded paths.</p>
+     *
+     * <p></p>Different paths are separate with a special vector.
+     * The x and y value of this special vector are set to Short.Max_Value.</p>
      *
      * @return list with all vectors.
      */
