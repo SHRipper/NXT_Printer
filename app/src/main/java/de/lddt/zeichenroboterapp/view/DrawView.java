@@ -87,7 +87,6 @@ public class DrawView extends SurfaceView {
             if (currentPath.getType() == DrawMode.FREE || currentPath.getType() == DrawMode.LINE) {
                 paths.remove(currentPath);
                 //Update the currentPath reference
-                currentPath = getCurrentPath();
             } else if (currentPath.getType() == DrawMode.LINKED_LINE) {
                 //In the linked line mode remove only the last line
                 currentPath.rewind();
@@ -95,7 +94,6 @@ public class DrawView extends SurfaceView {
                 if (currentPath.length() == 0) {
                     paths.remove(currentPath);
                     //Update the currentPath reference
-                    currentPath = getCurrentPath();
                 }
             }
         }
@@ -169,7 +167,7 @@ public class DrawView extends SurfaceView {
                     invalidate();
                 } else {
                     //Start a new path.
-                    currentPath = startNewPath(x, y);
+                    startNewPath(x, y);
                 }
                 return true;
 
@@ -181,7 +179,7 @@ public class DrawView extends SurfaceView {
                     //and has previously been not.
                     drawing = isInBounds(x, y);
                     if (drawing) {
-                        currentPath = startNewPath(x, y);
+                        startNewPath(x, y);
                     }
                 }
                 return true;
