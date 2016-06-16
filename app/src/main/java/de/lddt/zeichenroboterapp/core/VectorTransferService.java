@@ -11,11 +11,11 @@ import de.lddt.zeichenroboterapp.listener.TransferListener;
 import de.lddt.zeichenroboterapp.math.Vector2D;
 
 /**
- * This class transfers vectors to a nxt brick.
- * Perform all Bluetooth operations in a background thread to keep the main thread responsive.
- * <p/>
- * Class extends AsyncTask, because the AsyncTask provides an easy way to execute code in a background thread
- * while still being able update the main ui thread.
+ * <p>This class transfers vectors to a nxt brick.
+ * Perform all Bluetooth operations in a background thread to keep the main thread responsive.</p>
+ *
+ * <p>Class extends AsyncTask, because the AsyncTask provides an easy way to execute code in a background thread
+ * while still being able update the main ui thread.</p>
  */
 public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, Boolean> {
     private static final String TAG = "VectorTransferService";
@@ -89,8 +89,8 @@ public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, Bo
     }
 
     /**
-     * The service is about to try to connect to the brick.
-     * A proper indicator can be displayed on the screen.
+     * <p>The service is about to try to connect to the brick.</p>
+     * <p>A proper indicator can be displayed on the screen.</p>
      */
     @Override
     protected void onPreExecute() {
@@ -108,8 +108,8 @@ public class VectorTransferService extends AsyncTask<List<Vector2D>, Integer, Bo
     }
 
     /**
-     * When finished close the bluetooth connection.
-     * Call listener to update the ui.
+     * <p>Called when finished the transfer.</p>
+     * <p>Close the bluetooth connection. Call listener to update the ui.</p>
      *
      * @param success true if the vectors have been transferred successfully.
      */

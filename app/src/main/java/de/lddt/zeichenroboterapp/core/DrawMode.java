@@ -1,7 +1,7 @@
 package de.lddt.zeichenroboterapp.core;
 
 /**
- * Created by Lukas on 21.05.2016.
+ * Enumeration with the different available draw modes.
  */
 public enum DrawMode {
     FREE, LINE, LINKED_LINE
