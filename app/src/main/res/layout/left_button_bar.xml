@@ -52,6 +52,6 @@
         android:id="@+id/button_parent_line_mode"
         style="@style/ButtonDrawModeParent"
 
-        android:onClick="lineModeChooserClick"
+        android:onClick="drawModeButtonParentClick"
         android:src="@drawable/src_brush" />
 </RelativeLayout>

@@ -31,7 +31,7 @@ import de.lddt.zeichenroboterapp.util.VectorConverter;
  * The main activity for the "Zeichenroboter" project. The Canvas is part of this activity.
  */
 public class MainActivity extends Activity {
-    private DrawView drawView;
+    private DrawView drawView;      //The draw view with the canvas
     private ImageButton buttonChildFree, buttonChildLine, buttonLinkedLine, buttonDrawModeParent;
     private boolean menuIsHidden;
 
@@ -39,6 +39,7 @@ public class MainActivity extends Activity {
     private VectorTransferService service;
     private Listener transferListener;
 
+    //Toast for error messages
     private Toast toast;
 
     @Override
@@ -63,8 +64,7 @@ public class MainActivity extends Activity {
 
     /**
      * Modify the width and height, so the draw view is a square.
-     *
-     * @param hasFocus not used
+     * The draw area for the nxt robot is a square.
      */
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -74,22 +74,17 @@ public class MainActivity extends Activity {
         drawViewParams.width = drawView.getCanvasLength();
         drawViewParams.height = drawView.getCanvasLength();
         drawView.setLayoutParams(drawViewParams);
-
+        //some of the buttons expand, so the buttons should be on top of everything
         findViewById(R.id.main_left_layout).bringToFront();
         findViewById(R.id.main_right_layout).bringToFront();
     }
 
     /**
-     * Called when the "CLEAR" button is clicked.
-     * The DrawView changes its color to the color of the src_brush
-     * and then to its default again.
-     * <p>
-     * The animation takes 300 milliseconds
-     * </p/>
-     * After this process the border of the DrawView is reset.
-     *
-     * @param v not used.
-     */
+     * <p>Called when the "CLEAR" button is clicked.
+     * The DrawView changes its color to the color of the drawing and then back to its default again.</p>
+     * <p>The animation duration is defined in the integers xml file</p/>
+     * <p>After this process the border of the DrawView is reset.</p>
+     **/
     public void clearClick(View v) {
 
         // Values for the color animator
@@ -104,21 +99,17 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Called when the "UNDO" button is clicked.
-     * Tells the drawView to remove the last drawn path.
-     *
-     * @param v not used.
-     */
+     * <p>Called when the "UNDO" button is clicked.</p>
+     * <p>Tells the drawView to remove the last drawn path/vector.</p>
+     **/
     public void undoClick(View v) {
         drawView.undo();
     }
 
 
     /**
-     * Called when "LOAD" button is clicked.
-     * Loads a sample drawing and gives it to the drawView.
-     *
-     * @param v not used.
+     * <p>Called when "LOAD" button is clicked.</p>
+     * <p>loads a sample drawing from the arrays xml file and gives it to the drawView.</p>
      */
     public void loadSampleClick(View v) {
         List<Path> sampleDrawing =
@@ -130,12 +121,12 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Called when the one of the line mode buttons is clicked,
-     * e.g. the line mode should change.
-     * <p>
-     * Change the drawing mode only if the user currently does not draw on the canvas.
+     * <p>Called when the one of the line mode buttons is clicked,
+     * e.g. the line mode should change.</p>
      *
-     * @param v is the view of the clicked button.
+     * <p>Change the drawing mode only if the user currently does not draw on the canvas.</p>
+     *
+     * @param v is a reference to the view of the clicked button.
      */
     public void changeDrawingModeClick(View v) {
         Drawable icon;
@@ -168,27 +159,38 @@ public class MainActivity extends Activity {
                     newDrawMode = DrawMode.FREE;
                     break;
             }
-            hideLineModeMenu(animDuration);
+            hideDrawModeChildButtons(animDuration);
             buttonDrawModeParent.setImageDrawable(icon);
             drawView.setDrawMode(newDrawMode);
         }
     }
 
-    public void lineModeChooserClick(View v) {
+    /**
+     * <p>Called when big draw mode button is clicked.</p>
+     * <p>Shows ore hides the child buttons.</p>
+     *
+     * @param v
+     */
+    public void drawModeButtonParentClick(View v) {
         int animDuration = getResources().getInteger(R.integer.animation_alpha_fade_duration_ms);
 
         if (menuIsHidden) {
             // fade out chooser button
             // fade in line and free mode buttons
-            showLineModeMenu(animDuration);
+            showDrawModeChildButtons(animDuration);
         } else {
             // fade in chooser button
             // fade out line an free mode buttons
-            hideLineModeMenu(animDuration);
+            hideDrawModeChildButtons(animDuration);
         }
     }
 
-    private void showLineModeMenu(int duration) {
+    /**
+     * <p>Show the draw mode child-buttons. These buttons allow the user to change the draw mode.</p>
+     *
+     * @param duration the duration of the animation
+     */
+    private void showDrawModeChildButtons(int duration) {
 
         // set alpha fade in animation
         Animation animFadeIn = AnimationUtils.loadAnimation(this, R.anim.button_drawmode_child_fade_in);
@@ -217,7 +219,12 @@ public class MainActivity extends Activity {
         menuIsHidden = false;
     }
 
-    private void hideLineModeMenu(int duration) {
+    /**
+     * <p>Hide the draw mode child-buttons.</p>
+     *
+     * @param duration the duration of the animation
+     */
+    private void hideDrawModeChildButtons(int duration) {
 
         // set alpha fade out animation
         Animation animFadeOut = AnimationUtils.loadAnimation(this, R.anim.button_drawmode_child_fade_out);
@@ -241,12 +248,11 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Called when the "SEND" button is clicked.
-     * Check if something is drawn and bluetooth is enabled.
-     * Try to transfer the vectors to the brick.
+     * <p>Called when the "SEND" button is clicked.</p>
      *
-     * @param v not used.
-     */
+     * <p>Check if something is drawn and bluetooth is enabled.
+     * Try to transfer the vectors to the brick.</p>
+     **/
     public void sendClick(View v) {
         float accuracyDeg = getResources().getInteger(R.integer.optimization_accuracy_degs);
         int gridLength = getResources().getInteger(R.integer.grid_length);
@@ -270,7 +276,7 @@ public class MainActivity extends Activity {
         }
 
         //For Debug display how many vectors are excluded because of the optimization algorithm.
-        showToast("Vector optimization kicked out " + (posVList.size() - dirVList.size()) + "/" + posVList.size() + " vectors.");
+        //showToast("Vector optimization kicked out " + (posVList.size() - dirVList.size()) + "/" + posVList.size() + " vectors.");
 
         //Create a Service instance which performs bluetooth operations in a second thread.
         service = new VectorTransferService(MyBrick.getDefaultBrick(this));
@@ -281,7 +287,7 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Show toast on the screen. Cancel currently displayed toasts.
+     * Show toast on the screen. Cancel any currently displayed toasts.
      *
      * @param message the message to be displayed.
      */
@@ -296,7 +302,7 @@ public class MainActivity extends Activity {
     /**
      * Create a ProgressDialog instance. The Dialog is not cancelable.
      *
-     * @param title   the title of tje dialog.
+     * @param title   the title of the dialog.
      * @param message the message of the dialog.
      * @return the created dialog.
      */
@@ -325,7 +331,7 @@ public class MainActivity extends Activity {
         private ProgressDialog dialog;
 
         /**
-         * Show loading dialog while connection is established
+         * Show loading dialog box while connection is established.
          */
         @Override
         public void onConnect() {
@@ -335,7 +341,7 @@ public class MainActivity extends Activity {
         }
 
         /**
-         * Show progress dialog.
+         * Show progress dialog box.
          *
          * @param progress     the number of packages successfully sent.
          * @param packageCount the total number of packages.
@@ -373,6 +379,10 @@ public class MainActivity extends Activity {
         }
     }
 
+    /**
+     * <p>Called when the app is closed.</p>
+     * <p>Cancel all pending operations/transfers</p>
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
