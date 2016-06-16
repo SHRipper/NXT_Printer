@@ -12,7 +12,7 @@
         style="@style/ActionButton"
 
         android:layout_alignParentLeft="true"
-        android:onClick="clearCanvasClick"
+        android:onClick="clearClick"
         android:src="@drawable/src_delete" />
 
     <ImageButton
