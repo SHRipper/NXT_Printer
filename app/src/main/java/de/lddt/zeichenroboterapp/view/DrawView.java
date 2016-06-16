@@ -27,7 +27,6 @@ public class DrawView extends SurfaceView {
     private DrawMode drawMode;
     private boolean drawing;
     private int canvasLength;
-    private Path currentPath;    //Reference to the most recent path
 
     public DrawView(Context context) {
         super(context);
@@ -54,7 +53,6 @@ public class DrawView extends SurfaceView {
         drawMode = DrawMode.FREE;
         drawing = false;
         canvasLength = -1;
-        currentPath = null;
         float strokeWidth = MetricsConverter.convertToPixels(2.4f, getContext());
         paint.setStrokeWidth(strokeWidth);
     }
@@ -75,7 +73,6 @@ public class DrawView extends SurfaceView {
      */
     public void clear() {
         drawing = false;
-        currentPath = null;
         paths.clear();
         invalidate();
     }
@@ -85,7 +82,7 @@ public class DrawView extends SurfaceView {
      */
     public void undo() {
         drawing = false;
-        currentPath = getCurrentPath();
+        Path currentPath = getCurrentPath();
         if (currentPath != null) {
             if (currentPath.getType() == DrawMode.FREE || currentPath.getType() == DrawMode.LINE) {
                 paths.remove(currentPath);
@@ -131,6 +128,7 @@ public class DrawView extends SurfaceView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        Path currentPath = getCurrentPath();
         for (Path path : paths) {
             if (path.length() >= 2) {
                 if (drawing && path == currentPath) {
@@ -156,7 +154,7 @@ public class DrawView extends SurfaceView {
     public boolean onTouchEvent(MotionEvent event) {
         float x = event.getX();
         float y = event.getY();
-        currentPath = getCurrentPath();
+        Path currentPath = getCurrentPath();
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
@@ -203,6 +201,7 @@ public class DrawView extends SurfaceView {
      * @param y the y position of the touch input.
      */
     private void drawLine(float x, float y) {
+        Path currentPath = getCurrentPath();
         //If the drawing mode is line or linked line, the last vector of the line is removed.
         if ((currentPath.getType() == DrawMode.LINE || currentPath.getType() == DrawMode.LINKED_LINE)
                 && currentPath.length() > 1) {
