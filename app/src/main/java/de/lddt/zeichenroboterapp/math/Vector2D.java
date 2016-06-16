@@ -33,7 +33,7 @@ public class Vector2D {
     }
 
     /**
-     * The length of the vector.
+     * Calculate the length of the vector.
      * @return the calculated length.
      */
     public float length() {

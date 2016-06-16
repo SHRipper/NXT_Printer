@@ -52,16 +52,16 @@ public class VectorConverter {
      * Project the vectors on the grid so the nxt brick can process the vectors.
      *
      * @param vectorList   the list of vectors.
-     * @param canvasLength the length of the canvas
-     * @param gridLength   the length of the grid
+     * @param currentGridLen the current grid length
+     * @param currentGridLen the target grid length
      * @return the on the grid projected vectors.
      */
-    public static List<Vector2D> applyGrid(List<Vector2D> vectorList, int canvasLength, int gridLength) {
+    public static List<Vector2D> applyGrid(List<Vector2D> vectorList, int currentGridLen, int targetGridLen) {
         List<Vector2D> appliedList = new ArrayList<>();
         Vector2D temp = null;
         for (Vector2D v : vectorList) {
             if (v.x != Short.MAX_VALUE && v.y != Short.MAX_VALUE) {
-                applyGrid(v, canvasLength, gridLength);
+                applyGrid(v, currentGridLen, targetGridLen);
             }
             if (!v.equals(temp)) {
                 appliedList.add(v);
@@ -75,12 +75,12 @@ public class VectorConverter {
      * Projects a vector on the grid.
      *
      * @param v            the vector to be projected
-     * @param gridLength   the width and height of the grid
-     * @param canvasLength the width/the height of the actual canvas on the screen
+     * @param targetGridLen   the width and height of the grid
+     * @param currentGridLen the width/the height of the actual canvas on the screen
      */
-    public static void applyGrid(Vector2D v, float canvasLength, float gridLength) {
-        v.x *= gridLength / canvasLength;
-        v.y *= gridLength / canvasLength;
+    public static void applyGrid(Vector2D v, float currentGridLen, float targetGridLen) {
+        v.x *= targetGridLen / currentGridLen;
+        v.y *= targetGridLen / currentGridLen;
         v.round();
     }
 

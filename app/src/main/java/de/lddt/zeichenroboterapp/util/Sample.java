@@ -16,7 +16,7 @@ import de.lddt.zeichenroboterapp.math.Vector2D;
 public class Sample {
 
     /**
-     * Load a sample.
+     * Load a sample drawing.
      *
      * @param context      context reference to access the resource xml file
      * @param sampleId     the id if the integer array containing the coordinates of the sample
